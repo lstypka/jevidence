@@ -1,0 +1,253 @@
+<div ng-controller="DashboardCtrl" ng-cloak>
+
+    <div ng-if="noRecords">
+        <div class="alert alert-warning">
+            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Warning!</strong> No tests executions
+        </div>
+    </div>
+    <div ng-if="!noRecords">
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                            data-target="#testsTrendChartDataDiv" style="cursor: pointer;">
+                        <strong>Tests trend - Last {{numberOfExecutions}} executions</strong>
+
+                        <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                    </header>
+                    <div class="panel-body in" id="testsTrendChartDataDiv" ng-controller="TestsTrendStatusChartCtrl">
+                        <div class="col-md-12">
+                            <div style="border: 1px solid #eee;">
+                                <flot dataset="testsTrendChartData" options="testsTrendChartOptions" height="300px">
+                                </flot>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                            data-target="#testsTrendContainer" style="cursor: pointer;">
+                        <strong>Tests trend</strong>
+
+                        <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                    </header>
+                    <div class="panel-body in" id="testsTrendContainer" ng-controller="TestsTrendStatusChartCtrl">
+
+
+                        <div class="row" ng-if="calculating">Comparing ...</div>
+                        <div class="row" ng-if="!calculating">
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon added-gradient"><i class="fa fa-plus-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{formatNumber(added)}}</span>
+                                        Added
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon success-gradient"><i class="fa fa-check-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{formatNumber(success)}}</span>
+                                        Passed
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon failed-gradient"><i class="fa fa-times-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{formatNumber(failed)}}</span>
+                                        Failed
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                        <span class="sm-st-icon errors-gradient"><i
+                                class="fa fa-dot-circle-o"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{formatNumber(error)}}</span>
+                                        Error
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon skipped-gradient"><i class="fa fa-minus-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{formatNumber(skipped)}}</span>
+                                        Skipped
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="row" style="margin-top: 7px;">
+                                    <b>
+                                        <center>Compare executions</center>
+                                    </b>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <select class="form-control revision-combobox" id="firstRevision"
+                                                ng-model="selectedRevisions.first" ng-change="changedRevision()">
+                                            <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control revision-combobox" id="secondRevision"
+                                                ng-model="selectedRevisions.second" ng-change="changedRevision()">
+                                            <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning" ng-if="incorrectRevisions">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Warning!</strong> Cannot compare execution {{selectedRevisions.first}} with
+                            {{selectedRevisions.second}}. The first execution must be greater than the second one.
+                        </div>
+
+                        <!-- TABLE START - Added tests -->
+                        <div class="panel-body table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Test</th>
+                                    <th>Params</th>
+                                    <th>Execution #{{selectedRevisions.firstCorrect}}</th>
+                                    <th>Execution #{{selectedRevisions.secondCorrect}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="test in differences.success track by $index">
+                                    <td>
+                                        <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                    </td>
+                                    <td>
+                                        <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                        </div>
+                                    </td>
+                                    <td>   <span class="label label-block"
+                                                 ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                    <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                 ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span>
+                                    <span ng-if="test.previousStatus === 'UNKNOWN'"
+                                          class="label label-block label-default">Didn't exist</span>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="test in differences.failed track by $index">
+                                    <td>
+                                        <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                    </td>
+                                    <td>
+                                        <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                        </div>
+                                    </td>
+                                    <td>   <span class="label label-block"
+                                                 ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                    <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                 ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span><span ng-if="test.previousStatus === 'UNKNOWN'"
+                                             class="label label-block label-default">Didn't exist</span></td>
+                                </tr>
+                                <tr ng-repeat="test in differences.error track by $index">
+                                    <td>
+                                        <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                    </td>
+                                    <td>
+                                        <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                        </div>
+                                    </td>
+                                    <td>   <span class="label label-block"
+                                                 ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                    <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                 ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span><span ng-if="test.previousStatus === 'UNKNOWN'"
+                                             class="label label-block label-default">Didn't exist</span></td>
+                                </tr>
+                                <tr ng-repeat="test in differences.skipped track by $index">
+                                    <td>
+                                        <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                    </td>
+                                    <td>
+                                        <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                        </div>
+                                    </td>
+                                    <td>   <span class="label label-block"
+                                                 ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                    <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                 ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span><span ng-if="test.previousStatus === 'UNKNOWN'"
+                                             class="label label-block label-default">Didn't exist</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- TABLE END -->
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+</div>

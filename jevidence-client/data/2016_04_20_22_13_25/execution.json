@@ -1,0 +1,3877 @@
+{
+	"startedAt": "2016-04-20 22:13:25:630",
+	"finishedAt": "2016-04-20 22:13:32:874",
+	"duration": 7244,
+	"testClasses": [{
+		"name": "pl.lstypka.ExampleServiceMultiplyTest",
+		"tests": [{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:27:186",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:240",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:277",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:337",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:376",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:454",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:542",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:622",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:639",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:717",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:738",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:824",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:877",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:888",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:962",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:007",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:016",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:024",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:070",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:138",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:161",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:230",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:286",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:331",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:350",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:403",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:474",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:531",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:599",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:670",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:739",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:740",
+				"message": "LOGGER: first number -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:740",
+				"message": "first number = -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:794",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:862",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:888",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:957",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:035",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:122",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:175",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:183",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:187",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:190",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:260",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:359",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:361",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:409",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:475",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:573",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:638",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:713",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:769",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:843",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:855",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:907",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:935",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:979",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:048",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:147",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:193",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:194",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:194",
+				"message": "first number = 3"
+			},
+			{
+				"level": "screenshot",
+				"timestamp": "2016-04-20 22:13:30:194",
+				"message": "Wallpaper",
+				"screenshot": "data\\2016_04_20_22_13_25\\img\\3.jpg"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:196",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldAttachScreenshot",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:27:185",
+			"finishedAt": "2016-04-20 22:13:30:194",
+			"duration": 3009
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:820",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:893",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:893",
+				"message": "LOGGER: first number 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:893",
+				"message": "first number = 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:917",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:975",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:982",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:079",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:109",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:205",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:259",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:319",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:415",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:499",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:556",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:652",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:747",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:828",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:920",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:945",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:957",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:008",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:074",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:124",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:184",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:222",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:222",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:222",
+				"message": "first number = 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:256",
+				"message": "Multiply = 7"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:256",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldMultiply4And3",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:28:819",
+			"finishedAt": "2016-04-20 22:13:30:256",
+			"duration": 1437
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:250",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:258",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:333",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:363",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:383",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:432",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:495",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:562",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:599",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:654",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:711",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:745",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:782",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:852",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:931",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:974",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:027",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:063",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:130",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:140",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:182",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:221",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:257",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:345",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:369",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:422",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:455",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:526",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:605",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:29:606",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:606",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:644",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:740",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:836",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:890",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:892",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:909",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:923",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:975",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:023",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:109",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:197",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:278",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:286",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:384",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:415",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:492",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:524",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:560",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:598",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:683",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:686",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:762",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:794",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:841",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:936",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:951",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:038",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:040",
+				"message": "LOGGER: first number 2"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:040",
+				"message": "first number = 2"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:040",
+				"message": "Multiply = 2"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:042",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldMultiply0And2",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:28:250",
+			"finishedAt": "2016-04-20 22:13:31:040",
+			"duration": 2790
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:184",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:230",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:264",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:288",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:380",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:404",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:501",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:591",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:634",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:706",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:707",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:804",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:843",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:935",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:969",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:983",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:008",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:026",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:083",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:098",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:143",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:158",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:170",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:194",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:255",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:29:256",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:256",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:284",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:355",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:450",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:500",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:560",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:618",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:704",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:745",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:803",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:859",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:880",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:901",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:927",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:942",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:976",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:025",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:040",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:135",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:150",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:160",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:185",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:263",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:287",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:314",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:408",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:442",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:513",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:544",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:606",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:620",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:664",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:667",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:704",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:733",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:803",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:895",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:895",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:895",
+				"message": "first number = 0"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:897",
+				"message": "Test failure listener"
+			},
+			{
+				"assertionError": false,
+				"level": "error",
+				"timestamp": "2016-04-20 22:13:32:890",
+				"message": "Random error",
+				"stacktrace": "java.lang.RuntimeException: Random error\r\n\tat pl.lstypka.jevidence.core.ExampleService.randomError(ExampleService.java:80)\r\n\tat pl.lstypka.jevidence.core.ExampleService.multiply(ExampleService.java:72)\r\n\tat pl.lstypka.ExampleServiceMultiplyTest.shouldMultiply0And0(ExampleServiceMultiplyTest.java:50)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.lang.reflect.Method.invoke(Method.java:497)\r\n\tat org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)\r\n\tat org.testng.internal.Invoker.invokeMethod(Invoker.java:643)\r\n\tat org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)\r\n\tat org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)\r\n\tat org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)\r\n\tat org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)\r\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\r\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\r\n\tat java.lang.Thread.run(Thread.java:745)\r\n",
+				"isAssertionError": false
+			}],
+			"status": "ERROR",
+			"name": "shouldMultiply0And0",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:28:182",
+			"finishedAt": "2016-04-20 22:13:30:896",
+			"duration": 2714
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:848",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:933",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:955",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:996",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:086",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:147",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:193",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:259",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:354",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:358",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:418",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:491",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:512",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:556",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:629",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:647",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:734",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:773",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:787",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:855",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:29:856",
+				"message": "LOGGER: first number -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:856",
+				"message": "first number = -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:955",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:29:989",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:068",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:128",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:223",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:286",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:317",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:343",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:370",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:452",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:491",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:577",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:615",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:649",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:743",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:814",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:814",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:874",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:888",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:914",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:973",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:016",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:100",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:184",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:235",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:260",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:333",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:414",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:490",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:546",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:629",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:676",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:730",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:808",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:809",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:810",
+				"message": "first number = 3"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:813",
+				"message": "Test failure listener"
+			},
+			{
+				"assertionError": false,
+				"level": "error",
+				"timestamp": "2016-04-20 22:13:32:891",
+				"message": "Random error",
+				"stacktrace": "java.lang.RuntimeException: Random error\r\n\tat pl.lstypka.jevidence.core.ExampleService.randomError(ExampleService.java:80)\r\n\tat pl.lstypka.jevidence.core.ExampleService.multiply(ExampleService.java:72)\r\n\tat pl.lstypka.ExampleServiceMultiplyTest.shouldMultiplyMinus4And3(ExampleServiceMultiplyTest.java:63)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.lang.reflect.Method.invoke(Method.java:497)\r\n\tat org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)\r\n\tat org.testng.internal.Invoker.invokeMethod(Invoker.java:643)\r\n\tat org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)\r\n\tat org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)\r\n\tat org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)\r\n\tat org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)\r\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\r\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\r\n\tat java.lang.Thread.run(Thread.java:745)\r\n",
+				"isAssertionError": false
+			}],
+			"status": "ERROR",
+			"name": "shouldMultiplyMinus4And3",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:28:848",
+			"finishedAt": "2016-04-20 22:13:31:810",
+			"duration": 2962
+		}],
+		"skipped": 0,
+		"failed": 0,
+		"errors": 2,
+		"passed": 3,
+		"startedAt": "2016-04-20 22:13:27:185",
+		"finishedAt": "2016-04-20 22:13:31:810",
+		"duration": 4625
+	},
+	{
+		"name": "pl.lstypka.ExampleServiceSubtractTest",
+		"tests": [{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:901",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:991",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:070",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:142",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:151",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:151",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:221",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:229",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:260",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:260",
+				"message": "LOGGER: first number 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:260",
+				"message": "first number = 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:271",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:327",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:368",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:441",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:453",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:535",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:599",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:657",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:722",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:722",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:816",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:872",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:908",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:999",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:040",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:111",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:209",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:298",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:363",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:437",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:492",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:553",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:558",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:590",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:631",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:32:632",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:632",
+				"message": "first number = 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:675",
+				"message": "Substract = 7"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:32:676",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldSubtract4And3",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:30:899",
+			"finishedAt": "2016-04-20 22:13:32:675",
+			"duration": 1776
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:608",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:633",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:686",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:752",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:826",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:921",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:018",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:101",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:112",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:136",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:156",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:156",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:156",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:209",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:292",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:317",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:319",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:406",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:474",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:485",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:495",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:506",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:515",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:560",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:594",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:651",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:745",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:756",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:809",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:873",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:967",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:023",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:053",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:127",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:175",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:177",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:182",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:183",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:241",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:248",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:273",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:282",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:303",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:320",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:357",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:401",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:402",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:32:402",
+				"message": "LOGGER: first number 2"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:402",
+				"message": "first number = 2"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:426",
+				"message": "Substract = 2"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:32:428",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldSubtract0And2",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:30:606",
+			"finishedAt": "2016-04-20 22:13:32:426",
+			"duration": 1820
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:258",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:287",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:288",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:288",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:366",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:376",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:397",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:480",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:522",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:523",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:523",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:604",
+				"message": "Substract = 0"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:605",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldSubtract0And0",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:30:257",
+			"finishedAt": "2016-04-20 22:13:30:604",
+			"duration": 347
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:198",
+				"message": "Test started listener"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:30:200",
+				"message": "LOGGER: first number -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:200",
+				"message": "first number = -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:244",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:318",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:366",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:374",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:466",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:526",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:571",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:573",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:634",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:637",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:732",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:797",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:800",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:812",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:884",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:30:967",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:063",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:104",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:146",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:229",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:316",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:387",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:447",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:475",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:526",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:617",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:708",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:739",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:791",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:858",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:859",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:859",
+				"message": "first number = 3"
+			},
+			{
+				"level": "screenshot",
+				"timestamp": "2016-04-20 22:13:31:859",
+				"message": "Wallpaper",
+				"screenshot": "data\\2016_04_20_22_13_25\\img\\2.jpg"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:859",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldAttachScreenshot",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:30:196",
+			"finishedAt": "2016-04-20 22:13:31:859",
+			"duration": 1663
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:31:044",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:097",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:160",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:173",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:206",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:227",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:323",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:392",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:465",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:517",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:591",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:639",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:724",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:811",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:891",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:980",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:31:993",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:069",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:089",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:173",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:239",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:320",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:32:321",
+				"message": "LOGGER: first number -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:321",
+				"message": "first number = -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:400",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:404",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:404",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:421",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:421",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:444",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:538",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:595",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:652",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:694",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:791",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:807",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:32:808",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:808",
+				"message": "first number = 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:32:873",
+				"message": "Substract = -1"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:32:875",
+				"message": "Test failure listener"
+			},
+			{
+				"assertionError": true,
+				"level": "error",
+				"timestamp": "2016-04-20 22:13:32:892",
+				"message": "expected:<7> but was:<-7>",
+				"stacktrace": "java.lang.AssertionError: expected:<7> but was:<-7>\r\n\tat org.fest.assertions.Fail.failure(Fail.java:228)\r\n\tat org.fest.assertions.Fail.comparisonFailed(Fail.java:85)\r\n\tat org.fest.assertions.Fail.failIfNotEqual(Fail.java:71)\r\n\tat org.fest.assertions.GenericAssert.isEqualTo(GenericAssert.java:217)\r\n\tat org.fest.assertions.IntAssert.isEqualTo(IntAssert.java:61)\r\n\tat pl.lstypka.ExampleServiceSubtractTest.shouldSubtractMinus4And3(ExampleServiceSubtractTest.java:67)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.lang.reflect.Method.invoke(Method.java:497)\r\n\tat org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)\r\n\tat org.testng.internal.Invoker.invokeMethod(Invoker.java:643)\r\n\tat org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)\r\n\tat org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)\r\n\tat org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)\r\n\tat org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)\r\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\r\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\r\n\tat java.lang.Thread.run(Thread.java:745)\r\n",
+				"isAssertionError": true
+			}],
+			"status": "FAILED",
+			"name": "shouldSubtractMinus4And3",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:31:043",
+			"finishedAt": "2016-04-20 22:13:32:874",
+			"duration": 1831
+		}],
+		"skipped": 0,
+		"failed": 1,
+		"errors": 0,
+		"passed": 4,
+		"startedAt": "2016-04-20 22:13:30:196",
+		"finishedAt": "2016-04-20 22:13:32:874",
+		"duration": 2678
+	},
+	{
+		"name": "pl.lstypka.ExampleServiceAddTest",
+		"tests": [{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:25:699",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:843",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:894",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:968",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:081",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:180",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:202",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:26:205",
+				"message": "LOGGER: first number 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:205",
+				"message": "first number = 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:263",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:303",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:364",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:391",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:489",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:514",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:532",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:574",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:623",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:715",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:752",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:796",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:823",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:882",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:942",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:962",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:995",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:011",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:044",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:112",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:161",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:27:161",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:161",
+				"message": "first number = 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:184",
+				"message": "Sum = 7"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:27:185",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldAdd4And3",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:25:630",
+			"finishedAt": "2016-04-20 22:13:27:184",
+			"duration": 1554
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:27:166",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:183",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:251",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:327",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:370",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:409",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:426",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:434",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:508",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:603",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:642",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:741",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:812",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:890",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:980",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:077",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:084",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:094",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:094",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:095",
+				"message": "LOGGER: first number -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:095",
+				"message": "first number = -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:111",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:180",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:181",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:181",
+				"message": "first number = 3"
+			},
+			{
+				"level": "screenshot",
+				"timestamp": "2016-04-20 22:13:28:181",
+				"message": "Wallpaper",
+				"screenshot": "data\\2016_04_20_22_13_25\\img\\1.jpg"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:182",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldAttachScreenshot",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:27:165",
+			"finishedAt": "2016-04-20 22:13:28:181",
+			"duration": 1016
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:25:698",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:895",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:968",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:004",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:081",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:099",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:26:102",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:102",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:171",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:232",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:311",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:358",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:362",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:458",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:546",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:624",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:638",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:697",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:759",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:854",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:944",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:985",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:033",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:036",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:061",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:070",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:081",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:121",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:148",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:167",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:256",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:320",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:322",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:391",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:475",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:511",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:580",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:675",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:721",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:736",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:815",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:874",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:934",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:007",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:087",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:173",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:174",
+				"message": "LOGGER: first number 2"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:174",
+				"message": "first number = 2"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:249",
+				"message": "Sum = 2"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:249",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldAdd0And2",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:25:631",
+			"finishedAt": "2016-04-20 22:13:28:249",
+			"duration": 2618
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:25:698",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:968",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:980",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:996",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:099",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:192",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:261",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:334",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:421",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:463",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:538",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:580",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:631",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:700",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:727",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:808",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:818",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:874",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:934",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:974",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:983",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:039",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:084",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:087",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:177",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:224",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:253",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:333",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:390",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:473",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:478",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:494",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:566",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:598",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:678",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:749",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:795",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:27:797",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:797",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:797",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:798",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:816",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:906",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:935",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:954",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:034",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:066",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:121",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:185",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:187",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:196",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:228",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:306",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:380",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:476",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:479",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:564",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:656",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:673",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:707",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:770",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:770",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:813",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:814",
+				"message": "LOGGER: first number 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:814",
+				"message": "first number = 0"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:819",
+				"message": "Sum = 0"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:819",
+				"message": "Test success listener"
+			}],
+			"status": "SUCCESS",
+			"name": "shouldAdd0And0",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:25:630",
+			"finishedAt": "2016-04-20 22:13:28:819",
+			"duration": 3189
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:25:698",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:968",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:981",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:984",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:081",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:135",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:146",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:195",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:209",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:295",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:305",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:326",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:357",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:391",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:469",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:488",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:26:489",
+				"message": "LOGGER: first number -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:489",
+				"message": "first number = -4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:588",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:593",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:636",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:732",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:792",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:889",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:951",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:015",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:023",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:051",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:114",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:27:116",
+				"message": "LOGGER: first number 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:116",
+				"message": "first number = 3"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:151",
+				"message": "Sum = -1"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:27:160",
+				"message": "Test failure listener"
+			},
+			{
+				"assertionError": true,
+				"level": "error",
+				"timestamp": "2016-04-20 22:13:32:889",
+				"message": "expected:<-2> but was:<-1>",
+				"stacktrace": "java.lang.AssertionError: expected:<-2> but was:<-1>\r\n\tat org.fest.assertions.Fail.failure(Fail.java:228)\r\n\tat org.fest.assertions.Fail.comparisonFailed(Fail.java:85)\r\n\tat org.fest.assertions.Fail.failIfNotEqual(Fail.java:71)\r\n\tat org.fest.assertions.GenericAssert.isEqualTo(GenericAssert.java:217)\r\n\tat org.fest.assertions.IntAssert.isEqualTo(IntAssert.java:61)\r\n\tat pl.lstypka.ExampleServiceAddTest.shouldAddMinu4And3(ExampleServiceAddTest.java:71)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.lang.reflect.Method.invoke(Method.java:497)\r\n\tat org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)\r\n\tat org.testng.internal.Invoker.invokeMethod(Invoker.java:643)\r\n\tat org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)\r\n\tat org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)\r\n\tat org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)\r\n\tat org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)\r\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\r\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\r\n\tat java.lang.Thread.run(Thread.java:745)\r\n",
+				"isAssertionError": true
+			}],
+			"status": "FAILED",
+			"name": "shouldAddMinu4And3",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:25:631",
+			"finishedAt": "2016-04-20 22:13:27:159",
+			"duration": 1528
+		},
+		{
+			"steps": [{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:25:698",
+				"message": "Test started listener"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:25:968",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:081",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:103",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:165",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:213",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:310",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:362",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:428",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:468",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:509",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:559",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:563",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:595",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:610",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:682",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:734",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:764",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:856",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:887",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:26:889",
+				"message": "LOGGER: first number -5"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:889",
+				"message": "first number = -5"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:26:958",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:054",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:102",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:165",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:183",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:193",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:270",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:334",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:382",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:454",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:504",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:595",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:675",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:708",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:788",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:863",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:27:954",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:041",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:114",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:168",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:251",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:328",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:414",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:500",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:580",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:644",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:702",
+				"message": "Nop"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:755",
+				"message": "Nop"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:756",
+				"message": "LOGGER: first number 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:756",
+				"message": "first number = 4"
+			},
+			{
+				"level": "success",
+				"timestamp": "2016-04-20 22:13:28:846",
+				"message": "Sum = -1"
+			},
+			{
+				"level": "info",
+				"timestamp": "2016-04-20 22:13:28:847",
+				"message": "Test failure listener"
+			},
+			{
+				"assertionError": true,
+				"level": "error",
+				"timestamp": "2016-04-20 22:13:32:891",
+				"message": "expected:<-2> but was:<-1>",
+				"stacktrace": "java.lang.AssertionError: expected:<-2> but was:<-1>\r\n\tat org.fest.assertions.Fail.failure(Fail.java:228)\r\n\tat org.fest.assertions.Fail.comparisonFailed(Fail.java:85)\r\n\tat org.fest.assertions.Fail.failIfNotEqual(Fail.java:71)\r\n\tat org.fest.assertions.GenericAssert.isEqualTo(GenericAssert.java:217)\r\n\tat org.fest.assertions.IntAssert.isEqualTo(IntAssert.java:61)\r\n\tat pl.lstypka.ExampleServiceAddTest.shouldAddMinus5And4(ExampleServiceAddTest.java:84)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.lang.reflect.Method.invoke(Method.java:497)\r\n\tat org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)\r\n\tat org.testng.internal.Invoker.invokeMethod(Invoker.java:643)\r\n\tat org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)\r\n\tat org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)\r\n\tat org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)\r\n\tat org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)\r\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\r\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\r\n\tat java.lang.Thread.run(Thread.java:745)\r\n",
+				"isAssertionError": true
+			}],
+			"status": "FAILED",
+			"name": "shouldAddMinus5And4",
+			"params": {
+				"Execution": "example suite"
+			},
+			"startedAt": "2016-04-20 22:13:25:631",
+			"finishedAt": "2016-04-20 22:13:28:846",
+			"duration": 3215
+		}],
+		"skipped": 0,
+		"failed": 2,
+		"errors": 0,
+		"passed": 4,
+		"startedAt": "2016-04-20 22:13:25:630",
+		"finishedAt": "2016-04-20 22:13:28:846",
+		"duration": 3216
+	}],
+	"skipped": 0,
+	"failed": 0,
+	"errors": 1,
+	"passed": 11
+}
