@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.lstypka</groupId>
+    <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-log4j</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <name>jEvidence - log4j</name>
     <description>jEvidence extension for log4j framework</description>
     <url>https://github.com/lstypka/jevidence</url>
@@ -40,9 +40,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>pl.lstypka</groupId>
+            <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-core</artifactId>
-            <version>1.0</version>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
@@ -50,6 +50,18 @@
             <version>1.2.17</version>
         </dependency>
     </dependencies>
+
+    <developers>
+        <developer>
+            <id>lstypka</id>
+            <name>Łukasz Stypka</name>
+            <email>lukasz.stypka@gmail.com</email>
+            <url>http://stypka.pl</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <build>
         <plugins>

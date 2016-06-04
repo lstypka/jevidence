@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.lstypka</groupId>
+    <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-junit</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <name>jEvidence - jUnit</name>
     <description>jEvidence extension for jUnit framework</description>
     <url>https://github.com/lstypka/jevidence</url>
@@ -40,9 +40,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>pl.lstypka</groupId>
+            <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-core</artifactId>
-            <version>1.0</version>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

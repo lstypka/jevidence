@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.lstypka</groupId>
+    <groupId>pl.stypka</groupId>
     <artifactId>example-testng</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>jEvidence - testng example</name>
     <description>Example usage of jEvidence with testNg framework</description>
     <url>https://github.com/lstypka/jevidence</url>
@@ -39,19 +39,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>pl.lstypka</groupId>
+            <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-testng</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>pl.lstypka</groupId>
+            <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-java-logger</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>pl.lstypka</groupId>
+            <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-log4j</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
