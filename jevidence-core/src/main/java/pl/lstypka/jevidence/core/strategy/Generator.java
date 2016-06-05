@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2016 Lukasz Stypka (lukasz.stypka@gmail.com)
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,6 +17,8 @@ package pl.lstypka.jevidence.core.strategy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import pl.jsolve.sweetener.text.Strings;
+import pl.lstypka.jevidence.core.io.FileUtils;
 import pl.lstypka.jevidence.model.execution.Execution;
 import pl.lstypka.jevidence.model.settings.Setting;
 import pl.lstypka.jevidence.model.settings.Settings;
@@ -44,11 +46,19 @@ public abstract class Generator {
     }
 
     private boolean checkIfClientIsAppropriate(String reportDir, String jevidenceDeploymentVersion) {
-        File settingsFile = new File(reportDir + File.separator + "data" + File.separator + "settings.json");
+        File settingsFile = new File(reportDir + File.separator + "data" + File.separator + "settings.js");
         ObjectMapper mapper = new ObjectMapper();
         if (settingsFile.exists()) {
             try {
-                Settings settings = mapper.readValue(settingsFile, Settings.class);
+                FileUtils fileUtils = new FileUtils();
+                Settings settings = null;
+                String settingsVariableAsString = fileUtils.readAsString(settingsFile.getAbsolutePath());
+                if (Strings.isAlpha(settingsVariableAsString)) {
+                    settings = new Settings(Lists.<Setting>newArrayList());
+                } else {
+                    String settingsAsString = settingsVariableAsString.substring("var jEvidenceSettings = ".length());
+                    settings = mapper.readValue(settingsAsString, Settings.class);
+                }
                 for (Setting setting : settings.getSettings()) {
                     if (setting.getKey().equals(JEVIDENCE_DEPLOY_TYPE_KEY)) {
                         return setting.getValue().equals(jevidenceDeploymentVersion);
@@ -71,12 +81,14 @@ public abstract class Generator {
         }
     }
 
-    private void saveSettings(Settings settings,  String jevidenceDeploymentVersion, File settingsFile, ObjectMapper mapper) {
+    private void saveSettings(Settings settings, String jevidenceDeploymentVersion, File settingsFile, ObjectMapper mapper) {
         try {
             // JEVIDENCE_DEPLOY_TYPE_KEY key not found. Add it!
             settings.getSettings().add(new Setting(JEVIDENCE_DEPLOY_TYPE_KEY, jevidenceDeploymentVersion));
+            String settingsAsString = mapper.writeValueAsString(settings);
             //save it!
-            mapper.writeValue(settingsFile, settings);
+            FileUtils fileUtils = new FileUtils();
+            fileUtils.saveString("var jEvidenceSettings = " + settingsAsString, settingsFile.getAbsolutePath());
         } catch (IOException e) {
             // do nothing
         }
