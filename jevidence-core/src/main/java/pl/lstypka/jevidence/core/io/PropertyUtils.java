@@ -23,6 +23,7 @@ public class PropertyUtils {
     public final static String REPORT_PATH = "jevidence.reportPath";
     public final static String REMOVE_EXECUTIONS = "jevidence.removeExecutions";
     public final static String MAX_NUMBER_OF_EXECUTIONS = "jevidence.maxNumberOfExecutions";
+    public final static String EMBEDDED_VERSION = "jevidence.embedded";
     private final static String JEVIDENCE_PROPERTIES_FILE = "jevidence.properties";
     private final static String JEVIDENCE_ENVIRONMENT_KEY = "JEVIDENCE_PROPERTIES";
 

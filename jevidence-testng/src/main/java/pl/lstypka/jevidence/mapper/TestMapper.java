@@ -88,7 +88,9 @@ public class TestMapper implements Mapper<ITestResult, Test> {
             if (annotation instanceof Parameters) {
                 String[] keys = ((Parameters) annotation).value();
                 for (int i = 0; i < keys.length; i++) {
-                    parameters.put(getDefaultIfNull(keys[i]), getDefaultIfNull(values[i]));
+                    if(values.length > i) {
+                        parameters.put(getDefaultIfNull(keys[i]), getDefaultIfNull(values[i]));
+                    }
                 }
             }
         }

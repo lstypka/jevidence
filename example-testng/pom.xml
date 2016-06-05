@@ -41,17 +41,17 @@
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-testng</artifactId>
-            <version>1.0</version>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-java-logger</artifactId>
-            <version>1.0</version>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-log4j</artifactId>
-            <version>1.0</version>
+            <version>1.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
