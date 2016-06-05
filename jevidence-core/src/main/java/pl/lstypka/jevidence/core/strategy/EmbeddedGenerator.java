@@ -30,52 +30,11 @@ import java.io.IOException;
  */
 public class EmbeddedGenerator extends Generator {
 
-    private final static String JEVIDENCE_DEPLOY_TYPE_KEY = "deployType";
-    private final static String JEVIDENCE_EMBEDDED_VERSION = "embedded";
 
     @Override
     public void generate(Execution execution, String reportDir) {
-        if (!checkIfClientIsAppropriate(reportDir)) {
-            throw new IllegalStateException("Cannot mix embedded and server versions ");
-        }
+        checkIfVersionsAreMixed(reportDir, JEVIDENCE_EMBEDDED_VERSION);
     }
 
-    private boolean checkIfClientIsAppropriate(String reportDir) {
-        File settingsFile = new File(reportDir + File.separator + "data" + File.separator + "settings.json");
-        ObjectMapper mapper = new ObjectMapper();
-        if (settingsFile.exists()) {
-            try {
-                Settings settings = mapper.readValue(settingsFile, Settings.class);
-                for (Setting setting : settings.getSettings()) {
-                    if (setting.getKey().equals(JEVIDENCE_DEPLOY_TYPE_KEY)) {
-                        return setting.getValue().equals(JEVIDENCE_EMBEDDED_VERSION);
-                    }
-                }
-                saveSettings(settings, settingsFile, mapper);
-                return true;
-            } catch (IOException e) {
-                return false;
-            }
-        } else {
-            try {
-                new File(reportDir + File.separator + "data").mkdirs();
-                settingsFile.createNewFile();
-                saveSettings(new Settings(Lists.<Setting>newArrayList()), settingsFile, mapper);
-                return true;
-            } catch (IOException e) {
-                return false;
-            }
-        }
-    }
 
-    private void saveSettings(Settings settings, File settingsFile, ObjectMapper mapper) {
-        try {
-            // JEVIDENCE_DEPLOY_TYPE_KEY key not found. Add it!
-            settings.getSettings().add(new Setting(JEVIDENCE_DEPLOY_TYPE_KEY, JEVIDENCE_EMBEDDED_VERSION));
-            //save it!
-            mapper.writeValue(settingsFile, settings);
-        } catch (IOException e) {
-            // do nothing
-        }
-    }
 }

@@ -40,6 +40,7 @@ public class ServerGenerator extends Generator{
 
     @Override
     public void generate(Execution execution, String reportDir) {
+        checkIfVersionsAreMixed(reportDir, JEVIDENCE_SERVER_VERSION);
         FileUtils fileUtils = new FileUtils();
 
         Statistics statistics = new StatisticsCollector().gatherStatistics(execution);
