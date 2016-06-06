@@ -34,6 +34,8 @@ import pl.lstypka.jevidence.model.statistics.Statistics;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -61,7 +63,6 @@ public class EmbeddedGenerator extends Generator {
             Properties properties = new PropertyUtils().readProperty();
             String shouldRemoveExecutions = properties.getProperty(PropertyUtils.REMOVE_EXECUTIONS, "false");
 
-            // dodac sprawdzenie czy istnieje plik
             Records records = null;
             String recordsAsString = "";
             String recordsVariableAsString = fileUtils.readAsString(reportDir + File.separator + "data" + File.separator + "records");
@@ -80,6 +81,7 @@ public class EmbeddedGenerator extends Generator {
             recordsVariableAsString = "var jEvidenceRecords = " + recordsAsString;
             fileUtils.saveString(recordsVariableAsString, reportDir + File.separator + "data" + File.separator + "records");
             fileUtils.saveString(createSingleExecutionContent(execution, statistics, defects, objectMapper, executionDir), destinationPath + File.separator + "execution.js");
+            updateIndexFile(reportDir, executionDir);
         } catch (IOException ex) {
 
         }
@@ -130,6 +132,24 @@ public class EmbeddedGenerator extends Generator {
 
     private String createFullPath(String reportDir, String dirName) {
         return reportDir + File.separator + "data" + File.separator + dirName;
+    }
+
+    private void  updateIndexFile(String reportDir, String executionDir) throws IOException {
+        File indexFile = new File(reportDir + File.separator + "index.html");
+        String content = org.apache.commons.io.FileUtils.readFileToString(indexFile, Charset.defaultCharset());
+        String replacement = "";
+        if(!content.contains("<script src=\"data/records\" type=\"text/javascript\"></script>")) {
+            replacement = "<script src=\"data/records\" type=\"text/javascript\"></script>\n\n";
+        }
+
+        String executionImport = String.format("<script src=\"data/%s/execution.js\" type=\"text/javascript\"></script>", executionDir);
+        if(!content.contains(executionImport)) {
+            replacement +=executionImport + "\n\n";
+        }
+        replacement += "</body>";
+
+        content = content.replace("</body>", replacement);
+        org.apache.commons.io.FileUtils.write(indexFile, content, Charset.defaultCharset());
     }
 
 }
