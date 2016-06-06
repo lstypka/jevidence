@@ -68,7 +68,7 @@ public class EmbeddedGenerator extends Generator {
             if (Strings.isEmpty(recordsVariableAsString)) {
                 records = new Records(Lists.<Record>newArrayList());
             } else {
-                recordsAsString = recordsVariableAsString.substring("var records = ".length());
+                recordsAsString = recordsVariableAsString.substring("var jEvidenceRecords = ".length());
                 records = objectMapper.readValue(recordsAsString, Records.class);
             }
 
@@ -77,7 +77,7 @@ public class EmbeddedGenerator extends Generator {
                 removeOldExecutions(records, fileUtils, objectMapper, properties, reportDir);
             }
             recordsAsString = objectMapper.writeValueAsString(records);
-            recordsVariableAsString = "var records = " + recordsAsString;
+            recordsVariableAsString = "var jEvidenceRecords = " + recordsAsString;
             fileUtils.saveString(recordsVariableAsString, reportDir + File.separator + "data" + File.separator + "records");
             fileUtils.saveString(createSingleExecutionContent(execution, statistics, defects, objectMapper, executionDir), destinationPath + File.separator + "execution.js");
         } catch (IOException ex) {

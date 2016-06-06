@@ -45,7 +45,7 @@ public abstract class Generator {
         }
     }
 
-    private boolean checkIfClientIsAppropriate(String reportDir, String jevidenceDeploymentVersion) {
+    private boolean checkIfClientIsAppropriate(String reportDir, String jEvidenceDeploymentVersion) {
         File settingsFile = new File(reportDir + File.separator + "data" + File.separator + "settings.js");
         ObjectMapper mapper = new ObjectMapper();
         if (settingsFile.exists()) {
@@ -61,10 +61,10 @@ public abstract class Generator {
                 }
                 for (Setting setting : settings.getSettings()) {
                     if (setting.getKey().equals(JEVIDENCE_DEPLOY_TYPE_KEY)) {
-                        return setting.getValue().equals(jevidenceDeploymentVersion);
+                        return setting.getValue().equals(jEvidenceDeploymentVersion);
                     }
                 }
-                saveSettings(settings, jevidenceDeploymentVersion, settingsFile, mapper);
+                saveSettings(settings, jEvidenceDeploymentVersion, settingsFile, mapper);
                 return true;
             } catch (IOException e) {
                 return false;
@@ -73,7 +73,7 @@ public abstract class Generator {
             try {
                 new File(reportDir + File.separator + "data").mkdirs();
                 settingsFile.createNewFile();
-                saveSettings(new Settings(Lists.<Setting>newArrayList()), jevidenceDeploymentVersion, settingsFile, mapper);
+                saveSettings(new Settings(Lists.<Setting>newArrayList()), jEvidenceDeploymentVersion, settingsFile, mapper);
                 return true;
             } catch (IOException e) {
                 return false;

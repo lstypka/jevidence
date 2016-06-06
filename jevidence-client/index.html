@@ -203,6 +203,7 @@
 <script src="js/angular/service/ExecutionService.js" type="text/javascript"></script>
 <script src="js/angular/service/StatisticsService.js" type="text/javascript"></script>
 <script src="js/angular/service/DefectsService.js" type="text/javascript"></script>
+<script src="js/angular/service/SettingsService.js" type="text/javascript"></script>
 
 
 <script src="js/angular/filter/TimeDurationFilter.js" type="text/javascript"></script>
@@ -227,6 +228,1094 @@
 
 <script src="js/angular/directive/TestResultTable.js" type="text/javascript"></script>
 
+
+
+<!-- Dashboard content-->
+<script type="text/ng-template" id="view/dashboard.html">
+    <div ng-controller="DashboardCtrl" ng-cloak>
+
+        <div ng-if="noRecords">
+            <div class="alert alert-warning">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Warning!</strong> No tests executions
+            </div>
+        </div>
+        <div ng-if="!noRecords">
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                                data-target="#testsTrendChartDataDiv" style="cursor: pointer;">
+                            <strong>Tests trend - Last {{numberOfExecutions}} executions</strong>
+
+                            <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                        </header>
+                        <div class="panel-body in" id="testsTrendChartDataDiv" ng-controller="TestsTrendStatusChartCtrl">
+                            <div class="col-md-12">
+                                <div style="border: 1px solid #eee;">
+                                    <flot dataset="testsTrendChartData" options="testsTrendChartOptions" height="300px">
+                                    </flot>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                                data-target="#testsTrendContainer" style="cursor: pointer;">
+                            <strong>Tests trend</strong>
+
+                            <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                        </header>
+                        <div class="panel-body in" id="testsTrendContainer" ng-controller="TestsTrendStatusChartCtrl">
+
+
+                            <div class="row" ng-if="calculating">Comparing ...</div>
+                            <div class="row" ng-if="!calculating">
+                                <div class="col-md-2">
+                                    <div class="sm-st clearfix">
+                                        <span class="sm-st-icon added-gradient"><i class="fa fa-plus-circle"></i></span>
+
+                                        <div class="sm-st-info">
+                                            <span>{{formatNumber(added)}}</span>
+                                            Added
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="sm-st clearfix">
+                                        <span class="sm-st-icon success-gradient"><i class="fa fa-check-circle"></i></span>
+
+                                        <div class="sm-st-info">
+                                            <span>{{formatNumber(success)}}</span>
+                                            Passed
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="sm-st clearfix">
+                                        <span class="sm-st-icon failed-gradient"><i class="fa fa-times-circle"></i></span>
+
+                                        <div class="sm-st-info">
+                                            <span>{{formatNumber(failed)}}</span>
+                                            Failed
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon errors-gradient"><i
+                                class="fa fa-dot-circle-o"></i></span>
+
+                                        <div class="sm-st-info">
+                                            <span>{{formatNumber(error)}}</span>
+                                            Error
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="sm-st clearfix">
+                                        <span class="sm-st-icon skipped-gradient"><i class="fa fa-minus-circle"></i></span>
+
+                                        <div class="sm-st-info">
+                                            <span>{{formatNumber(skipped)}}</span>
+                                            Skipped
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="row" style="margin-top: 7px;">
+                                        <b>
+                                            <center>Compare executions</center>
+                                        </b>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <select class="form-control revision-combobox" id="firstRevision"
+                                                    ng-model="selectedRevisions.first" ng-change="changedRevision()">
+                                                <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-control revision-combobox" id="secondRevision"
+                                                    ng-model="selectedRevisions.second" ng-change="changedRevision()">
+                                                <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-warning" ng-if="incorrectRevisions">
+                                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Warning!</strong> Cannot compare execution {{selectedRevisions.first}} with
+                                {{selectedRevisions.second}}. The first execution must be greater than the second one.
+                            </div>
+
+                            <!-- TABLE START - Added tests -->
+                            <div class="panel-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Params</th>
+                                        <th>Execution #{{selectedRevisions.firstCorrect}}</th>
+                                        <th>Execution #{{selectedRevisions.secondCorrect}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="test in differences.success track by $index">
+                                        <td>
+                                            <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                        </td>
+                                        <td>
+                                            <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                            </div>
+                                        </td>
+                                        <td>   <span class="label label-block"
+                                                     ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                        <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                     ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span>
+                                    <span ng-if="test.previousStatus === 'UNKNOWN'"
+                                          class="label label-block label-default">Didn't exist</span>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="test in differences.failed track by $index">
+                                        <td>
+                                            <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                        </td>
+                                        <td>
+                                            <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                            </div>
+                                        </td>
+                                        <td>   <span class="label label-block"
+                                                     ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                        <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                     ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span><span ng-if="test.previousStatus === 'UNKNOWN'"
+                                             class="label label-block label-default">Didn't exist</span></td>
+                                    </tr>
+                                    <tr ng-repeat="test in differences.error track by $index">
+                                        <td>
+                                            <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                        </td>
+                                        <td>
+                                            <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                            </div>
+                                        </td>
+                                        <td>   <span class="label label-block"
+                                                     ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                        <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                     ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span><span ng-if="test.previousStatus === 'UNKNOWN'"
+                                             class="label label-block label-default">Didn't exist</span></td>
+                                    </tr>
+                                    <tr ng-repeat="test in differences.skipped track by $index">
+                                        <td>
+                                            <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}">{{test.name}}</a>
+                                        </td>
+                                        <td>
+                                            <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                            </div>
+                                        </td>
+                                        <td>   <span class="label label-block"
+                                                     ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                        <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                     ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span><span ng-if="test.previousStatus === 'UNKNOWN'"
+                                             class="label label-block label-default">Didn't exist</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- TABLE END -->
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</script>
+
+<!-- Execution defects content-->
+<script type="text/ng-template" id="view/execution_defects.html">
+    <div data-ng-controller="ExecutionDefectsCtrl">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#defectsContainer" style="cursor: pointer;">
+                    <span style="font-weight: bold;"><span class="label label-test-error">{{calculateTotalDefects(defects)}}</span> Defects / Execution #{{executionId}}</span>
+                    <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                </header>
+                <div class="panel-body in" id="defectsContainer">
+                    <div class="alert alert-success" ng-if="defects.defects.length === 0">
+                        <strong>Execution {{executionId}}</strong> without any defects!
+                    </div>
+                    <div class="panel-body table-responsive" ng-if="defects.defects.length > 0">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-8">Exception</th>
+                                <th class="col-md-1">Message</th>
+                                <th class="col-md-2"></th>
+                                <th class="col-md-1"><span style="float: right;">Count</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat-start="defect in defects.defects track by $index"
+                                ng-click="toggleRow(defect);" style="cursor: pointer;">
+                                <td><i class="fa"
+                                       ng-class="{'fa-plus-square-o' : !defect.expanded, 'fa-minus-square-o' : defect.expanded}"></i>
+                                    <spam style="margin-left: 10px;">{{defect.exceptionClassName}}</spam>
+                                </td>
+                                <td colspan="2">{{defect.exceptionMessage}}</td>
+                                <td><span class="label label-test-error" style="float: right;">{{calculateNumberOfTests(defect)}}</span></td>
+                            </tr>
+                            <tr ng-repeat-start="test in defect.tests" ng-if="defect.expanded">
+
+                                <td colspan="2">
+                                    <a ng-href="#/execution/{{executionId}}/result?testname={{test.className}}.{{test.testName}}&params={{stringify(test.params)}}">
+                                        <span style="margin-left: 20px; word-wrap: break-word;">&raquo; {{test.className}}.{{test.testName}}</span>
+
+                                    </a>
+                                </td>
+                                <td colspan="2">
+                                    <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-repeat-end="">
+                            <tr ng-repeat-end="">
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</script>
+
+<!-- Execution overview content-->
+<script type="text/ng-template" id="view/execution_overview.html">
+    <div ng-controller="ExecutionOverviewCtrl">
+        <div class="row">
+
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                            data-target="#testsOverviewContainer" style="cursor: pointer;">
+                        <strong>Overview / Execution {{executionId}}</strong>
+
+                        <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                    </header>
+                    <div class="panel-body in" id="testsOverviewContainer">
+                        <div class="row" style="margin-bottom: 30px;">
+                            <div class="col-md-12">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <td class="col-md-4"><b>Status</b></td>
+                                        <td class="col-md-3"><b>Started</b></td>
+                                        <td class="col-md-3"><b>Finished</b></td>
+                                        <td class="col-md-2"><b>Duration</b></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="progress xs progress-striped"
+                                                 style="width: 95%; height: 20px;">
+                                                <div ng-if="executionStatus(execution) === 'error'">
+                                                    <div class="progress-bar progress-bar-danger errors-gradient" style="width: 100%">
+                                                        <b>ERROR</b>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="executionStatus(execution) === 'failed'">
+                                                    <div class="progress-bar progress-bar-warning failed-gradient" style="width: 100%">
+                                                        <b>FAILED</b>
+                                                    </div>
+                                                </div>
+                                                <div ng-if="executionStatus(execution) === 'success'">
+                                                    <div class="progress-bar progress-bar-success success-gradient" style="width: 100%">
+                                                        <b>SUCCESS</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{execution.startedAt}}</td>
+                                        <td>{{execution.finishedAt}}</td>
+                                        <td>{{execution.duration | timeDurationFilter}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon added-gradient"><i class="fa fa-plus-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{execution.skipped + execution.passed + execution.errors + execution.failed}}</span>
+                                        Total tests
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon success-gradient"><i class="fa fa-check-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{execution.passed}}</span>
+                                        Passed
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon failed-gradient"><i class="fa fa-times-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{execution.failed}}</span>
+                                        Failed
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                <span class="sm-st-icon errors-gradient" style="background-color: #b5302c;"><i
+                                        class="fa fa-dot-circle-o"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{execution.errors}}</span>
+                                        Errors
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="sm-st clearfix">
+                                    <span class="sm-st-icon skipped-gradient"><i class="fa fa-minus-circle"></i></span>
+
+                                    <div class="sm-st-info">
+                                        <span>{{execution.skipped}}</span>
+                                        Skipped
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+
+                <section class="panel tasks-widget">
+                    <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#statisticsContainer"
+                            style="cursor: pointer;">
+                        <strong>Statistics </strong>
+
+                        <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                    </header>
+                    <div class="panel-body in" id="statisticsContainer">
+                        <div class="row">
+                            <div class="task-content">
+
+                                <ul class="task-list">
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Number of classes</span>
+                                            <span class="label-test-param pull-right">{{statistics.numberOfClasses}}</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Number of tests</span>
+                                            <span class="label-test-param pull-right">{{statistics.numberOfTests}}</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Number of steps</span>
+                                            <span class="label-test-param pull-right">{{statistics.numberOfSteps}}</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Number of assertion errors</span>
+                                            <span class="label-test-param pull-right">{{statistics.numberOfAssertionErrors}}</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="task-title-sp">Number of other errors</span>
+                                            <span class="label-test-param pull-right">{{statistics.numberOfOtherErrors}}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-4">
+
+                <section class="panel tasks-widget">
+                    <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#paramsContainer"
+                            style="cursor: pointer;">
+                        <strong>Tests params</strong>
+
+                        <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                    </header>
+                    <div class="panel-body in" id="paramsContainer">
+                        <div class="row">
+                            <div class="task-content">
+
+                                <ul class="task-list">
+                                    <li ng-repeat="(key, values) in params">
+                                        <div class="task-title">
+                                            <span class="task-title-sp"><b>{{key}}:</b> </span>
+                                        <span ng-repeat="value in values" class="label-test-param pull-right"
+                                              style="background-color: white; margin-left: 5px;">{{value}}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-5">
+
+                <section class="panel tasks-widget">
+                    <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                            data-target="#environmentContainer"
+                            style="cursor: pointer;">
+                        <strong>Environment properties</strong>
+
+                        <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                    </header>
+                    <div class="panel-body in" id="environmentContainer">
+                        <div class="row">
+                            <div class="task-content">
+
+                                <ul class="task-list">
+                                    <li ng-repeat="variable in execution.environmentVariables">
+                                        <div class="task-title">
+                                            <span class="task-title-sp">{{variable.key}}</span>
+                                        <span class="label-test-param pull-right"
+                                              style="background-color: white; margin-left: 5px;">{{variable.value}}</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    </div>
+</script>
+
+<!-- Execution result content-->
+<script type="text/ng-template" id="view/execution_result.html">
+    <div class="row" data-ng-controller="ExecutionResultCtrl" xmlns="http://www.w3.org/1999/html">
+
+        <div class="col-md-12">
+            <section class="panel">
+                <header  class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#resultContainer" style="cursor: pointer;" >
+                    <span style="font-weight: bold;">Result / Execution #{{execution.id}}</span>
+                    <span style="float: right; font-weight: bold;">{{execution.startedAt}}</span>
+                </header>
+                <div class="panel-body in" id="resultContainer">
+                    <div class="row" ng-if="showSearchPanel">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('All')">
+                                <span class="sm-st-icon added-gradient"><i class="fa fa-plus-circle"></i></span>
+
+                                <div class="sm-st-info">
+                                    <span>{{execution.passed + execution.errors + execution.failed + execution.skipped}}</span>
+                                    Total tests
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Success')">
+                                <span class="sm-st-icon success-gradient"><i class="fa fa-check-circle"></i></span>
+
+                                <div class="sm-st-info">
+                                    <span>{{execution.passed}}</span>
+                                    Passed
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Failed')">
+                                <span class="sm-st-icon failed-gradient"><i class="fa fa-times-circle"></i></span>
+
+                                <div class="sm-st-info">
+                                    <span>{{execution.failed}}</span>
+                                    Failed
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Error')">
+                        <span class="sm-st-icon errors-gradient"><i
+                                class="fa fa-dot-circle-o"></i></span>
+
+                                <div class="sm-st-info">
+                                    <span>{{execution.errors}}</span>
+                                    Errors
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Skipped')">
+                                <span class="sm-st-icon skipped-gradient"><i class="fa fa-minus-circle"></i></span>
+
+                                <div class="sm-st-info">
+                                    <span>{{execution.skipped}}</span>
+                                    Skipped
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+
+                    </div>
+                    <tests-result-table selected-status="{{selectedStatus}}" execution="execution"
+                                        allowed-statuses="allowedStatuses" show-search-panel="showSearchPanel"/>
+                </div>
+            </section>
+        </div>
+    </div>
+</script>
+
+<!-- Execution statistics content-->
+<script type="text/ng-template" id="view/execution_statistics.html">
+    <div class="row">
+        <div class="col-md-6">
+            <section class="panel">
+                <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                        data-target="#resultInPercentageChart" style="cursor: pointer;" >
+                    <strong>Tests result in percentage</strong>
+
+                    <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                </header>
+                <div class="panel-body in" id="resultInPercentageChart" ng-controller="ResultInPercentageChartCtrl">
+                    <div class="col-md-10">
+                        <div style="border: 1px solid #eee;">
+                            <flot dataset="resultsInPercentageChartData" options="resultsInPercentageChartOptions"
+                                  height="300px"></flot>
+                        </div>
+                    </div>
+                    <div class="col-md-2" id="resultInPercentageChartLegend"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section class="panel">
+                <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#testAvgNumberOfStepsChart" style="cursor: pointer;">
+                    <strong>Average number of steps</strong>
+
+                    <div class="pull-right"  title="Minimalize"><i class="fa container-collapse"></i></div>
+                </header>
+                <div class="panel-body in" id="testAvgNumberOfStepsChart" ng-controller="TestAvgNumberOfStepsChartCtrl">
+                    <div class="col-md-10">
+                        <div style="border: 1px solid #eee;">
+                            <flot dataset="avgNumberOfStepsChartData" options="avgNumberOfStepsChartOptions"
+                                  height="300px"></flot>
+                        </div>
+                    </div>
+                    <div class="col-md-2" id="avgNumberOfStepsChartLegend"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#testAvgTimeChart" style="cursor: pointer;" >
+                    <strong>Average execution time</strong>
+                    <div class="pull-right" title="Minimalize" ><i class="fa container-collapse"></i></div>
+                </header>
+                <div class="panel-body in" id="testAvgTimeChart" ng-controller="TestAvgTimeChartCtrl">
+                    <div class="col-md-12">
+                        <div style="border: 1px solid #eee;">
+                            <flot dataset="testAvgTimeChartData" options="testAvgTimeChartOptions"
+                                  height="300px"></flot>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</script>
+
+<!-- Performance content-->
+<script type="text/ng-template" id="view/performance.html">
+    <div ng-controller="PerformanceCtrl" ng-cloak>
+        <div ng-if="noRecords">
+            <div class="alert alert-warning">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Warning!</strong> No tests executions
+            </div>
+        </div>
+        <div ng-if="!noRecords">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <section class="panel" style="border: 1px solid #eee;">
+                        <div class="panel-body in">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span><b>Compare executions</b></span>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control revision-combobox" id="firstRevision"
+                                            ng-model="selectedRevisions.first" ng-change="changedRevision()">
+                                        <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control revision-combobox" id="secondRevision"
+                                            ng-model="selectedRevisions.second" ng-change="changedRevision()">
+                                        <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-8">
+                    <section class="" style="border: 1px solid #eee;" ng-if="incorrectRevisions">
+                        <div class="alert alert-warning">
+                            <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Warning!</strong> Cannot compare execution {{selectedRevisions.first}} with
+                            {{selectedRevisions.second}}. The first execution must be greater than the second one.
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                                data-target="#testsPerformanceChartDiv" style="cursor: pointer;">
+                            <strong>Test performance - chart</strong>
+
+                            <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                        </header>
+                        <div class="panel-body in" id="testsPerformanceChartDiv">
+                            <div class="col-md-12">
+                                <div style="border: 1px solid #eee;">
+                                    <flot id="testsPerformanceChart" dataset="testsPerformanceChartData"
+                                          options="testsPerformanceChartOptions" height="300px">
+                                    </flot>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="panel">
+                            <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                                    data-target="#testsPerformanceContainer" style="cursor: pointer;">
+                                <strong>Tests performance</strong>
+
+                                <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                            </header>
+                            <div class="panel-body in" id="testsPerformanceContainer">
+                                <table class="table table-condensed table-hover" style="table-layout: fixed; word-wrap: break-word;">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 70%;">Test</th>
+                                        <th style="width: 10%;">Execution #{{selectedRevisions.firstCorrect}}</th>
+                                        <th style="width: 10%;">Execution #{{selectedRevisions.secondCorrect}}</th>
+                                        <th style="width: 10%;">Difference</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="test in intersection">
+                                        <td>
+                                            <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}"><span style="width: 100%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{test.name}}</span></a>
+                                        </td>
+                                        <!--          <td>
+                                                      <div>
+                                          <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                                class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                                      </div>
+                                                  </td>-->
+                                        <td>   <span class="label label-block"
+                                                     ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                        <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+                                                     ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.previousStatus === 'FAILED',
+                                                        'label-test-error' : test.previousStatus === 'ERROR',
+                                                        'label-test-skipped' : test.previousStatus === 'SKIPPED'}">
+                                    {{test.previousStatus}}
+                                </span>
+                                    <span ng-if="test.previousStatus === 'UNKNOWN'"
+                                          class="label label-block label-default">Didn't exist</span>
+                                        </td>
+                                        <td><b><span style="float: right;"
+                                                     ng-class="{'green-font' : (test.currentDuration - test.previousDuration < 0), 'red-font' : (test.currentDuration - test.previousDuration > 0)}">{{formatResult(test.currentDuration - test.previousDuration)}} ms</span></b>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- statistics content-->
+<script type="text/ng-template" id="view/statistics.html">
+    <div ng-controller="StatisticsCtrl" ng-cloak>
+        <div ng-if="noRecords">
+            <div class="alert alert-warning">
+                <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Warning!</strong> No tests executions
+            </div>
+        </div>
+        <div ng-if="!noRecords">
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                                data-target="#testsTrendPerformanceChartDiv" style="cursor: pointer;">
+                            <strong>Executions performance - Last {{numberOfExecutions}} executions</strong>
+
+                            <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                        </header>
+                        <div class="panel-body in" id="testsTrendPerformanceChartDiv"
+                             ng-controller="TestsTrendPerformanceChartCtrl">
+                            <div class="col-md-12">
+                                <div style="border: 1px solid #eee;">
+                                    <flot id="testsTrendPerformanceChart" dataset="testsTrendPerformanceChartData"
+                                          options="testsTrendPerformanceChartOptions" height="300px">
+                                    </flot>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                                data-target="#testsAvgTimeTrendPerformanceChartDiv" style="cursor: pointer;">
+                            <strong>Average tests duration (Execution duration / number of tests) - Last
+                                {{numberOfExecutions}} executions</strong>
+
+                            <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                        </header>
+                        <div class="panel-body in" id="testsAvgTimeTrendPerformanceChartDiv"
+                             ng-controller="TestsAvgTimeTrendPerformanceChartCtrl">
+                            <div class="col-md-12">
+                                <div style="border: 1px solid #eee;">
+                                    <flot id="testsAvgTimeTrendPerformanceChart"
+                                          dataset="testsAvgTimeTrendPerformanceChartData"
+                                          options="testsAvgTimeTrendPerformanceChartOptions" height="300px">
+                                    </flot>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading accordion-toggle" data-toggle="collapse"
+                                data-target="#testsTrendChartDataDiv" style="cursor: pointer;">
+                            <strong>Tests trend - Last {{numberOfExecutions}} executions</strong>
+
+                            <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
+                        </header>
+                        <div class="panel-body in" id="testsTrendChartDataDiv" ng-controller="TestsTrendStatusChartCtrl">
+                            <div class="col-md-12">
+                                <div style="border: 1px solid #eee;">
+                                    <flot dataset="testsTrendChartData" options="testsTrendChartOptions" height="300px">
+                                    </flot>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- statistics content-->
+<script type="text/ng-template" id="view/testsResultTableTemplate.html">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sm-st clearfix">
+
+                <div class="panel-body table-responsive">
+
+                    <div class="row" ng-if="showSearchPanel">
+                        <div class="col-md-3"><input type="text" ng-model="search.textSearch"
+                                                     style="border: none; border-bottom: 1px solid #ddd; outline: none;"
+                                                     placeholder="Search"></div>
+                        <div class="col-md-5"></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="level-panel pull-right">
+                                        <div>
+                                            <i class="icon-ok-circled"
+                                               ng-class="{'icon-success' : successLevel, 'icon-disabled' : !successLevel}"
+                                               ng-click="toggleStatus('successLevel');"
+                                               style="cursor: pointer; font-size: 16px;"
+                                               title="Level: Success"></i>
+                                            <i class="icon-cancel-circled "
+                                               ng-class="{'icon-error' : errorLevel, 'icon-disabled': !errorLevel}"
+                                               ng-click="toggleStatus('errorLevel');"
+                                               style="cursor: pointer; font-size: 16px;"
+                                               title="Level: Error"></i>
+                                            <i class="icon-info-circled "
+                                               ng-class="{'icon-info' : infoLevel, 'icon-disabled' : !infoLevel}"
+                                               ng-click="toggleStatus('infoLevel');"
+                                               style="cursor: pointer; font-size: 16px;"
+                                               title="Level: Info"></i>
+                                            <i class="icon-attention"
+                                               ng-class="{'icon-warn' : warnLevel, 'icon-disabled': !warnLevel}"
+                                               ng-click="toggleStatus('warnLevel');"
+                                               style="cursor: pointer; font-size: 16px;"
+                                               title="Level: Warn"></i>
+                                            <i class="icon-instagram-circled "
+                                               ng-class="{'icon-trace' : screenshotLevel, 'icon-disabled' : !screenshotLevel}"
+                                               ng-click="toggleStatus('screenshotLevel');"
+                                               style="cursor: pointer; font-size: 16px;"
+                                               title="Level: Screenshot"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <ui-select ng-model="selected.value" tagging tagging-label="true"
+                                               style="width: 105px; float: right;">
+                                        <ui-select-match>
+                                            <div class="col-md-12 label label-{{selected.value.style}}"
+                                                 style="display: block; width: 80px; margin-top: 1px; padding-top: 5px; padding-bottom: 5px;">
+                                                {{selected.value.label}}
+                                            </div>
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                                repeat="item in (itemArray | filter: $select.search) track by item.id"
+                                                style="border: none; border-bottom: 1px solid #ddd;">
+                                    <span class="label label-{{item.style}}"
+                                          style="display: block;">{{item.label}}</span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-condensed table-hover" style="border-collapse:collapse;">
+                        <thead>
+                        <tr>
+                            <th class="col-md-5">Test</th>
+                            <th class="col-md-4">Params</th>
+                            <th class="col-md-2">Duration</th>
+                            <th class="col-md-1">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat-start="testClass in execution.testClasses | testTextFilter:search.textSearch | testStatusFilter:selected:allowedStatuses"
+                            ng-click="toggleRow(testClass);"
+                            class="test-class-row"
+                            style="cursor: pointer;">
+                            <td colspan="2">
+                                <i class="fa"
+                                   ng-class="{'fa-plus-square-o' : !testClass.expanded, 'fa-minus-square-o' : testClass.expanded}"></i>
+                                <span style="margin-left: 10px;"><b>{{testClass.name}}</b></span>
+                            </td>
+                            <td>{{testClass.duration | timeDurationFilter}}</td>
+                            <td style="padding-right: 0px; padding-left: 0px;">
+                                <span class="label label-test-error">{{calculateNumberOfTests(testClass, 'ERROR')}}</span>
+                                <span class="label label-test-failed">{{calculateNumberOfTests(testClass, 'FAILED')}}</span>
+                                <span class="label label-test-success">{{calculateNumberOfTests(testClass, 'SUCCESS')}}</span>
+                                <span class="label label-test-skipped">{{calculateNumberOfTests(testClass, 'SKIPPED')}}</span>
+                            </td>
+                        </tr>
+                        <tr ng-repeat-start="test in testClass.tests"
+                            class="test-row"
+                            ng-if="testClass.expanded && test.statusOk && test.textOk"
+                            ng-click="toggleRow(test);">
+                            <td><span style="margin-left: 20px; word-wrap: break-word;">&raquo;{{test.name}}</span></td>
+                            <td>
+                                <div>
+                                <span data-ng-repeat="(paramKey, paramValue) in test.params"
+                                      class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
+                                </div>
+                            </td>
+                            <td>{{test.duration | timeDurationFilter}}</td>
+                            <td>
+                            <span class="label label-block"
+                                  ng-class="{'label-test-success' : test.status === 'SUCCESS', 'label-test-failed' : test.status === 'FAILED', 'label-test-error' : test.status === 'ERROR', 'label-test-skipped' : test.status === 'SKIPPED'}">
+                                    {{test.status}}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr ng-repeat-end="" ng-if="test.expanded">
+                            <td colspan="12" class="hiddenRow">
+                                <div class="sm-st clearfix"
+                                     style="margin-left: 50px; background-color: #fafbfc">
+                                    <div class="row" style="margin-bottom: 15px;">
+
+                                        <div class="col-md-4">
+                                                    <span class="label label-success started-at-gradient"
+                                                          style="display: block; margin: 15px;">Started: {{test.startedAt}}</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                                    <span class="label label-danger finished-at-gradient"
+                                                          style="display: block;  margin: 15px;">Finished: {{test.finishedAt}}</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                                    <span class="label label-primary duration-gradient"
+                                                          style="display: block;  margin: 15px;">Duration: {{test.duration | timeDurationFilter}}</span>
+                                        </div>
+                                    </div>
+                                    <table class="table table-consented" style="background-color: #fcfdfe">
+                                        <thead>
+                                        <tr>
+                                            <th class="col-md-1">Level</th>
+                                            <th class="col-md-3">Timestamp</th>
+                                            <th class="col-md-7">Message</th>
+                                            <th class="col-md-1">Screenshot</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat-start="step in test.steps" ng-if="shouldDisplayStep(step);">
+                                            <td>
+                                            <span title="{{step.level}}"
+                                                  ng-class="{'icon-ok-circled icon-success' : step.level === 'success', 'icon-info-circled icon-info' : step.level === 'info', 'icon-attention icon-warn' : step.level === 'warn',  'icon-instagram-circled icon-trace' : step.level === 'screenshot', 'icon-cancel-circled icon-error' : step.level === 'error'}"></span>
+                                            </td>
+                                            <td>{{step.timestamp}}</td>
+                                            <td>
+                                                <span ng-if="step.message">{{step.message}}</span><br/>
+                                            </td>
+                                            <td>
+                                                <span ng-if="step.screenshot" ng-controller="ImagePreviewCtrl">
+                                                    <a ng-click="openLightboxModal(step.screenshot);">
+                                                        <img ng-src="{{step.screenshot}}"
+                                                             style="cursor: pointer; width: 80%;"
+                                                             class="img-responsive img-thumbnail">
+                                                    </a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat-end="" style="border-top: 0px;">
+                                            <td colspan="4" ng-if="step.stacktrace" style="border-top: 0px;">
+                                                <pre><code>{{step.stacktrace}}</code></pre>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        </tr>
+                        <tr ng-repeat-end=""></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </section>
+</div>
+</script>
+
 <script src="data/settings.js" type="text/javascript"></script>
+<script src="data/records" type="text/javascript"></script>
+
 </body>
 </html>

@@ -1,15 +1,5 @@
 reportNgApp.controller('ExecutionOverviewCtrl', ["$scope", "$routeParams", "ExecutionService", function ($scope, $routeParams, ExecutionService) {
 
-    var init = function () {
-        $scope.executionId = $routeParams.executionId;
-        ExecutionService.getExecution($routeParams.executionId, function (response) {
-            $scope.execution = response;
-            prepareParams(response);
-            calculateStatistics(response);
-        });
-    };
-
-    init();
 
     var prepareParams = function (execution) {
         var transformedParams = {};
@@ -80,5 +70,16 @@ reportNgApp.controller('ExecutionOverviewCtrl', ["$scope", "$routeParams", "Exec
         $scope.statistics.numberOfAssertionErrors = assertionErrors;
         $scope.statistics.numberOfOtherErrors = otherErrors;
     };
+
+    var init = function () {
+        $scope.executionId = $routeParams.executionId;
+        ExecutionService.getExecution($routeParams.executionId, function (response) {
+            $scope.execution = response;
+            prepareParams(response);
+            calculateStatistics(response);
+        });
+    };
+
+    init();
 
 }]);
