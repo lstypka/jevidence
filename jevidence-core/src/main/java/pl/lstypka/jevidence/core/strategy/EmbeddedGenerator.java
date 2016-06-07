@@ -28,14 +28,11 @@ import pl.lstypka.jevidence.model.defect.Defects;
 import pl.lstypka.jevidence.model.execution.Execution;
 import pl.lstypka.jevidence.model.execution.Record;
 import pl.lstypka.jevidence.model.execution.Records;
-import pl.lstypka.jevidence.model.settings.Setting;
-import pl.lstypka.jevidence.model.settings.Settings;
 import pl.lstypka.jevidence.model.statistics.Statistics;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.List;
 import java.util.Properties;
 
 /**
@@ -136,7 +133,7 @@ public class EmbeddedGenerator extends Generator {
 
     private void  updateIndexFile(String reportDir, String executionDir) throws IOException {
         File indexFile = new File(reportDir + File.separator + "index.html");
-        String content = org.apache.commons.io.FileUtils.readFileToString(indexFile, Charset.defaultCharset());
+        String content = org.apache.commons.io.FileUtils.readFileToString(indexFile, Charset.forName("UTF-8"));
         String replacement = "";
         if(!content.contains("<script src=\"data/records\" type=\"text/javascript\"></script>")) {
             replacement = "<script src=\"data/records\" type=\"text/javascript\"></script>\n\n";
@@ -149,7 +146,7 @@ public class EmbeddedGenerator extends Generator {
         replacement += "</body>";
 
         content = content.replace("</body>", replacement);
-        org.apache.commons.io.FileUtils.write(indexFile, content, Charset.defaultCharset());
+        org.apache.commons.io.FileUtils.write(indexFile, content, Charset.forName("UTF-8"));
     }
 
 }

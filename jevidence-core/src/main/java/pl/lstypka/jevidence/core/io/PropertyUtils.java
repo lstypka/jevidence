@@ -21,6 +21,7 @@ import java.util.Properties;
 public class PropertyUtils {
 
     public final static String REPORT_PATH = "jevidence.reportPath";
+    public final static String REPORT_PATH_DEFAULT_VALUE = "target" + File.separator + "jevidence";
     public final static String REMOVE_EXECUTIONS = "jevidence.removeExecutions";
     public final static String MAX_NUMBER_OF_EXECUTIONS = "jevidence.maxNumberOfExecutions";
     public final static String EMBEDDED_VERSION = "jevidence.embedded";

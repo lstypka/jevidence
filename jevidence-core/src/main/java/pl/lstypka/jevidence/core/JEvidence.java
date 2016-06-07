@@ -43,7 +43,7 @@ public class JEvidence {
     public void generate(Execution execution) {
         PropertyUtils propertyUtils = new PropertyUtils();
         Properties properties = propertyUtils.readProperty();
-        String reportDir = properties.getProperty(PropertyUtils.REPORT_PATH);
+        String reportDir = properties.getProperty(PropertyUtils.REPORT_PATH, PropertyUtils.REPORT_PATH_DEFAULT_VALUE);
         generate(execution, reportDir);
     }
 

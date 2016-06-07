@@ -83,7 +83,7 @@ public class FileUtils {
 
     public String readAsString(String path) {
         try {
-            return org.apache.commons.io.FileUtils.readFileToString(new File(path), Charset.defaultCharset());
+            return org.apache.commons.io.FileUtils.readFileToString(new File(path), Charset.forName("UTF-8"));
         } catch (IOException e) {
             return "";
         }
@@ -91,7 +91,7 @@ public class FileUtils {
 
     public void saveString(String value, String destination) {
         try {
-            Files.write(value, new File(destination), Charset.defaultCharset());
+            Files.write(value, new File(destination), Charset.forName("UTF-8"));
         } catch (IOException e) {
             throw new JEvidenceException("Exception occurred while saving records", e);
         }
