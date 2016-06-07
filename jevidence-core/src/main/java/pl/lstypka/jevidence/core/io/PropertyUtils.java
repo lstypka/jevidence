@@ -15,6 +15,8 @@
  */
 package pl.lstypka.jevidence.core.io;
 
+import com.google.common.base.Strings;
+
 import java.io.*;
 import java.util.Properties;
 
@@ -23,8 +25,11 @@ public class PropertyUtils {
     public final static String REPORT_PATH = "jevidence.reportPath";
     public final static String REPORT_PATH_DEFAULT_VALUE = "target" + File.separator + "jevidence";
     public final static String REMOVE_EXECUTIONS = "jevidence.removeExecutions";
+    public final static String REMOVE_EXECUTIONS_DEFAULT_VALUE = "true";
     public final static String MAX_NUMBER_OF_EXECUTIONS = "jevidence.maxNumberOfExecutions";
+    public final static String MAX_NUMBER_OF_EXECUTIONS_DEFAULT_VALUE = "25";
     public final static String EMBEDDED_VERSION = "jevidence.embedded";
+    public final static String EMBEDDED_VERSION_DEFAULT_VALUE = "true";
     private final static String JEVIDENCE_PROPERTIES_FILE = "jevidence.properties";
     private final static String JEVIDENCE_ENVIRONMENT_KEY = "JEVIDENCE_PROPERTIES";
 
@@ -50,6 +55,9 @@ public class PropertyUtils {
     }
 
     private Properties readProperties(String path) {
+        if(Strings.isNullOrEmpty(path)) {
+            return new Properties();
+        }
         try {
             File propertiesFile = new File(path);
             Properties properties = new Properties();
@@ -58,6 +66,6 @@ public class PropertyUtils {
         } catch (IOException e) {
             // do nothing
         }
-        return null;
+        return new Properties();
     }
 }

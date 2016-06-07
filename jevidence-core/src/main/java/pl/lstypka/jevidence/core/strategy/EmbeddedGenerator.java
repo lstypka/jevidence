@@ -58,7 +58,7 @@ public class EmbeddedGenerator extends Generator {
             fileUtils.moveScreenshots(execution, reportDir, executionDir);
 
             Properties properties = new PropertyUtils().readProperty();
-            String shouldRemoveExecutions = properties.getProperty(PropertyUtils.REMOVE_EXECUTIONS, "false");
+            String shouldRemoveExecutions = properties.getProperty(PropertyUtils.REMOVE_EXECUTIONS, PropertyUtils.REMOVE_EXECUTIONS_DEFAULT_VALUE);
 
             Records records = null;
             String recordsAsString = "";
@@ -116,7 +116,7 @@ public class EmbeddedGenerator extends Generator {
     }
 
     private void removeOldExecutions(Records records, FileUtils fileUtils, ObjectMapper mapper, Properties properties, String reportDir) {
-        String maxNumberOfExecutionsProperties = properties.getProperty(PropertyUtils.MAX_NUMBER_OF_EXECUTIONS, "" + Integer.MAX_VALUE);
+        String maxNumberOfExecutionsProperties = properties.getProperty(PropertyUtils.MAX_NUMBER_OF_EXECUTIONS, PropertyUtils.MAX_NUMBER_OF_EXECUTIONS_DEFAULT_VALUE);
         Integer maxNumberOfExecutions = Integer.valueOf(maxNumberOfExecutionsProperties);
         if (records.getRecords().size() > maxNumberOfExecutions) {
             for (int i = records.getRecords().size() - 1; i >= maxNumberOfExecutions; i--) {

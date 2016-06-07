@@ -59,7 +59,7 @@ public class JEvidence {
 
         PropertyUtils propertyUtils = new PropertyUtils();
         Properties properties = propertyUtils.readProperty();
-        String embeddedVersion = properties.getProperty(PropertyUtils.EMBEDDED_VERSION);
+        String embeddedVersion = properties.getProperty(PropertyUtils.EMBEDDED_VERSION, PropertyUtils.EMBEDDED_VERSION_DEFAULT_VALUE);
 
         if("true".equals(embeddedVersion)) {
             generator = new EmbeddedGenerator();
