@@ -84,7 +84,7 @@ public class EmbeddedGenerator extends Generator {
         }
     }
 
-    private String createSingleExecutionContent(Execution execution, Statistics statistics, Defects defects, ObjectMapper mapper, String executionDir){
+    private String createSingleExecutionContent(Execution execution, Statistics statistics, Defects defects, ObjectMapper mapper, String executionDir) {
         try {
             String executionAsString = mapper.writeValueAsString(execution);
             String statisticsAsString = mapper.writeValueAsString(statistics);
@@ -115,7 +115,7 @@ public class EmbeddedGenerator extends Generator {
         }
     }
 
-    private void removeOldExecutions(Records records, FileUtils fileUtils, ObjectMapper mapper, Properties properties, String reportDir) {
+    private void removeOldExecutions(Records records, FileUtils fileUtils, ObjectMapper mapper, Properties properties, String reportDir) throws IOException {
         String maxNumberOfExecutionsProperties = properties.getProperty(PropertyUtils.MAX_NUMBER_OF_EXECUTIONS, PropertyUtils.MAX_NUMBER_OF_EXECUTIONS_DEFAULT_VALUE);
         Integer maxNumberOfExecutions = Integer.valueOf(maxNumberOfExecutionsProperties);
         if (records.getRecords().size() > maxNumberOfExecutions) {
@@ -123,7 +123,17 @@ public class EmbeddedGenerator extends Generator {
                 Record record = records.getRecords().get(i);
                 fileUtils.removeExecutionDir(reportDir + File.separator + "data" + File.separator + record.getDirName());
                 records.getRecords().remove(i);
+                removeOldExecutionsFromIndex(reportDir, record.getDirName());
             }
+        }
+    }
+
+    private void removeOldExecutionsFromIndex(String reportDir, String executionDir) throws IOException {
+        File indexFile = new File(reportDir + File.separator + "index.html");
+        String content = org.apache.commons.io.FileUtils.readFileToString(indexFile, Charset.forName("UTF-8"));
+        if (!com.google.common.base.Strings.isNullOrEmpty(content)) {
+            content = content.replace(String.format("<script src=\"data/%s/execution.js\" type=\"text/javascript\"></script>", executionDir), "");
+            org.apache.commons.io.FileUtils.write(indexFile, content, Charset.forName("UTF-8"));
         }
     }
 
@@ -131,17 +141,17 @@ public class EmbeddedGenerator extends Generator {
         return reportDir + File.separator + "data" + File.separator + dirName;
     }
 
-    private void  updateIndexFile(String reportDir, String executionDir) throws IOException {
+    private void updateIndexFile(String reportDir, String executionDir) throws IOException {
         File indexFile = new File(reportDir + File.separator + "index.html");
         String content = org.apache.commons.io.FileUtils.readFileToString(indexFile, Charset.forName("UTF-8"));
         String replacement = "";
-        if(!content.contains("<script src=\"data/records\" type=\"text/javascript\"></script>")) {
+        if (!content.contains("<script src=\"data/records\" type=\"text/javascript\"></script>")) {
             replacement = "<script src=\"data/records\" type=\"text/javascript\"></script>\n\n";
         }
 
         String executionImport = String.format("<script src=\"data/%s/execution.js\" type=\"text/javascript\"></script>", executionDir);
-        if(!content.contains(executionImport)) {
-            replacement +=executionImport + "\n\n";
+        if (!content.contains(executionImport)) {
+            replacement += executionImport + "\n\n";
         }
         replacement += "</body>";
 
