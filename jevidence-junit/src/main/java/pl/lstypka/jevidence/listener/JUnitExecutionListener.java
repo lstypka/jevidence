@@ -24,6 +24,8 @@ import pl.lstypka.jevidence.core.EvidenceReporter;
 import pl.lstypka.jevidence.core.JEvidence;
 import pl.lstypka.jevidence.core.bo.Level;
 import pl.lstypka.jevidence.core.bo.Traces;
+import pl.lstypka.jevidence.core.listeners.TestLifecycle;
+import pl.lstypka.jevidence.core.listeners.TestLifecycleListener;
 import pl.lstypka.jevidence.mapper.ExecutionMapper;
 import pl.lstypka.jevidence.model.TestResult;
 import pl.lstypka.jevidence.model.execution.Status;
@@ -36,7 +38,6 @@ public class JUnitExecutionListener extends RunListener {
 
     @Override
     public void testRunStarted(Description description) throws Exception {
-        System.out.println("Number of tests to execute: " + description.testCount());
     }
 
     @Override
@@ -44,12 +45,14 @@ public class JUnitExecutionListener extends RunListener {
         JEvidence jEvidence = new JEvidence();
         ExecutionMapper executionMapper = new ExecutionMapper(results);
         jEvidence.generate(executionMapper.mapToExecution());
-        System.out.println("Number of tests executed: " + result.getRunCount());
     }
 
+    @Override
     public void testStarted(Description description) throws Exception {
         EvidenceReporter.startTest();
-        System.out.println("Starting: " + description.getMethodName());
+        for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+            listener.onTestStart(new TestLifecycle(System.currentTimeMillis(), System.currentTimeMillis(), Status.UNKNOWN, new Object[0], null));
+        }
     }
 
     public void testFinished(Description description) throws Exception {
@@ -59,9 +62,11 @@ public class JUnitExecutionListener extends RunListener {
             }
         }
         Traces traces = EvidenceReporter.finishTest();
+        for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+            listener.onTestSuccess(new TestLifecycle(traces.getStartedAt(), System.currentTimeMillis(), Status.SUCCESS, new Object[0], null));
+        }
         TestResult testResult = prepareTestResult(description, traces, Status.SUCCESS, null);
         results.add(testResult);
-        System.out.println("Finished: " + description.getMethodName());
     }
 
     public void testFailure(Failure failure) throws Exception {
@@ -71,11 +76,16 @@ public class JUnitExecutionListener extends RunListener {
         if (failure.getException() instanceof AssertionError) {
             TestResult testResult = prepareTestResult(failure.getDescription(), traces, Status.FAILED, failure.getException());
             results.add(testResult);
+            for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+                listener.onTestFailure(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.FAILED, new Object[0], failure.getException()));
+            }
         } else {
             TestResult testResult = prepareTestResult(failure.getDescription(), traces, Status.ERROR, failure.getException());
             results.add(testResult);
+            for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+                listener.onTestFailure(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.ERROR, new Object[0], failure.getException()));
+            }
         }
-        System.out.println("Failed: " + failure.getDescription().getMethodName());
     }
 
     public void testAssumptionFailure(Failure failure) {
@@ -84,11 +94,16 @@ public class JUnitExecutionListener extends RunListener {
         if (failure.getException() instanceof AssertionError) {
             TestResult testResult = prepareTestResult(failure.getDescription(), traces, Status.FAILED, failure.getException());
             results.add(testResult);
+            for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+                listener.onTestFailure(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.FAILED, new Object[0], failure.getException()));
+            }
         } else {
             TestResult testResult = prepareTestResult(failure.getDescription(), traces, Status.ERROR, failure.getException());
             results.add(testResult);
+            for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+                listener.onTestFailure(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.ERROR, new Object[0], failure.getException()));
+            }
         }
-        System.out.println("Failed: " + failure.getDescription().getMethodName());
     }
 
     private pl.lstypka.jevidence.core.bo.Failure prepareFailure(Failure junitFailure) {
@@ -96,10 +111,16 @@ public class JUnitExecutionListener extends RunListener {
     }
 
     public void testIgnored(Description description) throws Exception {
+        EvidenceReporter.startTest();
+        for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+            listener.onTestStart(new TestLifecycle(System.currentTimeMillis(), System.currentTimeMillis(), Status.UNKNOWN, new Object[0], null));
+        }
         Traces traces = EvidenceReporter.finishTest();
         TestResult testResult = prepareTestResult(description, traces, Status.SKIPPED, null);
         results.add(testResult);
-        System.out.println("Ignored: " + description.getMethodName());
+        for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
+            listener.onTestSkipped(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.SKIPPED, new Object[0], null));
+        }
     }
 
     private TestResult prepareTestResult(Description description, Traces traces, Status status, Throwable throwable) {
