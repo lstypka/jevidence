@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Example suite" parallel="methods" thread-count="10">
+
+    <test name="Example sum test">
+        <parameter name="sum" value="24"/>
+        <parameter name="firstNumber" value="21"/>
+        <parameter name="secondNumber" value="3"/>
+        <classes>
+            <class name="pl.lstypka.jevidence.example.testng.AddMathServiceTest"/>
+        </classes>
+    </test>
+
+    <test name="Example subtract test">
+        <parameter name="sum" value="18"/>
+        <parameter name="firstNumber" value="21"/>
+        <parameter name="secondNumber" value="3"/>
+        <classes>
+            <class name="pl.lstypka.jevidence.example.testng.SubtractMathServiceTest"/>
+        </classes>
+    </test>
+
+</suite>
