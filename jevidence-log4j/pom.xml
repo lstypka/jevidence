@@ -6,10 +6,17 @@
 
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-log4j</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>${jevidence.version}</version>
     <name>jEvidence - log4j</name>
     <description>jEvidence extension for log4j framework</description>
     <url>https://github.com/lstypka/jevidence</url>
+
+    <parent>
+        <groupId>pl.stypka.jevidence</groupId>
+        <artifactId>jevidence-parent</artifactId>
+        <relativePath>../pom.xml</relativePath>
+        <version>${jevidence.version}</version>
+    </parent>
 
     <licenses>
         <license>
@@ -30,19 +37,11 @@
         <tag>1.0</tag>
     </scm>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.6</java.version>
-        <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
-        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
-        <wagon-ftp.version>2.6</wagon-ftp.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-core</artifactId>
-            <version>1.1-SNAPSHOT</version>
+            <version>${jevidence.version}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
