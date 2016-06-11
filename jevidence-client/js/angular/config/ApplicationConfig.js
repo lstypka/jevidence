@@ -1,4 +1,4 @@
-var reportNgApp = angular.module('reportNgApp', ['ui.select', 'ngSanitize', 'bootstrapLightbox', 'angular-flot', 'ngAnimate', 'ngRoute']);
+var reportNgApp = angular.module('reportNgApp', ['ui.select', 'ui.calendar', 'ui.bootstrap', 'ngSanitize', 'bootstrapLightbox', 'angular-flot', 'ngAnimate', 'ngRoute']);
 
 reportNgApp.config(['$routeProvider',
     function ($routeProvider) {
@@ -11,6 +11,9 @@ reportNgApp.config(['$routeProvider',
             })
             .when('/performance', {
                 templateUrl: 'view/performance.html'
+            })
+            .when('/calendar', {
+                templateUrl: 'view/calendar.html'
             })
             .when('/execution/:executionId/overview', {
                 templateUrl: 'view/execution_overview.html'

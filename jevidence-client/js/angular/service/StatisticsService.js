@@ -12,6 +12,7 @@ reportNgApp.service('StatisticsService', ["$http", "RecordsService", "SettingsSe
     this.getStatisticsFromVariable = function(executionId, successFn) {
         var record = RecordsService.findRecord(executionId);
         var execution = window['execution_' + record.dirName];
+        execution = JSON.parse(JSON.stringify(execution));
         if(successFn) {
             execution.statistics.id = executionId;
             successFn(execution.statistics);

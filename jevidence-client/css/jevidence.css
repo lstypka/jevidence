@@ -109,7 +109,10 @@ body > .header {
 body > .header .navbar {
     height: 51px;
     margin-bottom: 0;
-    background-color: #283744;
+    background-color: #f9fafc;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: orange;
 }
 
 body > .header .navbar .sidebar-toggle {
@@ -127,9 +130,6 @@ body > .header .navbar .sidebar-toggle {
     border-radius: 0 !important;
 }
 
-body > .header .navbar .sidebar-toggle:hover .icon-bar {
-    background: #f6f6f6;
-}
 
 body > .header .navbar .sidebar-toggle .icon-bar {
     display: block;
@@ -256,8 +256,8 @@ body > .header .logo .icon {
 
 /*THEME*/
 .theme .logo {
-    background-color: #283744;
-    color: #f9f9f9;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .theme .logo > a {
@@ -279,33 +279,40 @@ body > .header .logo .icon {
 
 .theme .sidebar > .sidebar-menu > li:hover,
 .theme .sidebar > .sidebar-menu > li.active > a {
-    color: #f6f6f6;
-    background: #425164;
+    color: #000000;
+    background: #f9fafc;
+        font-weight: bold;
 }
 
 .inner-li-active {
-    background: #425164;
+    color: #000000;
+    background: #f9fafc;
+    font-weight: bold;
 }
 
 .theme .sidebar > .sidebar-menu > li > .treeview-menu {
     margin: 0 1px;
-    background: #35404d;
+    background: #f9fafc;
+    color: #000000;
 }
 
 .theme .left-side {
-    background: #39435C;
+    color: #000000;
+    background: #f9fafc;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .theme .sidebar a {
-    color: #eee;
+    color: #000000;
 }
 
 .theme .sidebar a:hover {
-    text-decoration: none;
+   color: #000000;
+   font-weight: bold;
 }
 
 .theme .treeview-menu > li > a {
-    color: #ccc;
+    color: #000000;
 }
 
 .theme .treeview-menu > li:hover > a > i,
@@ -315,12 +322,12 @@ body > .header .logo .icon {
 .theme .treeview-menu > li > ul > li:hover > a > i
 {
     font-weight: bold;
-    color: #fff;
+    color: #000000;
 }
 
 .inner-li-active > a > i > span {
     font-weight: bold;
-    color: #fff;
+    color: #000000;
 }
 
 /*THEME*/
@@ -402,7 +409,7 @@ body > .header .logo .icon {
 }
 
 .execution-menu-item:hover {
-    background-color: rgba(0, 0, 0, 0.15) !important;
+    background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
 .test-class-row {
@@ -551,7 +558,7 @@ ul.task-list {
 .panel {
     border: none;
     -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
-    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .panel-heading {
@@ -635,4 +642,17 @@ ul.task-list {
  overflow: hidden;
   text-overflow: ellipsis;
    white-space: nowrap;
+}
+
+.jevidence-logo {
+    font-family: 'Lato', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.jevidence-version,
+.jevidence-deploy-time {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
 }

@@ -12,6 +12,7 @@ reportNgApp.service('DefectsService', ["$http", "RecordsService", 'SettingsServi
     this.getDefectsFromVariable = function(executionId, successFn) {
         var record = RecordsService.findRecord(executionId);
         var execution = window['execution_' + record.dirName];
+        execution = JSON.parse(JSON.stringify(execution));
         if(successFn) {
             successFn(execution.defects);
         }
