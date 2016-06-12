@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pl.stypka.jevidence</groupId>
+    <artifactId>jevidence-example-log4j</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <name>jEvidence - junit example</name>
+    <description>Example usage of jEvidence with junit framework</description>
+    <url>https://github.com/lstypka/jevidence</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.stypka.jevidence</groupId>
+            <artifactId>jevidence-junit</artifactId>
+            <version>1.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.stypka.jevidence</groupId>
+            <artifactId>jevidence-log4j</artifactId>
+            <version>1.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>1.4</version>
+        </dependency>
+    </dependencies>
+
+</project>
