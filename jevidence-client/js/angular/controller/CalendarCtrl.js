@@ -1,5 +1,5 @@
-reportNgApp.controller('CalendarCtrl', ["$scope", "$timeout", "RecordsService",
-    function ($scope, $timeout, RecordsService) {
+reportNgApp.controller('CalendarCtrl', ["$scope", "$timeout", "SettingsService", "RecordsService",
+    function ($scope, $timeout, SettingsService, RecordsService) {
 
     $scope.events = [];
     $scope.eventSources = [$scope.events];
@@ -53,6 +53,7 @@ reportNgApp.controller('CalendarCtrl', ["$scope", "$timeout", "RecordsService",
       calendar:{
         height: 450,
         editable: false,
+        embedded: SettingsService.isEmbedded(),
         header:{
           left: '',
           center: 'prev title  next',
