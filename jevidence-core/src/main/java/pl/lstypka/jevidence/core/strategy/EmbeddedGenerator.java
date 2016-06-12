@@ -18,6 +18,7 @@ package pl.lstypka.jevidence.core.strategy;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import pl.jsolve.sweetener.text.Strings;
 import pl.lstypka.jevidence.core.io.FileUtils;
@@ -156,7 +157,14 @@ public class EmbeddedGenerator extends Generator {
         replacement += "</body>";
 
         content = content.replace("</body>", replacement);
+
+        // update JEVIDENCE_TIMESTAMP
+        if (content.contains("JEVIDENCE_TIMESTAMP")) {
+            content = content.replace("JEVIDENCE_TIMESTAMP", DateTime.now().toString("YYYY-MM-dd HH:mm:ss"));
+        }
+
         org.apache.commons.io.FileUtils.write(indexFile, content, Charset.forName("UTF-8"));
     }
+
 
 }

@@ -1,18 +1,19 @@
-reportNgApp.controller('CalendarCtrl', ["$scope", "RecordsService",
-    function ($scope, RecordsService) {
+reportNgApp.controller('CalendarCtrl', ["$scope", "$timeout", "RecordsService",
+    function ($scope, $timeout, RecordsService) {
 
+    $scope.events = [];
+    $scope.eventSources = [$scope.events];
     var init = function() {
         RecordsService.getRecords(function (records) {
-            $scope.events = [];
-            for (var i = 0; i < records.length; i++) {
-                $scope.events.push({
-                    tooltip: 'Started at ' + createFullDate(records[i].dirName) + '\nStatus: ' + calculateStatus(records[i]) + '\nPass Percentage: ' + records[i].percentage + "%\nPassed: " + records[i].success + "\nFailed: " + records[i].failed + "\nErrors: " + records[i].error + "\nSkipped: " + records[i].skipped,
-                    title: 'Pass Percentage: ' + records[i].percentage + "%",
-                    start: createDate(records[i].dirName),
-                    color: calculateColor(records[i]),
-                    executionId: records[i].id
-                });
-            }
+                for (var i = 0; i < records.length; i++) {
+                    $scope.events.push({
+                        tooltip: 'Started at ' + createFullDate(records[i].dirName) + '\nStatus: ' + calculateStatus(records[i]) + '\nPass Percentage: ' + records[i].percentage + "%\nPassed: " + records[i].success + "\nFailed: " + records[i].failed + "\nErrors: " + records[i].error + "\nSkipped: " + records[i].skipped,
+                        title: 'Pass Percentage: ' + records[i].percentage + "%",
+                        start: createDate(records[i].dirName),
+                        color: calculateColor(records[i]),
+                        executionId: records[i].id
+                    });
+                }
         });
     };
 
@@ -67,7 +68,4 @@ reportNgApp.controller('CalendarCtrl', ["$scope", "RecordsService",
       }
     };
 
-
-
-     $scope.eventSources = [$scope.events];
 }]);

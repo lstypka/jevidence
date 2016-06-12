@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2016 Lukasz Stypka (lukasz.stypka@gmail.com)
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,6 +29,7 @@ import pl.lstypka.jevidence.model.execution.Records;
 import pl.lstypka.jevidence.model.statistics.Statistics;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -36,36 +37,41 @@ import java.util.Properties;
  * Created by Lukasz on 2016-06-04.
  * Since version 1.1
  */
-public class ServerGenerator extends Generator{
+public class ServerGenerator extends Generator {
 
     @Override
     public void generate(Execution execution, String reportDir) {
-        checkIfVersionsAreMixed(reportDir, JEVIDENCE_SERVER_VERSION);
-        FileUtils fileUtils = new FileUtils();
+        try {
+            checkIfVersionsAreMixed(reportDir, JEVIDENCE_SERVER_VERSION);
+            FileUtils fileUtils = new FileUtils();
 
-        Statistics statistics = new StatisticsCollector().gatherStatistics(execution);
-        Defects defects = new DefectCollector().gatherDefects(execution);
+            Statistics statistics = new StatisticsCollector().gatherStatistics(execution);
+            Defects defects = new DefectCollector().gatherDefects(execution);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        String executionDir = execution.getStartedAt().toString(DateTimeFormat.forPattern("yyyy_MM_dd_HH_mm_ss"));
-        String destinationPath = createFullPath(reportDir, executionDir);
-        fileUtils.createDirs(destinationPath);
-        fileUtils.moveScreenshots(execution, reportDir, executionDir);
-        fileUtils.saveExecution(execution, objectMapper, destinationPath);
-        fileUtils.saveStatistics(statistics, objectMapper, destinationPath);
-        fileUtils.saveDefects(defects, objectMapper, destinationPath);
+            ObjectMapper objectMapper = new ObjectMapper();
+            String executionDir = execution.getStartedAt().toString(DateTimeFormat.forPattern("yyyy_MM_dd_HH_mm_ss"));
+            String destinationPath = createFullPath(reportDir, executionDir);
+            fileUtils.createDirs(destinationPath);
+            fileUtils.moveScreenshots(execution, reportDir, executionDir);
+            fileUtils.saveExecution(execution, objectMapper, destinationPath);
+            fileUtils.saveStatistics(statistics, objectMapper, destinationPath);
+            fileUtils.saveDefects(defects, objectMapper, destinationPath);
 
-        Properties properties = new PropertyUtils().readProperty();
-        String shouldRemoveExecutions = properties.getProperty(PropertyUtils.REMOVE_EXECUTIONS, PropertyUtils.REMOVE_EXECUTIONS_DEFAULT_VALUE);
-        Records records = fileUtils.readRecords(objectMapper, reportDir + File.separator + "data");
-        updateRecords(execution, records, fileUtils, reportDir, executionDir);
-        if ("true".equals(shouldRemoveExecutions)) {
-            removeOldExecutions(records, fileUtils, objectMapper, properties, reportDir);
+            Properties properties = new PropertyUtils().readProperty();
+            String shouldRemoveExecutions = properties.getProperty(PropertyUtils.REMOVE_EXECUTIONS, PropertyUtils.REMOVE_EXECUTIONS_DEFAULT_VALUE);
+            Records records = fileUtils.readRecords(objectMapper, reportDir + File.separator + "data");
+            updateRecords(execution, records, fileUtils, reportDir, executionDir);
+            if ("true".equals(shouldRemoveExecutions)) {
+                removeOldExecutions(records, fileUtils, objectMapper, properties, reportDir);
+            }
+            fileUtils.saveRecords(records, objectMapper, reportDir + File.separator + "data");
+            updateJevidenceTimestamp(reportDir);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        fileUtils.saveRecords(records, objectMapper, reportDir + File.separator + "data");
     }
 
-    private void updateRecords(Execution execution, Records records, FileUtils fileUtils,String reportDir, String executionDirName) {
+    private void updateRecords(Execution execution, Records records, FileUtils fileUtils, String reportDir, String executionDirName) {
         try {
             String dataDir = reportDir + File.separator + "data";
             fileUtils.createFileIfNotExist(dataDir);

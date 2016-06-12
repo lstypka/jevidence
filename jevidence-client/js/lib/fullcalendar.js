@@ -837,12 +837,7 @@ function Calendar(element, instanceOptions) {
 
 
 	function getAndRenderEvents() {
-		if (!options.lazyFetching || isFetchNeeded(currentView.start, currentView.end)) {
-			fetchAndRenderEvents();
-		}
-		else {
-			renderEvents();
-		}
+	    renderEvents();
 	}
 
 

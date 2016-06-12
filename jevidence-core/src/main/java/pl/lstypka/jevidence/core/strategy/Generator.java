@@ -17,6 +17,7 @@ package pl.lstypka.jevidence.core.strategy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import org.joda.time.DateTime;
 import pl.jsolve.sweetener.text.Strings;
 import pl.lstypka.jevidence.core.io.FileUtils;
 import pl.lstypka.jevidence.model.execution.Execution;
@@ -25,6 +26,7 @@ import pl.lstypka.jevidence.model.settings.Settings;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 /**
  * Created by Lukasz on 2016-06-04.
@@ -91,6 +93,15 @@ public abstract class Generator {
             fileUtils.saveString("var jEvidenceSettings = " + settingsAsString, settingsFile.getAbsolutePath());
         } catch (IOException e) {
             // do nothing
+        }
+    }
+
+    protected void updateJevidenceTimestamp(String reportDir) throws IOException {
+        File indexFile = new File(reportDir + File.separator + "index.html");
+        String content = org.apache.commons.io.FileUtils.readFileToString(indexFile, Charset.forName("UTF-8"));
+        if (content.contains("JEVIDENCE_TIMESTAMP")) {
+            content = content.replace("JEVIDENCE_TIMESTAMP", DateTime.now().toString("YYYY-MM-dd HH:mm:ss"));
+            org.apache.commons.io.FileUtils.write(indexFile, content, Charset.forName("UTF-8"));
         }
     }
 }
