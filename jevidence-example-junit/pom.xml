@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-example-junit</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <name>jEvidence - junit example</name>
     <description>Example usage of jEvidence with junit framework</description>
     <url>https://github.com/lstypka/jevidence</url>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-junit</artifactId>
-            <version>1.1</version>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

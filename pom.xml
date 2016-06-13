@@ -4,14 +4,14 @@
 
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-parent</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>jEvidence - parent</name>
     <description>Parent of jEvidence framework</description>
     <url>https://github.com/lstypka/jevidence</url>
 
     <properties>
-        <jevidence.version>1.1-SNAPSHOT</jevidence.version>
+        <jevidence.version>1.2-SNAPSHOT</jevidence.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.6</java.version>
         <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
