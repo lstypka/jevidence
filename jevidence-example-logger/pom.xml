@@ -4,16 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.stypka.jevidence</groupId>
-    <artifactId>jevidence-example-junit</artifactId>
+    <artifactId>jevidence-example-logger</artifactId>
     <version>1.1</version>
-    <name>jEvidence - junit example</name>
-    <description>Example usage of jEvidence with junit framework</description>
+    <name>jEvidence - java.util.logging.Logger example</name>
+    <description>Example usage of jEvidence with java.util.logging.Logger</description>
     <url>https://github.com/lstypka/jevidence</url>
 
     <dependencies>
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-junit</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.stypka.jevidence</groupId>
+            <artifactId>jevidence-java-logger</artifactId>
             <version>1.1</version>
         </dependency>
         <dependency>
@@ -26,6 +31,7 @@
             <artifactId>fest-assert</artifactId>
             <version>1.4</version>
         </dependency>
+
     </dependencies>
 
 </project>

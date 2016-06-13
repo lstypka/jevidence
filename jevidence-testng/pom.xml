@@ -5,16 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-testng</artifactId>
-    <version>${jevidence.version}</version>
+    <version>1.1</version>
     <name>jEvidence - testNg</name>
     <description>jEvidence extension for testNg framework</description>
     <url>https://github.com/lstypka/jevidence</url>
 
-    <parent>
-        <groupId>pl.stypka.jevidence</groupId>
-        <artifactId>jevidence-parent</artifactId>
-        <version>1.1-SNAPSHOT</version>
-    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.6</java.version>
+        <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
+        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+        <wagon-ftp.version>2.6</wagon-ftp.version>
+    </properties>
 
     <licenses>
         <license>
@@ -39,7 +41,7 @@
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-core</artifactId>
-            <version>${jevidence.version}</version>
+            <version>1.1</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
