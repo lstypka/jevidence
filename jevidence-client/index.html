@@ -146,9 +146,10 @@
                 </div>
             </section>
 
-            <footer class="footer">
+            <footer class="footer" ng-show="showFooter">
                 <center>
-                    <div class="copyright"><a href="http://stypka.pl" target="_blank">© 2016 Łukasz Stypka</a></div>
+                    <a href="#" class="close" ng-click="closeFooter();">&times;</a>
+                    <div class="copyright"><a href="http://stypka.pl" target="_blank">Copyright © 2016 Łukasz Stypka</a></div>
                 </center>
             </footer>
         </aside>

@@ -3,6 +3,11 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
 
         var CANNOT_READ_RECORD_FILE = 1;
         $scope.errorStatus = 0;
+        $scope.showFooter = true;
+
+        $scope.closeFooter = function() {
+            $scope.showFooter = false;
+        };
         var init = function () {
             RecordsService.getRecords(function (records) {
                // think about getting records only one, in the rootCtrl

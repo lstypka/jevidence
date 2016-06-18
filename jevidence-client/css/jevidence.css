@@ -684,8 +684,11 @@ ul.task-list {
 .footer {
   position: fixed;
   bottom: 0px;
-  width: 100%;
+  width: 350px;
+  left: 50%;
   height: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
   background-color: #f9fafc;
   border-top: 1px solid #ddd;
   border-top-left-radius: 5px;
