@@ -983,16 +983,18 @@
                                     <span><b>Compare executions</b></span>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control revision-combobox" id="firstRevision"
-                                            ng-model="selectedRevisions.first" ng-change="changedRevision()">
-                                        <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
-                                    </select>
+                                    <div id="firstRevisionInPerformance"
+                                         name="revision"
+                                         ui-select2="s2revisions"
+                                         ng-change="changedRevision()"
+                                         ng-model="selectedRevisions.first"></div>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control revision-combobox" id="secondRevision"
-                                            ng-model="selectedRevisions.second" ng-change="changedRevision()">
-                                        <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
-                                    </select>
+                                    <div id="secondRevisionInPerformance"
+                                         name="revision"
+                                         ui-select2="s2revisions"
+                                         ng-change="changedRevision()"
+                                         ng-model="selectedRevisions.second"></div>
                                 </div>
                             </div>
                         </div>
@@ -1002,8 +1004,8 @@
                     <section class="" style="border: 1px solid #eee;" ng-if="incorrectRevisions">
                         <div class="alert alert-warning">
                             <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Warning!</strong> Cannot compare execution {{selectedRevisions.first}} with
-                            {{selectedRevisions.second}}. The first execution must be greater than the second one.
+                            <strong>Warning!</strong> Cannot compare execution {{selectedRevisions.first.id || selectedRevisions.first}} with
+                            {{selectedRevisions.second.id || selectedRevisions.second}}. The first execution must be greater than the second one.
                         </div>
                     </section>
                 </div>

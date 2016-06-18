@@ -1,7 +1,8 @@
-reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionService", "RecordsService",
-    function ($scope, $timeout, ExecutionService, RecordsService) {
+reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionService", "RecordsService", 'S2RevisionsService',
+    function ($scope, $timeout, ExecutionService, RecordsService, S2RevisionsService) {
 
-        $scope.selectedRevisions = {first: null, second: null};
+        $scope.selectedRevisions = {first: {id : null, text : null}, second: {id : null, text : null}};
+        $scope.s2revisions = S2RevisionsService;
 
         var timeDifferenceData = [];
         var xlabels = [];
@@ -79,11 +80,11 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             for (var i = 0; i < records.length; i++) {
                 $scope.revisions.push(records[i].id);
             }
-            $scope.selectedRevisions.first = $scope.revisions[0];
-            $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first;
+            $scope.selectedRevisions.first = {id : $scope.revisions[0], text: $scope.revisions[0]};
+            $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first.id;
             if ($scope.revisions.length > 1) {
-                $scope.selectedRevisions.second = $scope.revisions[1];
-                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second;
+                $scope.selectedRevisions.second = {id : $scope.revisions[1], text : $scope.revisions[1]};
+                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second.id;
             }
         };
 
@@ -163,13 +164,13 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         };
 
         $scope.changedRevision = function () {
-            if (parseInt($scope.selectedRevisions.first) > parseInt($scope.selectedRevisions.second)) {
+            if (parseInt($scope.selectedRevisions.first.id) > parseInt($scope.selectedRevisions.second.id)) {
                 $scope.incorrectRevisions = false;
-                $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first;
-                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second;
+                $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first.id;
+                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second.id;
 
-                ExecutionService.getExecution($scope.selectedRevisions.first, function (currentExecution) {
-                    ExecutionService.getExecution($scope.selectedRevisions.second, function (previousExecution) {
+                ExecutionService.getExecution($scope.selectedRevisions.first.id, function (currentExecution) {
+                    ExecutionService.getExecution($scope.selectedRevisions.second.id, function (previousExecution) {
                         $scope.intersection = executionComparator(currentExecution, previousExecution);
                         $scope.calculating = false;
                     });
@@ -202,6 +203,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             }, function (response) {
                 $scope.noRecords = true;
             });
+            $scope.$emit('REFRESH_TOOLTIPS', { });
         };
 
         var sortByTimeDifference = function (array) {

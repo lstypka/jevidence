@@ -40,10 +40,10 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
                 $scope.revisions.push(records[i].id);
             }
             $scope.selectedRevisions.first = {id : $scope.revisions[0], text: $scope.revisions[0]};
-            $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first;
+            $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first.id;
             if ($scope.revisions.length > 1) {
                 $scope.selectedRevisions.second = { id : $scope.revisions[1], text : $scope.revisions[1]};
-                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second;
+                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second.id;
             }
         };
 
