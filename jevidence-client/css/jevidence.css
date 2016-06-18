@@ -696,3 +696,7 @@ ul.task-list {
   border: 1px solid #ccc;
   box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5);
 }
+
+.slimScrollDiv {
+ height: 100% !important;
+}
