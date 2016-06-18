@@ -680,3 +680,16 @@ ul.task-list {
     font-size: 90%;
     line-height: 1.5;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 25px;
+  background-color: #f9fafc;
+  border-top: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5);
+}
