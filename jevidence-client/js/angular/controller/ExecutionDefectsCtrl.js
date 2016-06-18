@@ -18,7 +18,7 @@ reportNgApp.controller('ExecutionDefectsCtrl', ["$scope", "$routeParams", "Defec
     };
 
     $scope.stringify = function (value) {
-        return JSON.stringify(value);
+        return value ? JSON.stringify(value) : '';
     };
 
     $scope.calculateTotalDefects = function (defects) {
