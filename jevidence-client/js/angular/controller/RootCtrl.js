@@ -15,4 +15,13 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
 
         init();
 
+        $scope.$on('$routeChangeSuccess', function(next, current) {
+          $('[data-toggle="tooltip"]').tooltip({container: 'body', delay: { "show": 100, "hide": 100 }});
+         });
+
+         $scope.$on('REFRESH_TOOLTIPS', function (event, args) {
+            $timeout(function() {
+                  $('[data-toggle="tooltip"]').tooltip({container: 'body', delay: { "show": 100, "hide": 100 }});
+            }, 500);
+         });
     }]);

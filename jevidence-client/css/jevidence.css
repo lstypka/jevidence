@@ -656,3 +656,27 @@ ul.task-list {
     font-size: 14px;
     font-weight: normal;
 }
+
+.tooltip-inner {
+    white-space:pre-wrap;
+}
+
+.select2-drop {
+    width: 250px !important;
+}
+
+.select2-container .select2-choice {
+    padding: 0px;
+    height: 20px;
+
+}
+
+.select2-container .select2-choice div {
+    display: none;
+}
+
+.select2-container .select2-choice span {
+    margin: 0px;
+    font-size: 90%;
+    line-height: 1.5;
+}

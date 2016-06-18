@@ -1,9 +1,9 @@
-reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService", "RecordsService",
-    function ($scope, $timeout, ExecutionService, RecordsService) {
+reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService", "RecordsService", "S2RevisionsService",
+    function ($scope, $timeout, ExecutionService, RecordsService, S2RevisionsService) {
 
         $scope.calculating = false;
         $scope.revisions = [];
-        $scope.selectedRevisions = {first: null, second: null};
+        $scope.selectedRevisions = {first: {id : null, text: null}, second: {id : null, text: null}};
 
         var init = function () {
             $scope.calculating = true;
@@ -18,17 +18,20 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
                     ExecutionService.getExecution(records[0].id, function (execution) {
                         $scope.differences = executionComparator(execution);
                         $scope.calculating = false;
+                        $scope.$emit('REFRESH_TOOLTIPS', { });
                     });
                 } else {
                     ExecutionService.getExecution(records[0].id, function (currenctExecution) {
                         ExecutionService.getExecution(records[1].id, function (previousExecution) {
                             $scope.differences = executionComparator(currenctExecution, previousExecution);
                             $scope.calculating = false;
+                            $scope.$emit('REFRESH_TOOLTIPS', { });
                         });
                     });
                 }
             }, function(response) {
                 $scope.noRecords = true;
+                $scope.$emit('REFRESH_TOOLTIPS', { });
             });
         };
 
@@ -36,10 +39,10 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
             for (var i = 0; i < records.length; i++) {
                 $scope.revisions.push(records[i].id);
             }
-            $scope.selectedRevisions.first = $scope.revisions[0];
+            $scope.selectedRevisions.first = {id : $scope.revisions[0], text: $scope.revisions[0]};
             $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first;
             if ($scope.revisions.length > 1) {
-                $scope.selectedRevisions.second = $scope.revisions[1];
+                $scope.selectedRevisions.second = { id : $scope.revisions[1], text : $scope.revisions[1]};
                 $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second;
             }
         };
@@ -177,13 +180,16 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
         };
 
         $scope.changedRevision = function () {
-            if (parseInt($scope.selectedRevisions.first) > parseInt($scope.selectedRevisions.second)) {
+            if(!$scope.selectedRevisions.first || !$scope.selectedRevisions.second) {
+                return;
+            }
+            if (parseInt($scope.selectedRevisions.first.id) > parseInt($scope.selectedRevisions.second.id)) {
                 $scope.incorrectRevisions = false;
-                $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first;
-                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second;
+                $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first.id;
+                $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second.id;
 
-                ExecutionService.getExecution($scope.selectedRevisions.first, function (currentExecution) {
-                    ExecutionService.getExecution($scope.selectedRevisions.second, function (previousExecution) {
+                ExecutionService.getExecution($scope.selectedRevisions.first.id, function (currentExecution) {
+                    ExecutionService.getExecution($scope.selectedRevisions.second.id, function (previousExecution) {
                         $scope.differences = executionComparator(currentExecution, previousExecution);
                         $scope.calculating = false;
                     });
@@ -196,6 +202,8 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
         $scope.stringify = function(value) {
             return JSON.stringify(value);
         };
+
+        $scope.s2revisions = S2RevisionsService;
 
         init();
     }]);

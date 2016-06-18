@@ -29,4 +29,9 @@ reportNgApp.controller('MenuCtrl', ["$scope", "$timeout", "$location", "Executio
             return $location.path().startsWith(node);
         };
 
+        $scope.formatDirNameToTime = function(dirName) {
+            var spitValue = dirName.split('_');
+            return spitValue[0] + '-' + spitValue[1] + '-' + spitValue[2] + ' ' + spitValue[3] + ':' + spitValue[4] + ':' + spitValue[5];
+        };
+
     }]);

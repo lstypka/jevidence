@@ -70,6 +70,8 @@ reportNgApp.directive('testsResultTable', [
                         row.expanded = true;
                     }
                 };
+
+                 scope.$emit('REFRESH_TOOLTIPS', { });
             }
         }
     }

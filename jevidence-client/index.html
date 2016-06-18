@@ -9,9 +9,9 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/fontello.css" rel="stylesheet" type="text/css"/>
     <link href="css/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/select2/select2.css" rel="stylesheet" type="text/css"/>
 
     <!-- Custom style -->
-    <link href="css/select.css" rel="stylesheet" type="text/css"/>
     <link href="css/splash.css" rel="stylesheet" type="text/css"/>
     <link href="css/jevidence.css" rel="stylesheet" type="text/css"/>
     <link href="css/gradient.css" rel="stylesheet" type="text/css"/>
@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-3"  style="margin-top: 30px; float:right;">
-                <span class="jevidence-version" style="float: right;">version 1.1</span>
+                <span class="jevidence-version" style="float: right;">version 1.2</span>
                 <span class="jevidence-deploy-time"  style="float: right; margin-right: 20px;">JEVIDENCE_TIMESTAMP</span>
             </div>
         </row>
@@ -67,31 +67,31 @@
                     <li class="divider"></li>
                     <li class="divider"></li>
                     <li ng-class="{'active' : isNodeActive('/dashboard')}">
-                        <a href="#/dashboard" title="Dashboard">
+                        <a href="#/dashboard">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li ng-class="{'active' : isNodeActive('/statistics')}">
-                        <a href="#/statistics" title="statistics">
+                        <a href="#/statistics">
                             <i class="fa fa-bar-chart"></i> <span>Statistics</span>
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li ng-class="{'active' : isNodeActive('/performance')}">
-                        <a href="#/performance" title="performance">
+                        <a href="#/performance">
                             <i class="fa fa-line-chart"></i> <span>Performance</span>
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li ng-class="{'active' : isNodeActive('/calendar')}">
-                        <a href="#/calendar" title="calendar">
+                        <a href="#/calendar">
                             <i class="fa fa-calendar"></i> <span>Calendar</span>
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li class="treeview executions active" ng-if="!noRecords">
-                        <a href="#" title="performance">
+                        <a href="#">
                             <span><i class="fa fa-cogs"></i><span> Executions</span></span>
                             <i class="fa pull-right"></i>
                         </a>
@@ -99,9 +99,12 @@
                             <li class="treeview" data-ng-repeat="execution in executions"
                                 ng-class="{'active' : isExecutionNodeActive('/execution/{{execution.id}}/')}">
                                 <a href="#">
-                                    <i class="fa fa-hashtag" style="font-weight: normal; font-size: 12px;"><span
-                                            style="font-size: 14px; margin-left: 3px;">{{execution.id}}</span></i>
-                                    <span class="badge" ng-class="[execution.percentageClass]" style="float: right;">{{execution.percentage}}%</span>
+                                    <i class="fa fa-hashtag" style="font-weight: normal; font-size: 12px;"
+                                       data-toggle="tooltip" data-placement="bottom"
+                                       title="Execution started at: {{formatDirNameToTime(execution.dirName);}}">
+                                        <span style="font-size: 14px; margin-left: 3px;" data-toggle="tooltip" data-placement="bottom"  title="Execution started at: {{formatDirNameToTime(execution.dirName);}}">{{execution.id}}</span></i>
+                                    <span class="badge" data-toggle="tooltip" data-placement="bottom"  title="Percentage:{{execution.percentage}}% Passed:{{execution.success}} Failed:{{execution.failed}} Errors:{{execution.error}} Skipped:{{execution.skipped}}"
+                                          ng-class="[execution.percentageClass]" style="float: right;">{{execution.percentage}}%</span>
 
                                     <ul class="treeview-menu"
                                         ng-style="{'overflow: hidden; display: none;' : isExecutionNodeActive('/execution/{{execution.id}}/')}">
@@ -203,9 +206,9 @@
 <script src="js/lib/flot/jquery.flot.threshold.min.js" type="text/javascript"></script>
 <script src="js/lib/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
 <script src="js/lib/flot/angular.flot.js" type="text/javascript"></script>
-<script src="js/lib/select2/select.min.js" type="text/javascript"></script>
+<script src="js/lib/select2.js" type="text/javascript"></script>
+<script src="js/lib/select2ui.js" type="text/javascript"></script>
 <script src="js/lib/angular-bootstrap-lightbox/angula.bootstrap.lightbox.min.js" type="text/javascript"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js" type="text/javascript"></script>
 
 
 <script src="js/lib/treemenu.js" type="text/javascript"></script>
@@ -219,7 +222,7 @@
 <script src="js/angular/service/StatisticsService.js" type="text/javascript"></script>
 <script src="js/angular/service/DefectsService.js" type="text/javascript"></script>
 <script src="js/angular/service/SettingsService.js" type="text/javascript"></script>
-
+<script src="js/angular/service/S2RevisionsService.js" type="text/javascript"></script>
 
 <script src="js/angular/filter/TimeDurationFilter.js" type="text/javascript"></script>
 <script src="js/angular/filter/TestStatusFilter.js" type="text/javascript"></script>
@@ -287,8 +290,6 @@
                             <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
                         </header>
                         <div class="panel-body in" id="testsTrendContainer" ng-controller="TestsTrendStatusChartCtrl">
-
-
                             <div class="row" ng-if="calculating">Comparing ...</div>
                             <div class="row" ng-if="!calculating">
                                 <div class="col-md-2">
@@ -350,16 +351,20 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <select class="form-control revision-combobox" id="firstRevision"
-                                                    ng-model="selectedRevisions.first" ng-change="changedRevision()">
-                                                <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
-                                            </select>
+                                            <div id="firstRevisionInDashboard"
+                                                   name="revision"
+                                                   ui-select2="s2revisions"
+                                                   ng-change="changedRevision()"
+                                                   ng-model="selectedRevisions.first"
+                                            />
                                         </div>
                                         <div class="col-md-6">
-                                            <select class="form-control revision-combobox" id="secondRevision"
-                                                    ng-model="selectedRevisions.second" ng-change="changedRevision()">
-                                                <option ng-repeat="rev in revisions" value="{{rev}}">{{rev}}</option>
-                                            </select>
+                                            <div id="secondRevisionInDashboard"
+                                                 name="revision"
+                                                 ui-select2="s2revisions"
+                                                 ng-change="changedRevision()"
+                                                 ng-model="selectedRevisions.second"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -367,8 +372,8 @@
 
                             <div class="alert alert-warning" ng-if="incorrectRevisions">
                                 <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Warning!</strong> Cannot compare execution {{selectedRevisions.first}} with
-                                {{selectedRevisions.second}}. The first execution must be greater than the second one.
+                                <strong>Warning!</strong> Cannot compare execution {{selectedRevisions.first.text}} with
+                                {{selectedRevisions.second.text}}. The first execution must be greater than the second one.
                             </div>
 
                             <!-- TABLE START - Added tests -->
@@ -378,8 +383,8 @@
                                     <tr>
                                         <th>Test</th>
                                         <th>Params</th>
-                                        <th>Execution #{{selectedRevisions.firstCorrect}}</th>
-                                        <th>Execution #{{selectedRevisions.secondCorrect}}</th>
+                                        <th>Execution #{{selectedRevisions.firstCorrect.text || selectedRevisions.firstCorrect}}</th>
+                                        <th>Execution #{{selectedRevisions.secondCorrect.text || selectedRevisions.secondCorrect}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -1182,31 +1187,31 @@
                                 <div class="col-md-8">
                                     <div class="level-panel pull-right">
                                         <div>
-                                            <i class="icon-ok-circled"
+                                            <i class="icon-ok-circled" data-toggle="tooltip" data-placement="bottom"
                                                ng-class="{'icon-success' : successLevel, 'icon-disabled' : !successLevel}"
                                                ng-click="toggleStatus('successLevel');"
                                                style="cursor: pointer; font-size: 16px;"
-                                               title="Level: Success"></i>
-                                            <i class="icon-cancel-circled "
+                                               title="Disable / Enable level: Success"></i>
+                                            <i class="icon-cancel-circled" data-toggle="tooltip" data-placement="bottom"
                                                ng-class="{'icon-error' : errorLevel, 'icon-disabled': !errorLevel}"
                                                ng-click="toggleStatus('errorLevel');"
                                                style="cursor: pointer; font-size: 16px;"
-                                               title="Level: Error"></i>
-                                            <i class="icon-info-circled "
+                                               title="Disable / Enable level: Error"></i>
+                                            <i class="icon-info-circled" data-toggle="tooltip" data-placement="bottom"
                                                ng-class="{'icon-info' : infoLevel, 'icon-disabled' : !infoLevel}"
                                                ng-click="toggleStatus('infoLevel');"
                                                style="cursor: pointer; font-size: 16px;"
-                                               title="Level: Info"></i>
-                                            <i class="icon-attention"
+                                               title="Disable / Enable level: Info"></i>
+                                            <i class="icon-attention" data-toggle="tooltip" data-placement="bottom"
                                                ng-class="{'icon-warn' : warnLevel, 'icon-disabled': !warnLevel}"
                                                ng-click="toggleStatus('warnLevel');"
                                                style="cursor: pointer; font-size: 16px;"
-                                               title="Level: Warn"></i>
-                                            <i class="icon-instagram-circled "
+                                               title="Disable / Enable level: Warn"></i>
+                                            <i class="icon-instagram-circled" data-toggle="tooltip" data-placement="bottom"
                                                ng-class="{'icon-trace' : screenshotLevel, 'icon-disabled' : !screenshotLevel}"
                                                ng-click="toggleStatus('screenshotLevel');"
                                                style="cursor: pointer; font-size: 16px;"
-                                               title="Level: Screenshot"></i>
+                                               title="Disable / Enable level: Screenshot"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -1251,10 +1256,10 @@
                             </td>
                             <td>{{testClass.duration | timeDurationFilter}}</td>
                             <td style="padding-right: 0px; padding-left: 0px;">
-                                <span class="label label-test-error">{{calculateNumberOfTests(testClass, 'ERROR')}}</span>
-                                <span class="label label-test-failed">{{calculateNumberOfTests(testClass, 'FAILED')}}</span>
-                                <span class="label label-test-success">{{calculateNumberOfTests(testClass, 'SUCCESS')}}</span>
-                                <span class="label label-test-skipped">{{calculateNumberOfTests(testClass, 'SKIPPED')}}</span>
+                                <span class="label label-test-error" data-toggle="tooltip" data-placement="bottom" title="Number of errors: {{calculateNumberOfTests(testClass, 'ERROR')}}" >{{calculateNumberOfTests(testClass, 'ERROR')}}</span>
+                                <span class="label label-test-failed" data-toggle="tooltip" data-placement="bottom" title="Number of failures: {{calculateNumberOfTests(testClass, 'FAILED')}}" >{{calculateNumberOfTests(testClass, 'FAILED')}}</span>
+                                <span class="label label-test-success" data-toggle="tooltip" data-placement="bottom" title="Number of successes: {{calculateNumberOfTests(testClass, 'SUCCESS')}}">{{calculateNumberOfTests(testClass, 'SUCCESS')}}</span>
+                                <span class="label label-test-skipped" data-toggle="tooltip" data-placement="bottom" title="Number of skipped tests: {{calculateNumberOfTests(testClass, 'SKIPPED')}}">{{calculateNumberOfTests(testClass, 'SKIPPED')}}</span>
                             </td>
                         </tr>
                         <tr ng-repeat-start="test in testClass.tests"
@@ -1349,5 +1354,16 @@
 
 <script src="data/settings.js" type="text/javascript"></script>
 
+<script src="data/records" type="text/javascript"></script>
+
+<script src="data/2016_06_17_17_38_08/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_06_17_17_38_18/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_06_17_17_38_27/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_06_18_14_05_31/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_06_18_14_05_40/execution.js" type="text/javascript"></script>
 </body>
 </html>
