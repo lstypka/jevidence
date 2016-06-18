@@ -22,13 +22,13 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
 
         $scope.$on('$routeChangeSuccess', function(next, current) {
           $('[data-toggle="tooltip"]').tooltip({container: 'body'});
-          $('.select2-results').slimScroll({alwaysVisible: true});
+          $('.select2-revisions .select2-results').slimScroll({alwaysVisible: true});
          });
 
          $scope.$on('REFRESH_TOOLTIPS', function (event, args) {
             $timeout(function() {
                   $('[data-toggle="tooltip"]').tooltip({container: 'body'});
-                  $('.select2-results').slimScroll({alwaysVisible: true});
+                  $('.select2-revisions .select2-results').slimScroll({alwaysVisible: true});
             }, 500);
          });
     }]);

@@ -661,14 +661,9 @@ ul.task-list {
     white-space:pre-wrap;
 }
 
-.select2-drop {
-    width: 250px !important;
-}
-
 .select2-container .select2-choice {
     padding: 0px;
     height: 20px;
-
 }
 
 .select2-container .select2-choice div {
@@ -679,6 +674,23 @@ ul.task-list {
     margin: 0px;
     font-size: 90%;
     line-height: 1.5;
+}
+
+.select2-statuses .select2-container .select2-choice {
+    height: 24px;
+    margin-top: 5px;
+}
+
+.select2-revisions-dropdown {
+   width: 250px !important;
+}
+
+.s2statuses-choises {
+    height: 18px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
 }
 
 .footer {

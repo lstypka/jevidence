@@ -44,6 +44,7 @@ reportNgApp.service('S2RevisionsService', ["RecordsService", function (RecordsSe
            minimumInputLength: 0,
            minimumResultsForSearch: 1000000,
            containerCssClass : "revision-combobox",
+           dropdownCssClass: "select2-revisions-dropdown",
            query: function (query) {
                   RecordsService.getRecords(function (records) {
                     var revisions = [];

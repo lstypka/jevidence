@@ -231,6 +231,7 @@
 <script src="js/angular/service/DefectsService.js" type="text/javascript"></script>
 <script src="js/angular/service/SettingsService.js" type="text/javascript"></script>
 <script src="js/angular/service/S2RevisionsService.js" type="text/javascript"></script>
+<script src="js/angular/service/S2StatusService.js" type="text/javascript"></script>
 
 <script src="js/angular/filter/TimeDurationFilter.js" type="text/javascript"></script>
 <script src="js/angular/filter/TestStatusFilter.js" type="text/javascript"></script>
@@ -359,20 +360,20 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
+                                            <div class="select2-revisions">
                                             <div id="firstRevisionInDashboard"
                                                    name="revision"
                                                    ui-select2="s2revisions"
                                                    ng-change="changedRevision()"
-                                                   ng-model="selectedRevisions.first"
-                                            />
+                                                   ng-model="selectedRevisions.first"></div></div>
                                         </div>
                                         <div class="col-md-6">
+                                            <div class="select2-revisions">
                                             <div id="secondRevisionInDashboard"
                                                  name="revision"
                                                  ui-select2="s2revisions"
                                                  ng-change="changedRevision()"
-                                                 ng-model="selectedRevisions.second"
-                                            />
+                                                 ng-model="selectedRevisions.second"></div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -983,18 +984,21 @@
                                     <span><b>Compare executions</b></span>
                                 </div>
                                 <div class="col-md-3">
+                                    <div class="select2-revisions">
                                     <div id="firstRevisionInPerformance"
                                          name="revision"
                                          ui-select2="s2revisions"
                                          ng-change="changedRevision()"
-                                         ng-model="selectedRevisions.first"></div>
+                                         ng-model="selectedRevisions.first"></div></div>
                                 </div>
                                 <div class="col-md-3">
+                                    <div class="select2-revisions">
                                     <div id="secondRevisionInPerformance"
                                          name="revision"
                                          ui-select2="s2revisions"
                                          ng-change="changedRevision()"
                                          ng-model="selectedRevisions.second"></div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -1226,21 +1230,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <ui-select ng-model="selected.value" tagging tagging-label="true"
-                                               style="width: 105px; float: right;">
-                                        <ui-select-match>
-                                            <div class="col-md-12 label label-{{selected.value.style}}"
-                                                 style="display: block; width: 80px; margin-top: 1px; padding-top: 5px; padding-bottom: 5px;">
-                                                {{selected.value.label}}
-                                            </div>
-                                        </ui-select-match>
-                                        <ui-select-choices
-                                                repeat="item in (itemArray | filter: $select.search) track by item.id"
-                                                style="border: none; border-bottom: 1px solid #ddd;">
-                                    <span class="label label-{{item.style}}"
-                                          style="display: block;">{{item.label}}</span>
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <div class="select2-statuses">
+                                        <div id="select2-statuses" name="select2-statuses" ui-select2="s2statuses"
+                                             ng-model="selected.value"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
