@@ -1,43 +1,62 @@
-reportNgApp.controller('TestAvgTimeChartCtrl', ["$scope", "$routeParams", "StatisticsService", function ($scope, $routeParams, StatisticsService) {
+reportNgApp.controller('TestAvgTimeChartCtrl', ["$scope", "$timeout", "$routeParams", "StatisticsService", function ($scope, $timeout, $routeParams, StatisticsService) {
+
+    var categoryData = [];
+    var valueData = [];
+
+    var initChart = function() {
+        var testAvgTimeChartOption = {
+            tooltip : {
+                trigger: 'item',
+                formatter: "Time ranges {b}: Number of tests {c}",
+            },
+            toolbox: {
+                    show : true,
+                    color: ['#555', '#555'],
+                    feature : {
+                        restore : {show: true, title: "Refresh"},
+                        saveAsImage : {show: true, title: "Save image"}
+                    }
+            },
+            calculable : false,
+            color: ['#f4ac28'],
+            xAxis : [
+                {
+                    type : 'value',
+                    boundaryGap : [0, 1],
+                    name: 'Number of \ntests'
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'category',
+                    data : categoryData,
+                    name : 'Time range'
+                }
+            ],
+            series : [
+                {
+                    type:'bar',
+                    data:valueData
+                }
+            ]
+        };
+
+        $timeout(function(){
+            var testAvgTimeChartChart = echarts.init(document.getElementById('TestAvgTimeChartCtrlId'));
+            testAvgTimeChartChart.setOption(testAvgTimeChartOption );
+        }, 100);
+    };
 
     var init = function () {
         StatisticsService.getStatistics($routeParams.executionId, function (response) {
             var testExecutionTime = response.testExecutionTime;
 
-            var avgArray = [];
-            var labelsArray = [];
             for(var i = 0; i < testExecutionTime.ranges.length; i++) {
                 var range = testExecutionTime.ranges[i];
-                avgArray.push([range.value, i])
-                labelsArray.push([i, ''+ range.leftRange +'-' + range.rightRange + ' [ms]']);
+                valueData.push(range.value);
+                categoryData.push(''+ range.leftRange +'-' + range.rightRange + ' [ms]');
             }
-
-            $scope.testAvgTimeChartData =
-                [ avgArray ];
-
-            $scope.testAvgTimeChartOptions = {
-                bars: {show: true, align: 'center', barWidth: 0.5, horizontal: true},
-                xaxis: {
-                    show: true,
-                    tickLength: 1,
-                    tickDecimals: 0
-                },
-                yaxis: {
-                    ticks: labelsArray
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: true
-                },
-                legend: {
-                    noColumns: 1,
-                    container: "#testAvgTimeChartLegend"
-                },
-                tooltip: true,
-                tooltipOpts: {
-                    content: "Time range [%y], number of tests: %x"
-                }
-            };
+            initChart();
         });
     };
 

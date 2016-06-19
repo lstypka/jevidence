@@ -1,63 +1,60 @@
-reportNgApp.controller('ResultInPercentageChartCtrl', ['$scope', '$routeParams', 'StatisticsService', function ($scope, $routeParams, StatisticsService) {
+reportNgApp.controller('ResultInPercentageChartCtrl', ['$scope', '$timeout', '$routeParams', 'StatisticsService', function ($scope, $timeout, $routeParams, StatisticsService) {
+
+    var resultsInPercentageLegendData = [];
+    var resultsInPercentagePieData = [];
+
+    var initChart = function() {
+           var resultsInPercentageOption = {
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{b}: {c}%",
+                },
+                toolbox: {
+                        show : true,
+                        color: ['#555', '#555'],
+                        feature : {
+                            restore : {show: true, title: "Refresh"},
+                            saveAsImage : {show: true, title: "Save image"}
+                        }
+                },
+                legend: {
+                    orient : 'horizontal',
+                    y: 'bottom',
+                    data: resultsInPercentageLegendData
+                },
+                calculable : true,
+                color: ["#27C24C", "#b5302c", "#F05050", "#23b7e5"],
+                series : [
+                    {
+                        type:'pie',
+                        radius : '70%',
+                        center: ['50%', '50%'],
+                        data: resultsInPercentagePieData
+                    }
+                ]
+            };
+
+           $timeout(function(){
+                var TestResultInPercentageChartId = echarts.init(document.getElementById('TestResultInPercentageChartId'));
+                TestResultInPercentageChartId.setOption(resultsInPercentageOption);
+            }, 200);
+        };
 
     var init = function () {
         StatisticsService.getStatistics($routeParams.executionId, function (response) {
             var testsResultsInPercentage = response.testsResultsInPercentage;
-            $scope.resultsInPercentageChartData = [
-                {
-                    label: "Passed",
-                    data: testsResultsInPercentage.success
-                },
-                {
-                    label: "Error",
-                    data: testsResultsInPercentage.error
-                },
-                {
-                    label: "Failed",
-                    data: testsResultsInPercentage.failed
-                },
-                {
-                    label: "Skipped",
-                    data: testsResultsInPercentage.skipped
-                }
-            ];
+            resultsInPercentageLegendData = ["Passed", "Error", "Failed", "Skipped"];
+            resultsInPercentagePieData = [
+                        {value: testsResultsInPercentage.success, name: resultsInPercentageLegendData[0]},
+                        {value: testsResultsInPercentage.error, name: resultsInPercentageLegendData[1]},
+                        {value: testsResultsInPercentage.failed, name: resultsInPercentageLegendData[2]},
+                        {value: testsResultsInPercentage.skipped, name: resultsInPercentageLegendData[3]},
+                       ];
+              initChart();
         });
+
     };
 
     init();
-
-    $scope.resultsInPercentageChartOptions = {
-        series: {
-            pie: {
-                show: true,
-                label: {
-                    show: true,
-                    radius: 3 / 4,
-                    background: {
-                        opacity: 0.9,
-                        color: '#FFF'
-                    }
-                }
-            }
-        },
-        colors: ["#27C24C", "#b5302c", "#F05050", "#23b7e5"],
-        grid: {
-            hoverable: true
-        },
-        legend: {
-            noColumns: 1,
-            container: "#resultInPercentageChartLegend"
-        },
-        tooltip: true,
-        tooltipOpts: {
-            content: "%s %p.0%",
-            shifts: {
-                x: 20,
-                y: 0
-            },
-            style: "border: 1px solid;",
-            defaultTheme: true
-        }
-    };
 
 }]);
