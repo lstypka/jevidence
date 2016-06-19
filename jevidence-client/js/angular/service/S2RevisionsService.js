@@ -55,7 +55,7 @@ reportNgApp.service('S2RevisionsService', ["RecordsService", function (RecordsSe
                   });
            },
            formatResult: function (item) {
-                  return item ? '<div><b>Execution: #' + item.id + '</b><span class="label ' + getStatusCss(item.id) + '" style="float: right;">' + getStatus(item.id) + '</span><br/>Started at: '+getStartedTimeForExecution(item.id)+'</div><hr style="margin-top: 0px; margin-bottom: 0px; border-color: #ccc;"/>': '';
+                  return item ? '<div><b>Execution: #' + item.id + '</b><span class="label ' + getStatusCss(item.id) + '" style="float: right; width: 60px;">' + getStatus(item.id) + '</span><br/>Started at: '+getStartedTimeForExecution(item.id)+'</div><hr style="margin-top: 2px; margin-bottom: 10px; border-color: #ccc;"/>': '';
            },
            formatSelection: function (item) {
                 //  return '<b>#'+item.text+'</b>';

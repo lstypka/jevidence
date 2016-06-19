@@ -3,6 +3,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
 
         $scope.selectedRevisions = {first: {id : null, text : null}, second: {id : null, text : null}};
         $scope.s2revisions = S2RevisionsService;
+        $scope.threshold = {value : 0, type: 'milliseconds'};
 
         var timeDifferenceData = [];
         var xlabels = [];
@@ -20,6 +21,13 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         $scope.testsPerformanceChartData = [
             {label: "Time difference", data: timeDifferenceData}
         ];
+
+        $scope.calculatePercentageDifference = function(test) {
+            if(test.currentDuration > test.previousDuration) {
+                return "+" + (Math.round(((test.currentDuration / test.previousDuration)*100)) - 100);
+            }
+            return "-" + (Math.round(((test.previousDuration / test.currentDuration )*100)) - 100);
+        };
 
         var findTestName = function (index) {
             return $scope.intersection.length - 1 >= index ? $scope.intersection[$scope.intersection.length - 1 - index].name : "0";
@@ -145,14 +153,40 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             return intersection;
         };
 
+        var thresholdFilter = function(intersection) {
+            for (var i = intersection.length - 1; i >= 0; i--) {
+                if($scope.threshold.type === 'milliseconds') {
+                    if(Math.abs(intersection[i].difference) < Math.abs($scope.threshold.value)) {
+                        intersection.splice(i, 1);
+                    }
+                }
+                if($scope.threshold.type === 'seconds') {
+                    if(Math.abs(intersection[i].difference) < Math.abs($scope.threshold.value * 1000)) {
+                        intersection.splice(i, 1);
+                    }
+                }
+                if($scope.threshold.type === 'percentage') {
+                    var percentageDifference = parseInt($scope.calculatePercentageDifference(intersection[i]));
+                     if(Math.abs(percentageDifference) < Math.abs($scope.threshold.value)) {
+                        window.console.log("percentageDifference" + intersection[i].currentDuration + " / "+ intersection[i].previousDuration, percentageDifference);
+                        intersection.splice(i, 1);
+                     }
+                }
+            }
+        };
 
         var executionComparator = function (currentExecution, previousExecution) {
             var currentExecutionSet = createSetsOfTests(currentExecution);
             var previousExecutionSet = createSetsOfTests(previousExecution);
             var intersection = findIntersection(currentExecutionSet, previousExecutionSet);
             sortByTimeDifference(intersection);
+            thresholdFilter(intersection);
             generateCharts(intersection);
             return intersection;
+        };
+
+        $scope.thresholdChanged = function() {
+           refreshChart();
         };
 
         $scope.stringify = function (value) {
@@ -164,6 +198,10 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         };
 
         $scope.changedRevision = function () {
+            refreshChart();
+        };
+
+        var refreshChart = function() {
             if (parseInt($scope.selectedRevisions.first.id) > parseInt($scope.selectedRevisions.second.id)) {
                 $scope.incorrectRevisions = false;
                 $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first.id;
@@ -178,6 +216,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             } else {
                 $scope.incorrectRevisions = true;
             }
+            $scope.$emit('REFRESH_TOOLTIPS', { });
         };
 
         var init = function () {

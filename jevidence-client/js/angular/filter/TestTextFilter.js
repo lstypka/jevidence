@@ -1,4 +1,4 @@
-reportNgApp.filter('testTextFilter', function () {
+reportNgApp.filter('testTextFilter', ['$rootScope', function ($rootScope) {
         return function (listOfTests, textSearch) {
             if(!listOfTests) {
                 return listOfTests;
@@ -27,7 +27,9 @@ reportNgApp.filter('testTextFilter', function () {
                     }
                 }
             }
+            window.console.log("REFRESH ");
+            $rootScope.$emit('REFRESH_TOOLTIPS', { });
             return filteredList;
         }
-    }
+    }]
 );

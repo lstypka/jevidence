@@ -10,7 +10,7 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
         };
         var init = function () {
             RecordsService.getRecords(function (records) {
-               // think about getting records only one, in the rootCtrl
+               // think about getting records only once, in the rootCtrl
 
             }, function(data, status, headers, config) {
                 window.console.log("ERROR!!! ", data, status, headers, config);

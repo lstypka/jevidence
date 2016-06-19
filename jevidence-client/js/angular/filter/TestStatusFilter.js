@@ -1,4 +1,4 @@
-reportNgApp.filter('testStatusFilter', function () {
+reportNgApp.filter('testStatusFilter', ['$rootScope', function ($rootScope) {
         return function (listOfTests, status, allowedStatuses) {
             if(!status) {
                 return listOfTests;
@@ -30,7 +30,9 @@ reportNgApp.filter('testStatusFilter', function () {
                     filteredList.push(testClass);
                 }
             }
+            window.console.log("REFRESH ");
+            $rootScope.$emit('REFRESH_TOOLTIPS', { });
             return filteredList;
         }
-    }
+    }]
 );

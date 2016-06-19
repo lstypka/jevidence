@@ -681,6 +681,10 @@ ul.task-list {
     margin-top: 5px;
 }
 
+.select2-results .select2-result-label {
+   padding: 1px;
+}
+
 .select2-revisions-dropdown {
    width: 250px !important;
 }

@@ -1004,7 +1004,7 @@
                         </div>
                     </section>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-4">
                     <section class="" style="border: 1px solid #eee;" ng-if="incorrectRevisions">
                         <div class="alert alert-warning">
                             <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -1013,6 +1013,28 @@
                         </div>
                     </section>
                 </div>
+                <div class="col-md-4">
+                    <section class="panel" style="border: 1px solid #eee;">
+                        <div class="panel-body in">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span><b>Threshold</b></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" min="0" ng-model="threshold.value" ng-change="thresholdChanged()" class="form-control" style="height: 24px; font-size: 12px; padding: 2px;">
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="form-control" ng-model="threshold.type" ng-change="thresholdChanged()" style="height: 24px; font-size: 12px; padding: 0px;">
+                                        <option value="milliseconds">Milliseconds [ms]</option>
+                                        <option value="seconds">Seconds [s]</option>
+                                        <option value="percentage">Percentage [%]</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
             </div>
 
 
@@ -1052,8 +1074,8 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 70%;">Test</th>
-                                        <th style="width: 10%;">Execution #{{selectedRevisions.firstCorrect}}</th>
                                         <th style="width: 10%;">Execution #{{selectedRevisions.secondCorrect}}</th>
+                                        <th style="width: 10%;">Execution #{{selectedRevisions.firstCorrect}}</th>
                                         <th style="width: 10%;">Difference</th>
                                     </tr>
                                     </thead>
@@ -1062,20 +1084,10 @@
                                         <td>
                                             <a ng-href="#/execution/{{selectedRevisions.firstCorrect}}/result?testname={{test.name}}&params={{stringify(test.params)}}"><span style="width: 100%; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{test.name}}</span></a>
                                         </td>
-                                        <!--          <td>
-                                                      <div>
-                                          <span data-ng-repeat="(paramKey, paramValue) in test.params"
-                                                class="label-test-param" style="background-color: white; margin-left: 5px;">{{paramKey}} : {{paramValue}}</span>
-                                                      </div>
-                                                  </td>-->
-                                        <td>   <span class="label label-block"
-                                                     ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
-                                                        'label-test-failed' : test.currentStatus === 'FAILED',
-                                                        'label-test-error' : test.currentStatus === 'ERROR',
-                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
-                                    {{test.currentStatus}}
-                                </span></td>
-                                        <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" class="label label-block"
+
+                                        <td>   <span ng-if="test.previousStatus !== 'UNKNOWN'" style="cursor: default;"  class="label label-block"
+                                                     data-toggle="tooltip" data-placement="bottom"
+                                                     title="Duration: {{test.previousDuration}}"
                                                      ng-class="{'label-test-success' : test.previousStatus === 'SUCCESS',
                                                         'label-test-failed' : test.previousStatus === 'FAILED',
                                                         'label-test-error' : test.previousStatus === 'ERROR',
@@ -1085,7 +1097,15 @@
                                     <span ng-if="test.previousStatus === 'UNKNOWN'"
                                           class="label label-block label-default">Didn't exist</span>
                                         </td>
-                                        <td><b><span style="float: right;"
+                                        <td>   <span class="label label-block" style="cursor: default;" data-toggle="tooltip" data-placement="bottom"
+                                                     title="Duration: {{test.currentDuration}}"
+                                                     ng-class="{'label-test-success' : test.currentStatus === 'SUCCESS',
+                                                        'label-test-failed' : test.currentStatus === 'FAILED',
+                                                        'label-test-error' : test.currentStatus === 'ERROR',
+                                                        'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
+                                    {{test.currentStatus}}
+                                </span></td>
+                                        <td><b><span style="float: right; cursor: default;"  data-toggle="tooltip" data-placement="bottom" title="{{calculatePercentageDifference(test)}}%"
                                                      ng-class="{'green-font' : (test.currentDuration - test.previousDuration < 0), 'red-font' : (test.currentDuration - test.previousDuration > 0)}">{{formatResult(test.currentDuration - test.previousDuration)}} ms</span></b>
                                         </td>
                                     </tr>
