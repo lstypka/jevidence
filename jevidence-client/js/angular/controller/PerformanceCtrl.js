@@ -6,21 +6,102 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         $scope.threshold = {value : 0, type: 'milliseconds'};
 
         var timeDifferenceData = [];
+        var performanceProfit = [];
+        var performanceLoss = [];
         var xlabels = [];
+        var testNames = [];
+
+     var initChart = function() {
+        var testsPerformanceChartOption = {
+                tooltip : {
+                    trigger: 'axis',
+                    formatter: function(a, b, c, d) {
+                        var id = parseInt(b.substring(5));
+                        window.console.log("XLABLES", id);
+                        return testNames[id];
+                    }
+                },
+                legend: {
+                    data : ['Performance profit', 'Performance loss']
+                },
+
+                toolbox: {
+                    show : true,
+                    color: ['#555', '#555'],
+                    feature : {
+                        restore : {show: true, title: "Refresh"},
+                        saveAsImage : {show: true, title: "Save image"}
+                    }
+                },
+                calculable : false,
+                color: ["#47A447", "#C1232B"],
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : xlabels,
+                        name: 'Tests'
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name: 'Profit'
+                    }
+                ],
+                series : [
+                    {
+                        name:'Performance loss',
+                        type:'line',
+                        stack: 'Performance loss',
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data:performanceLoss
+                    },
+                    {
+                        name:'Performance profit',
+                        type:'line',
+                        stack: 'Performance profit',
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data:performanceProfit
+                    }
+                ]
+            };
+
+        $timeout(function(){
+            var testsPerformanceChart = echarts.init(document.getElementById('testsPerformanceChart'));
+            testsPerformanceChart.setOption(testsPerformanceChartOption );
+        }, 100);
+    };
 
         var generateCharts = function (intersection) {
-
-            timeDifferenceData.splice(0, timeDifferenceData.length);
+            performanceProfit.splice(0, performanceProfit.length);
+            performanceLoss.splice(0, performanceLoss.length);
             xlabels.splice(0, xlabels.length);
+            testNames.splice(0, testNames.length);
             for (var i = 0; i < intersection.length; i++) {
-                timeDifferenceData.push([intersection.length - 1 - i, intersection[i].difference]);
                 xlabels.push((i));
+                testNames.push(intersection[i].name);
+                if(intersection[i].difference > 0) {
+                    performanceLoss.push((-1)*intersection[i].difference);
+                    performanceProfit.push(0);
+                } else {
+                    performanceProfit.push((-1)*intersection[i].difference);
+                    performanceLoss.push(0);
+                }
             }
+            initChart();
         };
 
         $scope.testsPerformanceChartData = [
             {label: "Time difference", data: timeDifferenceData}
         ];
+
+        $scope.formantPerformancePercentageProfit = function(test) {
+            if(test.currentDuration > test.previousDuration) {
+                return "-" + (Math.round(((test.currentDuration / test.previousDuration)*100)) - 100);
+            }
+            return "+" + (Math.round(((test.previousDuration / test.currentDuration )*100)) - 100);
+        };
 
         $scope.calculatePercentageDifference = function(test) {
             if(test.currentDuration > test.previousDuration) {
@@ -194,7 +275,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         };
 
         $scope.formatResult = function (result) {
-            return result > 0 ? '+' + result : result;
+            return result > 0 ? '-' + result : '+' + ((-1)* result);
         };
 
         $scope.changedRevision = function () {
@@ -211,6 +292,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
                     ExecutionService.getExecution($scope.selectedRevisions.second.id, function (previousExecution) {
                         $scope.intersection = executionComparator(currentExecution, previousExecution);
                         $scope.calculating = false;
+                        initChart();
                     });
                 });
             } else {

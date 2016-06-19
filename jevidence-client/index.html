@@ -207,12 +207,6 @@
 <script src="js/lib/moment/moment.js" type="text/javascript"></script>
 <script src="js/lib/fullcalendar.js" type="text/javascript"></script>
 <script src="js/lib/calendar.js" type="text/javascript"></script>
-<script src="js/lib/flot/jquery.flot.min.js" type="text/javascript"></script>
-<script src="js/lib/flot/jquery.flot.tooltip.min.js" type="text/javascript"></script>
-<script src="js/lib/flot/jquery.flot.axislabel.js" type="text/javascript"></script>
-<script src="js/lib/flot/jquery.flot.threshold.min.js" type="text/javascript"></script>
-<script src="js/lib/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
-<script src="js/lib/flot/angular.flot.js" type="text/javascript"></script>
 <script src="js/lib/echarts/echarts-all.js" type="text/javascript"></script>
 <script src="js/lib/select2.js" type="text/javascript"></script>
 <script src="js/lib/select2ui.js" type="text/javascript"></script>
@@ -1045,9 +1039,7 @@
                         <div class="panel-body in" id="testsPerformanceChartDiv">
                             <div class="col-md-12">
                                 <div style="border: 1px solid #eee;">
-                                    <flot id="testsPerformanceChart" dataset="testsPerformanceChartData"
-                                          options="testsPerformanceChartOptions" height="300px">
-                                    </flot>
+                                    <div id="testsPerformanceChart" style="min-height: 350px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -1071,7 +1063,7 @@
                                         <th style="width: 70%;">Test</th>
                                         <th style="width: 10%;">Execution #{{selectedRevisions.secondCorrect}}</th>
                                         <th style="width: 10%;">Execution #{{selectedRevisions.firstCorrect}}</th>
-                                        <th style="width: 10%;">Difference</th>
+                                        <th style="width: 10%; text-align: right;">Profit</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -1100,7 +1092,7 @@
                                                         'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
                                     {{test.currentStatus}}
                                 </span></td>
-                                        <td><b><span style="float: right; cursor: default;"  data-toggle="tooltip" data-placement="bottom" title="{{calculatePercentageDifference(test)}}%"
+                                        <td><b><span style="float: right; cursor: default;"  data-toggle="tooltip" data-placement="bottom" title="{{formantPerformancePercentageProfit(test)}}%"
                                                      ng-class="{'green-font' : (test.currentDuration - test.previousDuration < 0), 'red-font' : (test.currentDuration - test.previousDuration > 0)}">{{formatResult(test.currentDuration - test.previousDuration)}} ms</span></b>
                                         </td>
                                     </tr>
@@ -1161,10 +1153,6 @@
                              ng-controller="TestsAvgTimeTrendPerformanceChartCtrl">
                             <div class="col-md-12">
                                 <div style="border: 1px solid #eee;">
-                                    <!--<flot id="testsAvgTimeTrendPerformanceChart"
-                                          dataset="testsAvgTimeTrendPerformanceChartData"
-                                          options="testsAvgTimeTrendPerformanceChartOptions" height="300px">
-                                    </flot>-->
                                     <div id="testsAvgTimeTrendPerformanceChart" style="min-height: 350px;"></div>
                                 </div>
                             </div>
