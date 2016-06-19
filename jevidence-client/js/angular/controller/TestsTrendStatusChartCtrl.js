@@ -26,19 +26,19 @@ reportNgApp.controller('TestsTrendStatusChartCtrl', ["$scope", "$timeout", "Reco
                     }
                 },
                 calculable : false,
-                backgroundColor: ['#EDF5FF', '#008000'],
-                /*backgroundColor: ["#008000", "#d9534f", "#8b0000", "#5bc0de"],*/
                 color: ["#008000", "#d9534f", "#8b0000", "#5bc0de"],
                 xAxis : [
                     {
                         type : 'category',
                         boundaryGap : false,
-                        data : executions
+                        data : executions,
+                        name: 'Execution id'
                     }
                 ],
                 yAxis : [
                     {
-                        type : 'value'
+                        type : 'value',
+                        name : 'Number of tests'
                     }
                 ],
                 series : [

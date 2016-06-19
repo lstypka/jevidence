@@ -1,24 +1,76 @@
 reportNgApp.controller('TestsAvgTimeTrendPerformanceChartCtrl', ["$scope", "$timeout", "RecordsService", function ($scope, $timeout, RecordsService) {
 
-    var xlabels = [];
+    var executions = [];
     var avgExecutionTime = [];
+
+    var initChart = function() {
+        var testsAvgTimeTrendPerformanceChartOption = {
+                tooltip : {
+                    trigger: 'axis',
+                    formatter: "Execution({b}) average test time: {c}ms",
+                },
+                legend: {
+                    data : ['Average test time']
+                },
+
+                toolbox: {
+                    show : true,
+                    color: ['#555', '#555'],
+                    feature : {
+                        restore : {show: true, title: "Refresh"},
+                        saveAsImage : {show: true, title: "Save image"}
+                    }
+                },
+                calculable : false,
+                color: ["#008ACD"],
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : executions,
+                        name: 'Execution id'
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name: 'Avg Time [ms]'
+                    }
+                ],
+                series : [
+                    {
+                        name:'Average test time',
+                        type:'line',
+                        stack: 'Average test time',
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data:avgExecutionTime
+                    }
+                ]
+            };
+
+        $timeout(function(){
+            var testsAvgTimeTrendPerformanceChart = echarts.init(document.getElementById('testsAvgTimeTrendPerformanceChart'));
+            testsAvgTimeTrendPerformanceChart.setOption(testsAvgTimeTrendPerformanceChartOption );
+        }, 100);
+    };
 
     var init = function () {
         RecordsService.getRecords(function (records) {
             for(var i = records.length-1; i >=0 ; i--) {
                 if(records.length === 1) {
-                    xlabels.push("#0");
-                    avgExecutionTime.push([0, 0]);
+                    executions.push("#0");
+                    avgExecutionTime.push(0);
 
-                    xlabels.push("#"+records[i].id);
+                    executions.push("#"+records[i].id);
                     var avg = records[i].duration / (records[i].success + records[i].skipped + records[i].failed + records[i].error);
-                    avgExecutionTime.push([records.length - i, avg]);
+                    avgExecutionTime.push(avg);
                 } else {
-                    xlabels.push("#"+records[i].id);
+                    executions.push("#"+records[i].id);
                     var avg = records[i].duration / (records[i].success + records[i].skipped + records[i].failed + records[i].error);
-                    avgExecutionTime.push([records.length - i - 1, avg]);
+                    avgExecutionTime.push(avg);
                 }
             }
+            initChart();
         }, function(response) {
             $scope.noRecords;
         });

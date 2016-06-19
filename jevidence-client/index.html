@@ -1136,13 +1136,10 @@
 
                             <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
                         </header>
-                        <div class="panel-body in" id="testsTrendPerformanceChartDiv"
-                             ng-controller="TestsTrendPerformanceChartCtrl">
+                        <div class="panel-body in" id="testsTrendPerformanceChartDiv" ng-controller="TestsTrendPerformanceChartCtrl">
                             <div class="col-md-12">
                                 <div style="border: 1px solid #eee;">
-                                    <flot id="testsTrendPerformanceChart" dataset="testsTrendPerformanceChartData"
-                                          options="testsTrendPerformanceChartOptions" height="300px">
-                                    </flot>
+                                    <div id="testsTrendPerformanceChart" style="min-height: 350px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -1164,10 +1161,11 @@
                              ng-controller="TestsAvgTimeTrendPerformanceChartCtrl">
                             <div class="col-md-12">
                                 <div style="border: 1px solid #eee;">
-                                    <flot id="testsAvgTimeTrendPerformanceChart"
+                                    <!--<flot id="testsAvgTimeTrendPerformanceChart"
                                           dataset="testsAvgTimeTrendPerformanceChartData"
                                           options="testsAvgTimeTrendPerformanceChartOptions" height="300px">
-                                    </flot>
+                                    </flot>-->
+                                    <div id="testsAvgTimeTrendPerformanceChart" style="min-height: 350px;"></div>
                                 </div>
                             </div>
                         </div>
