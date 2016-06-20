@@ -1038,8 +1038,12 @@
                         </header>
                         <div class="panel-body in" id="testsPerformanceChartDiv">
                             <div class="col-md-12">
-                                <div style="border: 1px solid #eee;">
+                                <div style="border: 1px solid #eee;" ng-show="!!intersection.length">
                                     <div id="testsPerformanceChart" style="min-height: 350px;"></div>
+                                </div>
+                                <div class="alert alert-warning" ng-show="!!!intersection.length">
+                                    <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Warning!</strong> No results to show
                                 </div>
                             </div>
                         </div>
@@ -1092,7 +1096,7 @@
                                                         'label-test-skipped' : test.currentStatus === 'SKIPPED'}">
                                     {{test.currentStatus}}
                                 </span></td>
-                                        <td><b><span style="float: right; cursor: default;"  data-toggle="tooltip" data-placement="bottom" title="{{formantPerformancePercentageProfit(test)}}%"
+                                        <td><b><span style="float: right; cursor: default;"  data-toggle="tooltip" data-placement="bottom" title="{{formatPerformancePercentageProfit(test)}}%"
                                                      ng-class="{'green-font' : (test.currentDuration - test.previousDuration < 0), 'red-font' : (test.currentDuration - test.previousDuration > 0)}">{{formatResult(test.currentDuration - test.previousDuration)}} ms</span></b>
                                         </td>
                                     </tr>

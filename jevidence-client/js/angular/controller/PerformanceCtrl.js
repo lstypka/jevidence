@@ -17,7 +17,6 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
                     trigger: 'axis',
                     formatter: function(a, b, c, d) {
                         var id = parseInt(b.substring(5));
-                        window.console.log("XLABLES", id);
                         return testNames[id];
                     }
                 },
@@ -96,15 +95,22 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             {label: "Time difference", data: timeDifferenceData}
         ];
 
-        $scope.formantPerformancePercentageProfit = function(test) {
-            if(test.currentDuration > test.previousDuration) {
-                return "-" + (Math.round(((test.currentDuration / test.previousDuration)*100)) - 100);
+        $scope.formatPerformancePercentageProfit = function(test) {
+            if(test.previousDuration === 0 || test.currentDuration === 0) {
+                return 0;
+            }
+            if(test.currentDuration >= test.previousDuration) {
+                var result = (Math.round(((test.currentDuration / test.previousDuration)*100)) - 100);
+                return result > 0 ? "-" + result : 0;
             }
             return "+" + (Math.round(((test.previousDuration / test.currentDuration )*100)) - 100);
         };
 
         $scope.calculatePercentageDifference = function(test) {
-            if(test.currentDuration > test.previousDuration) {
+            if(test.previousDuration === 0 || test.currentDuration === 0) {
+                return 0;
+            }
+            if(test.currentDuration >= test.previousDuration) {
                 return "+" + (Math.round(((test.currentDuration / test.previousDuration)*100)) - 100);
             }
             return "-" + (Math.round(((test.previousDuration / test.currentDuration )*100)) - 100);
@@ -112,56 +118,6 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
 
         var findTestName = function (index) {
             return $scope.intersection.length - 1 >= index ? $scope.intersection[$scope.intersection.length - 1 - index].name : "0";
-        };
-
-        $scope.testsPerformanceChartOptions = {
-            series: {
-                stack: false,
-                lines: {
-                    show: true,
-                    fill: true,
-                    steps: true
-                },
-                color: "rgb(200, 20, 30)",
-                threshold: {
-                    below: 0,
-                    color: "rgb(30, 180, 20)"
-                }
-            },
-            xaxis: {
-                tickFormatter: function (val, axis) {
-                    return xlabels[val] ? xlabels[val] : '';
-                },
-                color: "black",
-                axisLabel: "Tests",
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial'
-            },
-            yaxis: {
-                color: "black",
-                axisLabel: "Time difference",
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial'
-            },
-            grid: {
-                hoverable: true,
-                borderWidth: 2,
-                backgroundColor: {colors: ["#EDF5FF", "#ffffff"]}
-            },
-            legend: {
-                show: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: function (a, index, value) {
-                    return '[' + findTestName(index) + '] Time difference: ' + (value > 0 ? '+' : '') + value + ' ms';
-                },
-                shifts: {
-                    x: 20,
-                    y: 0
-                }
-            }
         };
 
         var prepareRevisions = function (records) {
@@ -174,6 +130,9 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             if ($scope.revisions.length > 1) {
                 $scope.selectedRevisions.second = {id : $scope.revisions[1], text : $scope.revisions[1]};
                 $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second.id;
+            } else {
+                $scope.selectedRevisions.second = {id : $scope.revisions[0], text: $scope.revisions[0]};
+                $scope.selectedRevisions.secondCorrect =  $scope.selectedRevisions.first.id;
             }
         };
 
@@ -249,7 +208,6 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
                 if($scope.threshold.type === 'percentage') {
                     var percentageDifference = parseInt($scope.calculatePercentageDifference(intersection[i]));
                      if(Math.abs(percentageDifference) < Math.abs($scope.threshold.value)) {
-                        window.console.log("percentageDifference" + intersection[i].currentDuration + " / "+ intersection[i].previousDuration, percentageDifference);
                         intersection.splice(i, 1);
                      }
                 }
@@ -258,6 +216,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
 
         var executionComparator = function (currentExecution, previousExecution) {
             var currentExecutionSet = createSetsOfTests(currentExecution);
+            previousExecution = previousExecution ? previousExecution : currentExecution;
             var previousExecutionSet = createSetsOfTests(previousExecution);
             var intersection = findIntersection(currentExecutionSet, previousExecutionSet);
             sortByTimeDifference(intersection);
@@ -283,7 +242,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         };
 
         var refreshChart = function() {
-            if (parseInt($scope.selectedRevisions.first.id) > parseInt($scope.selectedRevisions.second.id)) {
+            if (parseInt($scope.selectedRevisions.first.id) >= parseInt($scope.selectedRevisions.second.id)) {
                 $scope.incorrectRevisions = false;
                 $scope.selectedRevisions.firstCorrect = $scope.selectedRevisions.first.id;
                 $scope.selectedRevisions.secondCorrect = $scope.selectedRevisions.second.id;
@@ -302,6 +261,8 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         };
 
         var init = function () {
+            $scope.threshold.type = 'percentage';
+            $scope.threshold.value = 25;
             RecordsService.getRecords(function (records) {
                 if (!records || records.length === 0) {
                     // no executions
@@ -314,9 +275,9 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
                         $scope.calculating = false;
                     });
                 } else {
-                    ExecutionService.getExecution(records[0].id, function (currenctExecution) {
+                    ExecutionService.getExecution(records[0].id, function (currentExecution) {
                         ExecutionService.getExecution(records[1].id, function (previousExecution) {
-                            $scope.intersection = executionComparator(currenctExecution, previousExecution);
+                            $scope.intersection = executionComparator(currentExecution, previousExecution);
                             $scope.calculating = false;
                         });
                     });
