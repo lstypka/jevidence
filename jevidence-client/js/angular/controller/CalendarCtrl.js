@@ -8,7 +8,7 @@ reportNgApp.controller('CalendarCtrl', ["$scope", "$timeout", "SettingsService",
                 for (var i = 0; i < records.length; i++) {
                     $scope.events.push({
                         tooltip: 'Started at ' + createFullDate(records[i].dirName) + '\nStatus: ' + calculateStatus(records[i]) + '\nPass Percentage: ' + records[i].percentage + "%\nPassed: " + records[i].success + "\nFailed: " + records[i].failed + "\nErrors: " + records[i].error + "\nSkipped: " + records[i].skipped,
-                        title: 'Pass Percentage: ' + records[i].percentage + "%",
+                        title: '#' + records[i].id + ' Pass Percentage: ' + records[i].percentage + "%",
                         start: createDate(records[i].dirName),
                         color: calculateColor(records[i]),
                         executionId: records[i].id

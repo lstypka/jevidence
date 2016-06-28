@@ -27,7 +27,6 @@ reportNgApp.filter('testTextFilter', ['$rootScope', function ($rootScope) {
                     }
                 }
             }
-            window.console.log("REFRESH ");
             $rootScope.$emit('REFRESH_TOOLTIPS', { });
             return filteredList;
         }

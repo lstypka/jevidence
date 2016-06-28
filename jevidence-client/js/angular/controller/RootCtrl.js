@@ -23,6 +23,18 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
         $scope.$on('$routeChangeSuccess', function(next, current) {
           $('[data-toggle="tooltip"]').tooltip({container: 'body'});
           $('.select2-revisions .select2-results').slimScroll({alwaysVisible: true});
+          // update menu
+            $timeout(function() {
+                 var executions = $(".execution-menu");
+                 for(var i = 0; i < executions.length; i++) {
+                    var execution = $(executions[i]);
+                    var treeView = execution.children('.treeview-menu').first();
+                    if(execution.hasClass("active")) {
+                        treeView.css('display', 'block');
+                    } 
+                 }
+                 window.console.log("REFRESH");
+             }, 50);
          });
 
          $scope.$on('REFRESH_TOOLTIPS', function (event, args) {
