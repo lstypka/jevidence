@@ -34,7 +34,7 @@ import java.util.List;
 
 public class JUnitExecutionListener extends RunListener {
 
-    private List<TestResult> results = Lists.newArrayList();
+    private static List<TestResult> results = Lists.newArrayList();
 
     @Override
     public void testRunStarted(Description description) throws Exception {

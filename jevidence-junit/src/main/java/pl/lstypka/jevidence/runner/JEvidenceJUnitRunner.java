@@ -22,15 +22,14 @@ import pl.lstypka.jevidence.listener.JUnitExecutionListener;
 
 public class JEvidenceJUnitRunner extends BlockJUnit4ClassRunner {
 
-    private static JUnitExecutionListener jUnitExecutionListener = new JUnitExecutionListener();
+    private JUnitExecutionListener jUnitExecutionListener = new JUnitExecutionListener();
 
-    public JEvidenceJUnitRunner(Class<?> klass) throws InitializationError {
-        super(klass);
+    public JEvidenceJUnitRunner(Class<?> clazz) throws InitializationError {
+        super(clazz);
     }
 
     @Override
     public void run(RunNotifier notifier) {
-        notifier.removeListener(jUnitExecutionListener);
         notifier.addListener(jUnitExecutionListener);
         super.run(notifier);
     }
