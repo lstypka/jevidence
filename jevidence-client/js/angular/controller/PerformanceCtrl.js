@@ -72,6 +72,34 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         }, 100);
     };
 
+        var addFakeZeroValue = function() {
+            var anyLoss = false;
+            var anyProfit = false;
+            var breakIndex = -1;
+
+            for(var i = 0; i < performanceLoss.length; i++) {
+                if(performanceLoss[i] === 0) {
+                    anyLoss = true;
+                    breakIndex = i;
+                    break;
+                }
+            }
+
+            for(var i = 0; i < performanceProfit.length; i++) {
+                if(performanceProfit[i] === 0) {
+                    anyProfit = true;
+                    break;
+                }
+            }
+
+            if(anyProfit && anyLoss) {
+                performanceLoss.splice(breakIndex, 0, 0);
+                performanceProfit.splice(breakIndex, 0, 0);
+                xlabels.splice(breakIndex, 0, '');
+                testNames.splice(breakIndex, 0, '');
+            }
+        };
+
         var generateCharts = function (intersection) {
             performanceProfit.splice(0, performanceProfit.length);
             performanceLoss.splice(0, performanceLoss.length);
@@ -88,8 +116,11 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
                     performanceLoss.push(0);
                 }
             }
+            addFakeZeroValue();
             initChart();
         };
+
+
 
         $scope.testsPerformanceChartData = [
             {label: "Time difference", data: timeDifferenceData}
