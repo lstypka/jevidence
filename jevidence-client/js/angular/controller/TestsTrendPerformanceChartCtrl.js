@@ -1,74 +1,76 @@
 reportNgApp.controller('TestsTrendPerformanceChartCtrl', ["$scope", "$timeout", "RecordsService", function ($scope, $timeout, RecordsService) {
 
-    var xlabels = [];
+    var executions = [];
     var executionTime = [];
+
+  var initChart = function() {
+        var testsTrendPerformanceChartOption = {
+                tooltip : {
+                    trigger: 'axis',
+                    formatter: "Execution({b}) time: {c}ms",
+                },
+                legend: {
+                    data : ['Execution time']
+                },
+
+                toolbox: {
+                    show : true,
+                    color: ['#555', '#555'],
+                    feature : {
+                        restore : {show: true, title: "Refresh"},
+                        saveAsImage : {show: true, title: "Save image"}
+                    }
+                },
+                calculable : false,
+                color: ["#B6A2DE"],
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : executions,
+                        name: 'Execution id'
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        name: 'Time [ms]'
+                    }
+                ],
+                series : [
+                    {
+                        name:'Execution time',
+                        type:'line',
+                        stack: 'Execution time',
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data:executionTime
+                    }
+                ]
+            };
+
+        $timeout(function(){
+            var testsTrendPerformanceChart = echarts.init(document.getElementById('testsTrendPerformanceChart'));
+            testsTrendPerformanceChart.setOption(testsTrendPerformanceChartOption );
+        }, 100);
+    };
 
     var init = function () {
         RecordsService.getRecords(function (records) {
             for(var i = records.length-1; i >=0 ; i--) {
                 if(records.length === 1) {
-                    xlabels.push("#0");
-                    executionTime.push([0, 0]);
-                    xlabels.push("#"+records[i].id);
-                    executionTime.push([1, records[i].duration]);
+                    executions.push("#0");
+                    executionTime.push(0);
+                    executions.push("#"+records[i].id);
+                    executionTime.push(records[i].duration);
                 } else {
-                    xlabels.push("#"+records[i].id);
-                    executionTime.push([records.length - i - 1, records[i].duration]);
+                    executions.push("#"+records[i].id);
+                    executionTime.push(records[i].duration);
                 }
-
             }
-
+            initChart();
         }, function(response) {
             $scope.noRecords;
         });
-
-        $scope.testsTrendPerformanceChartData = [
-            {label: "Execution time", data: executionTime}
-        ];
-
-        $scope.testsTrendPerformanceChartOptions = {
-            series: {
-                stack: false,
-                lines: {
-                    show: true,
-                    fill: true,
-                    steps: false
-                }
-            },
-            xaxis: {
-                tickFormatter: function (val, axis) {
-                    return xlabels[val]? xlabels[val] : '' ;
-                },
-                color: "black",
-                axisLabel: "Execution",
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial'
-            },
-            yaxis: {
-                color: "black",
-                axisLabel: "Duration",
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Verdana, Arial'
-            },
-            colors: ["#008000"],
-            grid: {
-                hoverable: true,
-                borderWidth: 2,
-                backgroundColor: { colors: ["#EDF5FF", "#ffffff"] }
-            },
-            legend: {
-                show: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: "Execution(%x) duration: %y [ms]",
-                shifts: {
-                    x: 20,
-                    y: 0
-                }
-            }
-        };
     };
 
     init();

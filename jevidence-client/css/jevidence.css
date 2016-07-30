@@ -656,3 +656,63 @@ ul.task-list {
     font-size: 14px;
     font-weight: normal;
 }
+
+.tooltip-inner {
+    white-space:pre-wrap;
+}
+
+.select2-container .select2-choice {
+    padding: 0px;
+    height: 20px;
+}
+
+.select2-container .select2-choice div {
+    display: none;
+}
+
+.select2-container .select2-choice span {
+    margin: 0px;
+    font-size: 90%;
+    line-height: 1.5;
+}
+
+.select2-statuses .select2-container .select2-choice {
+    height: 24px;
+    margin-top: 5px;
+}
+
+.select2-results .select2-result-label {
+   padding: 1px;
+}
+
+.select2-revisions-dropdown {
+   width: 250px !important;
+}
+
+.s2statuses-choises {
+    height: 18px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  width: 350px;
+  left: 50%;
+  height: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #f9fafc;
+  border-top: 1px solid #ddd;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.slimScrollDiv {
+ height: 100% !important;
+}

@@ -68,7 +68,7 @@ public class Range
 
 	public boolean isMyRange(Long v)
 	{
-		boolean result = v >= leftRange && v < rightRange;
+		boolean result = leftRange == v || (v >= leftRange && v < rightRange);
 		return result;
 	}
 

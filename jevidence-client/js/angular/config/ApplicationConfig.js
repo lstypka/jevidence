@@ -1,4 +1,4 @@
-var reportNgApp = angular.module('reportNgApp', ['ui.select', 'ui.calendar', 'ui.bootstrap', 'ngSanitize', 'bootstrapLightbox', 'angular-flot', 'ngAnimate', 'ngRoute']);
+var reportNgApp = angular.module('reportNgApp', [ 'ui.select2', 'ui.calendar', 'ui.bootstrap', 'ngSanitize', 'bootstrapLightbox', 'ngAnimate', 'ngRoute']);
 
 reportNgApp.config(['$routeProvider',
     function ($routeProvider) {

@@ -33,6 +33,10 @@ public class Screenshot extends Trace {
         this(Level.SCREENSHOT, message, screenshot);
     }
 
+    public Screenshot(File screenshot) {
+        this(Level.SCREENSHOT, "", screenshot);
+    }
+
     public File getScreenshot() {
         return screenshot;
     }

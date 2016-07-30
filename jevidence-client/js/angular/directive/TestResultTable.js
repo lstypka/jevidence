@@ -1,5 +1,5 @@
-reportNgApp.directive('testsResultTable', [
-    function () {
+reportNgApp.directive('testsResultTable', ['S2StatusService',
+    function (S2StatusService) {
 
         return {
             restrict: 'E',
@@ -11,6 +11,8 @@ reportNgApp.directive('testsResultTable', [
             },
             templateUrl: 'view/testsResultTableTemplate.html',
             link: function (scope, element, attrs, ctrl, transclude) {
+
+                scope.s2statuses = S2StatusService;
 
                 if(scope.showSearchPanel === undefined) {
                     scope.showSearchPanel = true;
@@ -70,6 +72,8 @@ reportNgApp.directive('testsResultTable', [
                         row.expanded = true;
                     }
                 };
+
+                 scope.$emit('REFRESH_TOOLTIPS', { });
             }
         }
     }

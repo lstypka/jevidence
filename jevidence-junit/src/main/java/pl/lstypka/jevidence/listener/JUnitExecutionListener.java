@@ -34,7 +34,7 @@ import java.util.List;
 
 public class JUnitExecutionListener extends RunListener {
 
-    private List<TestResult> results = Lists.newArrayList();
+    private static List<TestResult> results = Lists.newArrayList();
 
     @Override
     public void testRunStarted(Description description) throws Exception {
@@ -133,5 +133,15 @@ public class JUnitExecutionListener extends RunListener {
         testResult.setThrowable(throwable);
         testResult.setStatus(status);
         return testResult;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof JUnitExecutionListener;
     }
 }

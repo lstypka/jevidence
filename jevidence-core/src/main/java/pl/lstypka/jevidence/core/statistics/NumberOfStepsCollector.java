@@ -50,13 +50,23 @@ public class NumberOfStepsCollector {
             }
         }
 
-        Integer delta = (maxValue - minValue) / NUMBER_OF_RANGES;
+        int numberOfRanges = NUMBER_OF_RANGES;
+        if(testsSteps.size() < NUMBER_OF_RANGES) {
+            numberOfRanges = testsSteps.size();
+        }
+        int delta = (maxValue - minValue) / numberOfRanges;
+        if(delta == 0) {
+           delta = 1;
+        }
         List<Range> ranges = Lists.newArrayList();
-        for(int i = 0; i < NUMBER_OF_RANGES; i++) {
+        for(int i = 0; i < numberOfRanges; i++) {
             Integer leftRange = minValue + (i* delta);
             Integer rightRange = minValue + ((i+1) * delta);
-            if(i == NUMBER_OF_RANGES -1) {
+            if(i == numberOfRanges -1) {
                 rightRange = maxValue+1;
+            }
+            if(i == 0) {
+                leftRange -= 1;
             }
             ranges.add(new Range(leftRange.longValue(), rightRange.longValue()));
         }

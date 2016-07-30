@@ -1,5 +1,45 @@
-reportNgApp.controller('TestAvgNumberOfStepsChartCtrl', ["$scope", "$routeParams", "StatisticsService",
-    function ($scope, $routeParams, StatisticsService) {
+reportNgApp.controller('TestAvgNumberOfStepsChartCtrl', ["$scope", "$timeout", "$routeParams", "StatisticsService",
+    function ($scope, $timeout, $routeParams, StatisticsService) {
+
+    var legendData = [];
+    var pieData = [];
+
+    var initChart = function() {
+       var testAvgNumberOfStepsChartOption = {
+            tooltip : {
+                trigger: 'item',
+                formatter: "{c}% of tests<br/>have {b} steps",
+            },
+            toolbox: {
+                    show : true,
+                    color: ['#555', '#555'],
+                    feature : {
+                        restore : {show: true, title: "Refresh"},
+                        saveAsImage : {show: true, title: "Save image"}
+                    }
+            },
+            legend: {
+                orient : 'horizontal',
+                y: 'bottom',
+                data: legendData
+            },
+            calculable : true,
+             color: ["#00CF0C", "#0C74CF", "#CFAD0E", "#930FCF", "#CF2A00", "#FFA500", "#FF9567"],
+            series : [
+                {
+                    type:'pie',
+                    radius : '70%',
+                    center: ['50%', '50%'],
+                    data: pieData
+                }
+            ]
+        };
+
+       $timeout(function(){
+            var testAvgNumberOfStepsChart = echarts.init(document.getElementById('TestAvgNumberOfStepsChartId'));
+            testAvgNumberOfStepsChart.setOption(testAvgNumberOfStepsChartOption );
+        }, 100);
+    };
 
     var init = function () {
         StatisticsService.getStatistics($routeParams.executionId, function (response) {
@@ -10,54 +50,17 @@ reportNgApp.controller('TestAvgNumberOfStepsChartCtrl', ["$scope", "$routeParams
                 sum += numberOfSteps.ranges[i].value;
             }
 
-            $scope.avgNumberOfStepsChartData = [];
             for(var i = 0; i < numberOfSteps.ranges.length; i++) {
                 var range = numberOfSteps.ranges[i];
                 range.value = (range.value / sum) * 100;
-                $scope.avgNumberOfStepsChartData.push({
-                    label : range.leftRange + "-" + range.rightRange,
-                    data: range.value
-                })
+                legendData.push(range.leftRange + "-" + range.rightRange);
+                pieData.push({value: Math.round(range.value), name : range.leftRange + "-" + range.rightRange});
             }
 
+            initChart();
         });
     };
 
     init();
-
-
-
-    $scope.avgNumberOfStepsChartOptions = {
-        series: {
-            pie: {
-                show: true,
-                label: {
-                    show: true,
-                    radius: 3 / 4,
-                    background: {
-                        opacity: 0.9,
-                        color: '#FFF'
-                    }
-                }
-            }
-        },
-        grid: {
-            hoverable: true
-        },
-        legend: {
-            noColumns: 1,
-            container: "#avgNumberOfStepsChartLegend"
-        },
-        colors: ["#00CF0C", "#0C74CF", "#CFAD0E", "#930FCF", "#CF2A00", "#FFA500", "#FF9567"],
-        tooltip: true,
-        tooltipOpts: {
-            content: "%p.0% percentage of tests have %s steps",
-            shifts: {
-                x: 20,
-                y: 0
-            },
-            defaultTheme: true
-        }
-    };
 
 }]);

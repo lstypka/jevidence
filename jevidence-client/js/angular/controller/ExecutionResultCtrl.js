@@ -9,6 +9,7 @@ reportNgApp.controller('ExecutionResultCtrl', ["$scope", "$routeParams", "$locat
 
     $scope.selectStatus = function (status) {
         $scope.selectedStatus = status;
+        $scope.$emit('REFRESH_TOOLTIPS', { });
     };
 
     var filterResults = function (execution) {
@@ -30,6 +31,7 @@ reportNgApp.controller('ExecutionResultCtrl', ["$scope", "$routeParams", "$locat
                 }
             }
         }
+
         return execution;
     };
 
