@@ -20,7 +20,7 @@ public class AddMathServiceTest extends AbstractTest {
         Integer result = mathService.sum(5, 3);
 
         // then
-        assertThat(result).isEqualTo(6);
+        assertThat(result).isEqualTo(8);
     }
 
 
@@ -32,6 +32,6 @@ public class AddMathServiceTest extends AbstractTest {
         Integer result = mathService.sum(11, mathService.sum(5, 3));
 
         // then
-        assertThat(result).isEqualTo(18);
+        assertThat(result).isEqualTo(19);
     }
 }

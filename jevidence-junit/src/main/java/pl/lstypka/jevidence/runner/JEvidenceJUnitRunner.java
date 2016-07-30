@@ -30,7 +30,7 @@ public class JEvidenceJUnitRunner extends BlockJUnit4ClassRunner {
 
     @Override
     public void run(RunNotifier notifier) {
-        //notifier.removeListener(jUnitExecutionListener);
+        notifier.removeListener(jUnitExecutionListener);
         notifier.addListener(jUnitExecutionListener);
         super.run(notifier);
     }

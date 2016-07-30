@@ -19,7 +19,7 @@ public class SubtractMathServiceTest extends AbstractTest {
         // when
         Integer result = mathService.substract(5, 3);
         // then
-        assertThat(result).isEqualTo(3);
+        assertThat(result).isEqualTo(2);
     }
 
     @Test

@@ -48,7 +48,6 @@ public abstract class AbstractTest {
 
         public void onTestFailure(TestLifecycle testResult) {
             EvidenceReporter.step(new Step(Level.ERROR, String.format("Listener : Test failure")));
-            EvidenceReporter.screenshot(new Screenshot(new File("C:\\Users\\Łukasz\\Pictures\\wallpapers\\3.jpg")));
         }
 
         public void onTestSkipped(TestLifecycle testResult) {
