@@ -10,4 +10,16 @@ Key features:
 * Testing frameworks : jEvidence supports jUnit and testNG frameworks
 * Logging frameworks : jEvidence supports java.util.logging.Logger and log4j frameworks. Each log of these frameworks is saved as test step
 * 
-Current version: 1.1
+Current version: 1.2
+
+
+* [Quick start - jUnit](https://github.com/lstypka/jevidence/wiki/Quick-start---jUnit)
+* [Quick start - testNg](https://github.com/lstypka/jevidence/wiki/Quick-start---testNg)
+* [jEvidence properties](https://github.com/lstypka/jevidence/wiki/jEvidence-properties)
+* [jEvidence listener](https://github.com/lstypka/jevidence/wiki/Custom-listener)
+* [Embedded vs server version](https://github.com/lstypka/jevidence/wiki/Embedded-vs-server-version)
+* [jEvidence and Log4j](https://github.com/lstypka/jevidence/wiki/Logger---log4j)
+* [jEvidence and java.util.logging](https://github.com/lstypka/jevidence/wiki/Logger---java.util.logging)
+* [Troubleshooting](https://github.com/lstypka/jevidence/wiki/Report-web-page---troubleshooting)
+* [Changelog](https://github.com/lstypka/jevidence/wiki/ChangeLog)
+* [Future releases](https://github.com/lstypka/jevidence/wiki/Future-releases)
