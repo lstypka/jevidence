@@ -1,7 +1,6 @@
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.fest.assertions.Assertions.assertThat;

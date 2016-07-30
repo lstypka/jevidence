@@ -31,7 +31,7 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
                     var treeView = execution.children('.treeview-menu').first();
                     if(execution.hasClass("active")) {
                         treeView.css('display', 'block');
-                    } 
+                    }
                  }
                  window.console.log("REFRESH");
              }, 50);

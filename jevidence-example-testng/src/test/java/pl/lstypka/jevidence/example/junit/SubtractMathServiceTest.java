@@ -1,7 +1,7 @@
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
-
-import org.junit.Test;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -13,14 +13,28 @@ public class SubtractMathServiceTest extends AbstractTest {
     private MathService mathService = new MathService();
 
     @Test
+    @Parameters({"firstNumber", "secondNumber", "sum"})
+    public void paramTest(Integer firstNumber, Integer secondNumber, Integer sum) {
+        // given
+
+        // when
+        Integer result = mathService.substract(firstNumber, secondNumber);
+
+        // then
+        assertThat(result).isEqualTo(sum);
+    }
+
+    @Test
     public void shouldSubtractTwoNumbers() {
         // given
 
         // when
         Integer result = mathService.substract(5, 3);
+
         // then
         assertThat(result).isEqualTo(2);
     }
+
 
     @Test
     public void shouldSubtractThreeNumbers() {

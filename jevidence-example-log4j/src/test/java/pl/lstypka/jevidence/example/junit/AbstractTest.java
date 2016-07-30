@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
 
 import org.junit.BeforeClass;
@@ -21,15 +21,13 @@ import org.junit.runner.RunWith;
 import pl.lstypka.jevidence.core.EvidenceReporter;
 import pl.lstypka.jevidence.core.listeners.TestLifecycle;
 import pl.lstypka.jevidence.core.listeners.TestLifecycleListener;
-import pl.lstypka.jevidence.logger.JEvidenceUtilLoggerHandler;
+import pl.lstypka.jevidence.logger.JEvidenceLog4jHandler;
 import pl.lstypka.jevidence.runner.JEvidenceJUnitRunner;
-
-import java.util.logging.Logger;
 
 @RunWith(JEvidenceJUnitRunner.class)
 public abstract class AbstractTest {
+    private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(AbstractTest.class.getName());
 
-    private static final Logger LOGGER = Logger.getLogger(AbstractTest.class.getName());
 
     private static TestLifecycleListener testLifecycleListener = new TestLifecycleListener() {
         public void onSuiteStart() {
@@ -39,25 +37,25 @@ public abstract class AbstractTest {
         }
 
         public void onTestStart(TestLifecycle testResult) {
-            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test started");
+            LOGGER.debug("LOG4J: Test started");
         }
 
         public void onTestSuccess(TestLifecycle testResult) {
-            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test success");
+            LOGGER.debug("LOG4J: Test success");
         }
 
         public void onTestFailure(TestLifecycle testResult) {
-            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test failure");
+            LOGGER.debug("LOG4J: Test failure");
         }
 
         public void onTestSkipped(TestLifecycle testResult) {
-            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test skipped");
+            LOGGER.debug("LOG4J: Test skipped");
         }
     };
 
     @BeforeClass
     public static void before() {
-        LOGGER.getParent().addHandler(new JEvidenceUtilLoggerHandler());
+        LOGGER.getParent().addAppender(new JEvidenceLog4jHandler());
         EvidenceReporter.registerListener(testLifecycleListener);
     }
 }

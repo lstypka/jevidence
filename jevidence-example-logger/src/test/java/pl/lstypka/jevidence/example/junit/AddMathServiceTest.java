@@ -1,7 +1,7 @@
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -11,18 +11,6 @@ import static org.fest.assertions.Assertions.assertThat;
 public class AddMathServiceTest extends AbstractTest {
 
     private MathService mathService = new MathService();
-
-    @Test
-    @Parameters({"firstNumber", "secondNumber", "sum"})
-    public void paramTest(Integer firstNumber, Integer secondNumber, Integer sum) {
-        // given
-
-        // when
-        Integer result = mathService.sum(firstNumber, secondNumber);
-
-        // then
-        assertThat(result).isEqualTo(sum);
-    }
 
     @Test
     public void shouldAddTwoNumbers() {

@@ -134,4 +134,14 @@ public class JUnitExecutionListener extends RunListener {
         testResult.setStatus(status);
         return testResult;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof JUnitExecutionListener;
+    }
 }

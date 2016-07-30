@@ -4,6 +4,7 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
         $scope.calculating = false;
         $scope.revisions = [];
         $scope.selectedRevisions = {first: {id : null, text: null}, second: {id : null, text: null}};
+        $scope.lastExecutionId;
 
         var init = function () {
             $scope.calculating = true;
@@ -13,6 +14,7 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
                     // no executions
                     return;
                 }
+                prepareLastExecution(records[0].id);
                 prepareRevisions(records);
                 if (records.length === 1) {
                     ExecutionService.getExecution(records[0].id, function (execution) {
@@ -33,6 +35,29 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
                 $scope.noRecords = true;
                 $scope.$emit('REFRESH_TOOLTIPS', { });
             });
+        };
+
+        var prepareLastExecution = function(executionId) {
+             ExecutionService.getExecution(executionId, function (execution) {
+                var setOfTests = createSetsOfTests(execution);
+                setOfTests.sort(function(a, b) {
+                    if(a.status === "SKIPPED") {
+                        return 2;
+                    }
+                    if(a.status === "SUCCESS") {
+                        return 1;
+                    }
+                    if(a.status === "FAILED") {
+                        return 0;
+                    }
+                    if(a.status === "ERROR") {
+                        return -1;
+                    }
+                });
+
+                $scope.lastExecutionSet = setOfTests;
+                $scope.lastExecutionId = executionId;
+             });
         };
 
         var prepareRevisions = function (records) {
@@ -71,7 +96,8 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
                     var element = {
                         name: execution.testClasses[i].name + "." + execution.testClasses[i].tests[j].name,
                         status: execution.testClasses[i].tests[j].status,
-                        params: execution.testClasses[i].tests[j].params
+                        params: execution.testClasses[i].tests[j].params,
+                        duration: execution.testClasses[i].tests[j].duration
                     };
                     if (!checkIfElementAlreadyExist(executionSet, element)) {
                         executionSet.push(element);

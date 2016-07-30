@@ -13,13 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
 import java.util.Random;
-import java.util.logging.Logger;
-
-import pl.lstypka.jevidence.core.EvidenceReporter;
-import pl.lstypka.jevidence.core.bo.Step;
 
 public class MathService
 {

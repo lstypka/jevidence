@@ -1,4 +1,4 @@
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
 
 import org.junit.Test;

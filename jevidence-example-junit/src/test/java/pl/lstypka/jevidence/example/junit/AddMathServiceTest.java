@@ -1,7 +1,6 @@
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -21,7 +20,7 @@ public class AddMathServiceTest extends AbstractTest {
         Integer result = mathService.sum(5, 3);
 
         // then
-        assertThat(result).isEqualTo(8);
+        assertThat(result).isEqualTo(6);
     }
 
 
@@ -33,6 +32,6 @@ public class AddMathServiceTest extends AbstractTest {
         Integer result = mathService.sum(11, mathService.sum(5, 3));
 
         // then
-        assertThat(result).isEqualTo(19);
+        assertThat(result).isEqualTo(18);
     }
 }

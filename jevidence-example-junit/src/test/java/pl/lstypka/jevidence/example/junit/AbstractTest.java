@@ -13,17 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.lstypka.jevidence.example.testng;
+package pl.lstypka.jevidence.example.junit;
 
 
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import pl.lstypka.jevidence.core.EvidenceReporter;
 import pl.lstypka.jevidence.core.bo.Level;
+import pl.lstypka.jevidence.core.bo.Screenshot;
 import pl.lstypka.jevidence.core.bo.Step;
 import pl.lstypka.jevidence.core.listeners.TestLifecycle;
 import pl.lstypka.jevidence.core.listeners.TestLifecycleListener;
 import pl.lstypka.jevidence.runner.JEvidenceJUnitRunner;
+
+import java.io.File;
 
 @RunWith(JEvidenceJUnitRunner.class)
 public abstract class AbstractTest {
@@ -45,6 +48,7 @@ public abstract class AbstractTest {
 
         public void onTestFailure(TestLifecycle testResult) {
             EvidenceReporter.step(new Step(Level.ERROR, String.format("Listener : Test failure")));
+            EvidenceReporter.screenshot(new Screenshot(new File("C:\\Users\\Łukasz\\Pictures\\wallpapers\\3.jpg")));
         }
 
         public void onTestSkipped(TestLifecycle testResult) {
