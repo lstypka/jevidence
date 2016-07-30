@@ -4,7 +4,7 @@
 
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-parent</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <packaging>pom</packaging>
     <name>jEvidence - parent</name>
     <description>Parent of jEvidence framework</description>
