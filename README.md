@@ -9,8 +9,10 @@ Key features:
 * Performance : Compare two executions and check time differences between them
 * Testing frameworks : jEvidence supports jUnit and testNG frameworks
 * Logging frameworks : jEvidence supports java.util.logging.Logger and log4j frameworks. Each log of these frameworks is saved as test step
-* 
-Current version: 1.2
+
+
+###Current version: 1.2
+
 
 
 * [Quick start - jUnit](https://github.com/lstypka/jevidence/wiki/Quick-start---jUnit)
