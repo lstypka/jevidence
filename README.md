@@ -11,7 +11,7 @@ Key features:
 * Logging frameworks : jEvidence supports java.util.logging.Logger and log4j frameworks. Each log of these frameworks is saved as test step
 
 
-###Current version: 1.2
+###Current version: 1.2.1
 
 
 
