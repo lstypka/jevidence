@@ -61,35 +61,37 @@ public class JUnitExecutionListener extends RunListener {
                 return;
             }
         }
-        Traces traces = EvidenceReporter.finishTest();
+        Traces traces = EvidenceReporter.getTraces();
         for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
-            listener.onTestSuccess(new TestLifecycle(traces.getStartedAt(), System.currentTimeMillis(), Status.SUCCESS, new Object[0], null));
+            listener.onTestSuccess(new TestLifecycle(traces.getStartedAt(), -1L, Status.SUCCESS, new Object[0], null));
         }
         TestResult testResult = prepareTestResult(description, traces, Status.SUCCESS, null);
         results.add(testResult);
+        EvidenceReporter.finishTest();
     }
 
     public void testFailure(Failure failure) throws Exception {
         failure.getDescription().addChild(Description.createTestDescription("ALREADY ADDED", ""));
-        Traces traces = EvidenceReporter.finishTest();
+        Traces traces = EvidenceReporter.getTraces();
         traces.getTraces().add(prepareFailure(failure));
         if (failure.getException() instanceof AssertionError) {
             TestResult testResult = prepareTestResult(failure.getDescription(), traces, Status.FAILED, failure.getException());
             results.add(testResult);
             for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
-                listener.onTestFailure(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.FAILED, new Object[0], failure.getException()));
+                listener.onTestFailure(new TestLifecycle(traces.getStartedAt(), -1, Status.FAILED, new Object[0], failure.getException()));
             }
         } else {
             TestResult testResult = prepareTestResult(failure.getDescription(), traces, Status.ERROR, failure.getException());
             results.add(testResult);
             for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
-                listener.onTestFailure(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.ERROR, new Object[0], failure.getException()));
+                listener.onTestFailure(new TestLifecycle(traces.getStartedAt(), -1, Status.ERROR, new Object[0], failure.getException()));
             }
         }
+        pl.lstypka.jevidence.core.bo.TestResult finishedTestResult = EvidenceReporter.finishTest();
     }
 
     public void testAssumptionFailure(Failure failure) {
-        Traces traces = EvidenceReporter.finishTest();
+        Traces traces = EvidenceReporter.getTraces();
         traces.getTraces().add(prepareFailure(failure));
         if (failure.getException() instanceof AssertionError) {
             TestResult testResult = prepareTestResult(failure.getDescription(), traces, Status.FAILED, failure.getException());
@@ -104,6 +106,7 @@ public class JUnitExecutionListener extends RunListener {
                 listener.onTestFailure(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.ERROR, new Object[0], failure.getException()));
             }
         }
+        EvidenceReporter.finishTest();
     }
 
     private pl.lstypka.jevidence.core.bo.Failure prepareFailure(Failure junitFailure) {
@@ -115,12 +118,14 @@ public class JUnitExecutionListener extends RunListener {
         for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
             listener.onTestStart(new TestLifecycle(System.currentTimeMillis(), System.currentTimeMillis(), Status.UNKNOWN, new Object[0], null));
         }
-        Traces traces = EvidenceReporter.finishTest();
+
+        Traces traces = EvidenceReporter.getTraces();
         TestResult testResult = prepareTestResult(description, traces, Status.SKIPPED, null);
         results.add(testResult);
         for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
             listener.onTestSkipped(new TestLifecycle(testResult.getStartedAt(), testResult.getFinishedAt(), Status.SKIPPED, new Object[0], null));
         }
+        EvidenceReporter.finishTest();
     }
 
     private TestResult prepareTestResult(Description description, Traces traces, Status status, Throwable throwable) {

@@ -13,24 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.lstypka.jevidence.example.junit;
+package pl.lstypka.jevidence.example.log4j;
 
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MathService
 {
-	private static final Logger LOGGER = Logger.getLogger(MathService.class.getName());
+	private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(MathService.class.getName());
 
 	public Integer sum(Integer firstNumber, Integer secondNumber) {
-		LOGGER.log(Level.INFO, String.format("LOGGER : Adding %d + %d ", firstNumber, secondNumber));
+		LOGGER.debug(String.format("LOG4J : Adding %d + %d ", firstNumber, secondNumber));
 		randomSleep();
 		return firstNumber + secondNumber;
 	}
 
 	public Integer substract(Integer firstNumber, Integer secondNumber) {
-		LOGGER.log(Level.INFO, String.format("LOGGER : Substracting %d - %d ", firstNumber, secondNumber));
+		LOGGER.debug(String.format("LOG4J: Substracting %d - %d ", firstNumber, secondNumber));
 		randomSleep();
 		return firstNumber - secondNumber;
 	}

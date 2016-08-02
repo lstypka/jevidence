@@ -19,9 +19,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import pl.lstypka.jevidence.core.bo.*;
+import pl.lstypka.jevidence.core.exception.JEvidenceException;
 import pl.lstypka.jevidence.core.listeners.TestLifecycleListener;
 import pl.lstypka.jevidence.model.execution.Entry;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -30,32 +32,49 @@ public class EvidenceReporter
 {
 
 	private static Map<Long, Traces> traces = Maps.newConcurrentMap();
+	private static Set<TestResult> testResults = Sets.newHashSet();
 	private static Set<Entry> environmentVariables = Sets.newConcurrentHashSet();
 	private static Set<TestLifecycleListener> testLifecycleListeners = Sets.newConcurrentHashSet();
 
+    public static synchronized void startTest()
+    {
+        traces.put(Thread.currentThread().getId(), new Traces(Lists.<Trace> newArrayList()));
+    }
+
 	public static synchronized void step(Step step)
 	{
-		traces.get(Thread.currentThread().getId()).getTraces().add(step);
+        getTracesForCurrentThread().getTraces().add(step);
 	}
 
 	public static synchronized void screenshot(Screenshot screenshot)
 	{
-		traces.get(Thread.currentThread().getId()).getTraces().add(screenshot);
+        getTracesForCurrentThread().getTraces().add(screenshot);
 	}
 
 	public static synchronized void failure(Failure failure)
 	{
-		traces.get(Thread.currentThread().getId()).getTraces().add(failure);
+        getTracesForCurrentThread().getTraces().add(failure);
 	}
 
-	public static synchronized void startTest()
-	{
-		traces.put(Thread.currentThread().getId(), new Traces(Lists.<Trace> newArrayList()));
-	}
+    public static synchronized Traces getTraces() {
+        return getTracesForCurrentThread();
+    }
 
-	public static synchronized Traces finishTest()
+    private static Traces getTracesForCurrentThread() {
+        Traces traces = EvidenceReporter.traces.get(Thread.currentThread().getId());
+        if(traces == null) {
+            throw new JEvidenceException(String.format("Cannot get traces for %s thread. Did you start report (EvidenceReporter.start()) ?", Thread.currentThread().getId()));
+        }
+        return traces;
+    }
+
+	public static synchronized TestResult finishTest()
 	{
-		return traces.get(Thread.currentThread().getId());
+        Traces testTraces = traces.get(Thread.currentThread().getId());
+        traces.remove(Thread.currentThread().getId());
+        TestResult testResult = new TestResult(testTraces.getStartedAt(), System.currentTimeMillis(), testTraces.getTraces());
+        testResults.add(testResult);
+        return testResult;
 	}
 
 	public static void registerListener(TestLifecycleListener listener) {

@@ -26,6 +26,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.Parameters;
 
 import pl.lstypka.jevidence.core.bo.Failure;
+import pl.lstypka.jevidence.core.bo.TestResult;
 import pl.lstypka.jevidence.core.bo.Trace;
 import pl.lstypka.jevidence.core.bo.Traces;
 import pl.lstypka.jevidence.model.execution.Step;
@@ -49,7 +50,7 @@ public class TestMapper implements Mapper<ITestResult, Test> {
         test.setDuration(new Duration(test.getStartedAt().toDateTime(), test.getFinishedAt().toDateTime()).getMillis());
         test.setStatus(StatusMapper.getStatus(result));
         test.setParams(getParameters(result));
-        List<Trace> traces = ((Traces) result.getAttribute("testSteps")).getTraces();
+        List<Trace> traces = ((TestResult) result.getAttribute("testSteps")).getTraces();
         if (traces == null) {
             traces = Lists.newArrayList();
         }

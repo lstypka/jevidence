@@ -6,7 +6,7 @@
         <parameter name="firstNumber" value="21"/>
         <parameter name="secondNumber" value="3"/>
         <classes>
-            <class name="pl.lstypka.jevidence.example.junit.AddMathServiceTest"/>
+            <class name="pl.lstypka.jevidence.example.log4j.AddMathServiceTest"/>
         </classes>
     </test>
 
@@ -15,7 +15,7 @@
         <parameter name="firstNumber" value="21"/>
         <parameter name="secondNumber" value="3"/>
         <classes>
-            <class name="pl.lstypka.jevidence.example.junit.SubtractMathServiceTest"/>
+            <class name="pl.lstypka.jevidence.example.log4j.SubtractMathServiceTest"/>
         </classes>
     </test>
 

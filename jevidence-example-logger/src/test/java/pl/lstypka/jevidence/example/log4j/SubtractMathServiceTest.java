@@ -1,4 +1,4 @@
-package pl.lstypka.jevidence.example.junit;
+package pl.lstypka.jevidence.example.log4j;
 
 
 import org.junit.Test;

@@ -18,7 +18,6 @@ package pl.lstypka.jevidence.core.strategy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import org.joda.time.DateTime;
-import pl.jsolve.sweetener.text.Strings;
 import pl.lstypka.jevidence.core.io.FileUtils;
 import pl.lstypka.jevidence.model.execution.Execution;
 import pl.lstypka.jevidence.model.settings.Setting;
@@ -55,7 +54,7 @@ public abstract class Generator {
                 FileUtils fileUtils = new FileUtils();
                 Settings settings = null;
                 String settingsVariableAsString = fileUtils.readAsString(settingsFile.getAbsolutePath());
-                if (Strings.isAlpha(settingsVariableAsString)) {
+                if (isAlpha(settingsVariableAsString)) {
                     settings = new Settings(Lists.<Setting>newArrayList());
                 } else {
                     String settingsAsString = settingsVariableAsString.substring("var jEvidenceSettings = ".length());
@@ -81,6 +80,10 @@ public abstract class Generator {
                 return false;
             }
         }
+    }
+
+    private boolean isAlpha(String name) {
+        return name.matches("[a-zA-Z]+");
     }
 
     private void saveSettings(Settings settings, String jevidenceDeploymentVersion, File settingsFile, ObjectMapper mapper) {

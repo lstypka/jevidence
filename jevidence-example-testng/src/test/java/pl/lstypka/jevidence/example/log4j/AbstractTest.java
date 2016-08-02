@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.lstypka.jevidence.example.junit;
+package pl.lstypka.jevidence.example.log4j;
 
 
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import pl.lstypka.jevidence.core.EvidenceReporter;
 import pl.lstypka.jevidence.core.bo.Step;
+import pl.lstypka.jevidence.core.bo.TestResult;
 import pl.lstypka.jevidence.core.listeners.TestLifecycle;
 import pl.lstypka.jevidence.core.listeners.TestLifecycleListener;
 import pl.lstypka.jevidence.listener.JEvidenceTestNgListener;
@@ -39,15 +40,15 @@ public class AbstractTest {
                 EvidenceReporter.step(new Step(String.format("Listener : Test started")));
             }
 
-            public void onTestSuccess(TestLifecycle testResult) {
+            public void onTestSuccess(TestLifecycle testLifecycle) {
                 EvidenceReporter.step(new Step(String.format("Listener : Test success")));
             }
 
-            public void onTestFailure(TestLifecycle testResult) {
+            public void onTestFailure(TestLifecycle testLifecycle) {
                 EvidenceReporter.step(new Step(String.format("Listener : Test failure")));
             }
 
-            public void onTestSkipped(TestLifecycle testResult) {
+            public void onTestSkipped(TestLifecycle testLifecycle) {
                 EvidenceReporter.step(new Step(String.format("Listener : Test skipped")));
             }
         });

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-example-logger</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <name>jEvidence - java.util.logging.Logger example</name>
     <description>Example usage of jEvidence with java.util.logging.Logger</description>
     <url>https://github.com/lstypka/jevidence</url>
@@ -14,12 +14,12 @@
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-junit</artifactId>
-            <version>1.2</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-java-logger</artifactId>
-            <version>1.2</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
