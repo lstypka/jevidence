@@ -17,10 +17,10 @@ package pl.lstypka.jevidence.core.strategy;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
-import pl.jsolve.sweetener.text.Strings;
 import pl.lstypka.jevidence.core.io.FileUtils;
 import pl.lstypka.jevidence.core.io.PropertyUtils;
 import pl.lstypka.jevidence.core.statistics.DefectCollector;
@@ -64,7 +64,7 @@ public class EmbeddedGenerator extends Generator {
             Records records = null;
             String recordsAsString = "";
             String recordsVariableAsString = fileUtils.readAsString(reportDir + File.separator + "data" + File.separator + "records");
-            if (Strings.isEmpty(recordsVariableAsString)) {
+            if (Strings.isNullOrEmpty(recordsVariableAsString)) {
                 records = new Records(Lists.<Record>newArrayList());
             } else {
                 recordsAsString = recordsVariableAsString.substring("var jEvidenceRecords = ".length());
