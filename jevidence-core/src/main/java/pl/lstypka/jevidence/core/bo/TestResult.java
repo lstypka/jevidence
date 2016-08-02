@@ -15,6 +15,8 @@
  */
 package pl.lstypka.jevidence.core.bo;
 
+import pl.lstypka.jevidence.model.execution.Status;
+
 import java.util.List;
 
 public class TestResult {
@@ -22,11 +24,23 @@ public class TestResult {
     private Long startedAt;
     private Long finishedAt;
     private List<Trace> traces;
+    private Status status;
 
     public TestResult(Long startedAt, Long finishedAt, List<Trace> traces) {
         this.startedAt = startedAt;
         this.finishedAt = finishedAt;
         this.traces = traces;
+        recognizeStatus();
+    }
+
+    private void recognizeStatus() {
+        for(Trace trace : traces) {
+            if(trace instanceof Failure) {
+                status = ((Failure)trace).isAssertionFailure() ? Status.FAILED : Status.ERROR;
+                return;
+            }
+        }
+        status = Status.SUCCESS;
     }
 
     public Long getStartedAt() {
@@ -39,5 +53,9 @@ public class TestResult {
 
     public List<Trace> getTraces() {
         return traces;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 }
