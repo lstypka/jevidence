@@ -15,18 +15,20 @@
  */
 package pl.lstypka.jevidence.core.listeners;
 
+import pl.lstypka.jevidence.core.bo.TestResult;
+
 public interface TestLifecycleListener {
 
     void onSuiteStart();
 
     void onSuiteFinish();
 
-    void onTestStart(TestLifecycle testResult);
+    void onTestStart(TestLifecycle testLifecycle);
 
-    void onTestSuccess(TestLifecycle testResult);
+    void onTestSuccess(TestLifecycle testLifecycle);
 
-    void onTestFailure(TestLifecycle testResult);
+    void onTestFailure(TestLifecycle testLifecycle);
 
-    void onTestSkipped(TestLifecycle testResult);
+    void onTestSkipped(TestLifecycle testLifecycle);
 
 }

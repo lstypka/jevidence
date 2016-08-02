@@ -13,23 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.lstypka.jevidence.example.junit;
+package pl.lstypka.jevidence.example.log4j;
 
 
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import pl.lstypka.jevidence.core.EvidenceReporter;
-import pl.lstypka.jevidence.core.bo.Level;
-import pl.lstypka.jevidence.core.bo.Screenshot;
-import pl.lstypka.jevidence.core.bo.Step;
+import pl.lstypka.jevidence.core.bo.TestResult;
 import pl.lstypka.jevidence.core.listeners.TestLifecycle;
 import pl.lstypka.jevidence.core.listeners.TestLifecycleListener;
+import pl.lstypka.jevidence.logger.JEvidenceUtilLoggerHandler;
 import pl.lstypka.jevidence.runner.JEvidenceJUnitRunner;
 
-import java.io.File;
+import java.util.logging.Logger;
 
 @RunWith(JEvidenceJUnitRunner.class)
 public abstract class AbstractTest {
+
+    private static final Logger LOGGER = Logger.getLogger(AbstractTest.class.getName());
 
     private static TestLifecycleListener testLifecycleListener = new TestLifecycleListener() {
         public void onSuiteStart() {
@@ -39,24 +40,25 @@ public abstract class AbstractTest {
         }
 
         public void onTestStart(TestLifecycle testResult) {
-            EvidenceReporter.step(new Step(String.format("Listener : Test started")));
+            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test started");
         }
 
-        public void onTestSuccess(TestLifecycle testResult) {
-            EvidenceReporter.step(new Step(String.format("Listener : Test success")));
+        public void onTestSuccess(TestLifecycle testLifecycle) {
+            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test success");
         }
 
-        public void onTestFailure(TestLifecycle testResult) {
-            EvidenceReporter.step(new Step(Level.ERROR, String.format("Listener : Test failure")));
+        public void onTestFailure(TestLifecycle testLifecycle) {
+            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test failure");
         }
 
-        public void onTestSkipped(TestLifecycle testResult) {
-            EvidenceReporter.step(new Step(Level.INFO, String.format("Listener : Test skipped")));
+        public void onTestSkipped(TestLifecycle testLifecycle) {
+            LOGGER.log(java.util.logging.Level.INFO, "LOGGER: Test skipped");
         }
     };
 
     @BeforeClass
     public static void before() {
+        LOGGER.getParent().addHandler(new JEvidenceUtilLoggerHandler());
         EvidenceReporter.registerListener(testLifecycleListener);
     }
 }

@@ -6,7 +6,7 @@
 
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-java-logger</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <name>jEvidence - java logger</name>
     <description>jEvidence extension for java logger framework</description>
     <url>https://github.com/lstypka/jevidence</url>
@@ -42,7 +42,7 @@
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-core</artifactId>
-            <version>1.2</version>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
 

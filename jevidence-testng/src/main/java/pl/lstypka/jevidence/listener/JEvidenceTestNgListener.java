@@ -19,6 +19,7 @@ import org.testng.*;
 import org.testng.xml.XmlSuite;
 import pl.lstypka.jevidence.core.EvidenceReporter;
 import pl.lstypka.jevidence.core.JEvidence;
+import pl.lstypka.jevidence.core.bo.TestResult;
 import pl.lstypka.jevidence.core.listeners.TestLifecycle;
 import pl.lstypka.jevidence.mapper.ExecutionMapper;
 import pl.lstypka.jevidence.core.io.FileUtils;
@@ -64,11 +65,11 @@ public class JEvidenceTestNgListener implements ITestListener, IReporter {
         for (TestLifecycleListener listener : EvidenceReporter.getListeners()) {
             listener.onTestSkipped(prepare(iTestResult));
         }
-        iTestResult.setAttribute("testSteps", EvidenceReporter.finishTest());
+        iTestResult.setAttribute("testSteps",  EvidenceReporter.finishTest());
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-        iTestResult.setAttribute("testSteps", EvidenceReporter.finishTest());
+        onTestFailure(iTestResult);
     }
 
     public void onStart(ITestContext iTestContext) {

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.stypka.jevidence</groupId>
     <artifactId>jevidence-testng</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <name>jEvidence - testNg</name>
     <description>jEvidence extension for testNg framework</description>
     <url>https://github.com/lstypka/jevidence</url>
@@ -41,7 +41,7 @@
         <dependency>
             <groupId>pl.stypka.jevidence</groupId>
             <artifactId>jevidence-core</artifactId>
-            <version>1.2</version>
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>

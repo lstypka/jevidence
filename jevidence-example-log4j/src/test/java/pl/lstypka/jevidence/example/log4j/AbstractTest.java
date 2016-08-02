@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package pl.lstypka.jevidence.example.junit;
+package pl.lstypka.jevidence.example.log4j;
 
 
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import pl.lstypka.jevidence.core.EvidenceReporter;
+import pl.lstypka.jevidence.core.bo.TestResult;
 import pl.lstypka.jevidence.core.listeners.TestLifecycle;
 import pl.lstypka.jevidence.core.listeners.TestLifecycleListener;
 import pl.lstypka.jevidence.logger.JEvidenceLog4jHandler;
@@ -40,15 +41,15 @@ public abstract class AbstractTest {
             LOGGER.debug("LOG4J: Test started");
         }
 
-        public void onTestSuccess(TestLifecycle testResult) {
+        public void onTestSuccess(TestLifecycle testLifecycle) {
             LOGGER.debug("LOG4J: Test success");
         }
 
-        public void onTestFailure(TestLifecycle testResult) {
+        public void onTestFailure(TestLifecycle testLifecycle) {
             LOGGER.debug("LOG4J: Test failure");
         }
 
-        public void onTestSkipped(TestLifecycle testResult) {
+        public void onTestSkipped(TestLifecycle testLifecycle) {
             LOGGER.debug("LOG4J: Test skipped");
         }
     };
