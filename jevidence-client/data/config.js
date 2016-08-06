@@ -27,9 +27,13 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                "elements" : [
                             	                    {
+                            	                       "widgetId" : "emptyWidget",
+                            	                       "width" : 1
+                            	                    },
+                            	                    {
                             	                        "widgetId" : "calendarWidget",
-                            	                        "title" : "My Calendar of executions",
-                            	                        "width" : 12,
+                            	                        "title" : "Calendar of executions",
+                            	                        "width" : 10,
                             	                        "collapsible" : true
                             	                    }
                             	                ]

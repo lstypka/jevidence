@@ -1,4 +1,4 @@
-reportNgApp.directive('calendarDirective', ['$compile',
+reportNgApp.directive('calendarWidgetDirective', ['$compile',
     function ( $compile ) {
 
         return {

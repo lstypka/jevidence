@@ -20,6 +20,16 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location',
                     }
                 };
 
+                function guid() {
+                  function s4() {
+                    return Math.floor((1 + Math.random()) * 0x10000)
+                      .toString(16)
+                      .substring(1);
+                  }
+                  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                    s4() + '-' + s4() + s4() + s4();
+                }
+
                 var getPanelWidth = function(width) {
                     if(width) {
                         if(parseInt(width) > 0 && parseInt(width) < 13) {
@@ -29,28 +39,35 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location',
                     return 12;
                 }
 
-                var openPanelHtml = function(panelTitle, width, collapsible) {
-                    var panelId = Date.now();
+                var openPanelHtml = function(panelTitle, width, collapsible, isEmptyWidget) {
+                    var panelId = guid();
                     var html = '<div class="col-md-'+getPanelWidth(width)+'">';
+                    if(!isEmptyWidget) {
                         html += '   <section class="panel">';
                         html += '       <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#'+panelId+'" style="cursor: pointer;">';
                         html += '           <span style="font-weight: bold;">'+panelTitle+'</span>';
                         html += '           <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>';
                         html += '       </header>';
                         html += '       <div class="panel-body in" id="'+panelId+'">';
+                    }
                     return html;
                 };
 
-                var closePanel = function() {
+                var closePanel = function(isEmptyWidget) {
                     var html  = '        </div>';
+                    if(!isEmptyWidget) {
                         html += '   </section>';
                         html += '</div>';
+                    }
                     return html;
                 };
 
                 var createDirectiveTags = function(element) {
                     if(element.widgetId === 'calendarWidget') {
-                        return "<calendar-directive/>";
+                        return "<calendar-widget-directive/>";
+                    }
+                    if(element.widgetId === 'emptyWidget') {
+                        return "<empty-widget-directive/>";
                     }
                 };
 
@@ -63,9 +80,9 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location',
                     html += '<div class="row">'; // start row
                     for(var j = 0; j < row.elements.length; j++) {
                         var element = row.elements[j];
-                        html += openPanelHtml(element.title, element.width, element.collapsible);
+                        html += openPanelHtml(element.title, element.width, element.collapsible, element.widgetId === 'emptyWidget');
                         html += createDirectiveTags(element);
-                        html += closePanel();
+                        html += closePanel(element.widgetId === 'emptyWidget');
                     }
                     html += '</div>'; // end row
                 }
