@@ -11,14 +11,14 @@ reportNgApp.directive('menuDirective', ['$compile',
             },
             controller: function ( $scope, $element ) {
 
-                    var menuElements = jevidenceLayoutConfig.menu;
+                    var menuElements = jEvidenceLayoutConfig.menu;
 
                     var createMenuLiElement = function(element) {
                           var html = "<li ng-class=\"{'active' : true}\">";
                           if(element.redirect) {
                             html += '<a href="' + element.redirect+ '">'
                           } else {
-                            html += '<a href="#/dynamiccontent?page=' + element.id+ '">'
+                            html += '<a href="#/dynamiccontent?page=' + element.pageId+ '">'
                           }
                           html += '<i class="fa ' + element.icon +'"></i> <span>' + element.name + '</span>';
                           html += '</a>';
