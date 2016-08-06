@@ -27,6 +27,9 @@ reportNgApp.config(['$routeProvider',
             .when('/execution/:executionId/defects', {
                 templateUrl: 'view/execution_defects.html'
             })
+            .when('/dynamiccontent', {
+                templateUrl: 'view/dynamic-content.html'
+            })
             .otherwise({
                 redirectTo: '/dashboard'
             });

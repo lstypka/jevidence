@@ -61,11 +61,11 @@
         <aside class="left-side sidebar-offcanvas"
                style="position: absolute; margin-top: 50px; width: 160px; background-color: #f9fafc; bottom: 0px; height: 100%;"
                data-ng-controller="MenuCtrl">
+
+
             <section class="sidebar">
+                <menu-directive></menu-directive>
                 <ul class="sidebar-menu">
-                    <li class="divider"></li>
-                    <li class="divider"></li>
-                    <li class="divider"></li>
                     <li ng-class="{'active' : isNodeActive('/dashboard')}">
                         <a href="#/dashboard">
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -244,8 +244,13 @@
 <script src="js/angular/controller/TestsAvgTimeTrendPerformanceChartCtrl.js" type="text/javascript"></script>
 
 <script src="js/angular/directive/TestResultTable.js" type="text/javascript"></script>
+<script src="js/angular/directive/MenuDirective.js" type="text/javascript"></script>
+<script src="js/angular/directive/DynamicContentDirective.js" type="text/javascript"></script>
 
-
+<!-- Dynamic content -->
+<script type="text/ng-template" id="view/dynamic-content.html">
+    <dynamic-content-directive/>
+</script>
 
 <!-- Dashboard content-->
 <script type="text/ng-template" id="view/dashboard.html">
@@ -1402,6 +1407,20 @@
 </script>
 
 <script src="data/settings.js" type="text/javascript"></script>
+<script src="data/config.js" type="text/javascript"></script>
 
+<script src="data/records" type="text/javascript"></script>
+
+<script src="data/2016_08_02_20_12_15/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_08_02_20_12_31/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_08_02_20_12_40/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_08_05_18_12_08/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_08_05_18_12_18/execution.js" type="text/javascript"></script>
+
+<script src="data/2016_08_05_18_12_32/execution.js" type="text/javascript"></script>
 </body>
 </html>
