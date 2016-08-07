@@ -242,6 +242,7 @@
 <script src="js/angular/directive/DynamicContentDirective.js" type="text/javascript"></script>
 <script src="js/angular/directive/CalendarWidgetDirective.js" type="text/javascript"></script>
 <script src="js/angular/directive/EmptyWidgetDirective.js" type="text/javascript"></script>
+<script src="js/angular/directive/TestsTrendChartWidgetDirective.js" type="text/javascript"></script>
 
 <!-- Dynamic content -->
 <script type="text/ng-template" id="view/dynamic-content.html">
@@ -1204,8 +1205,8 @@
 
                             <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
                         </header>
-                        <div class="panel-body in" id="testsTrendChartDataDiv" ng-controller="TestsTrendStatusChartCtrl">
-                            <div class="col-md-12">
+                        <div class="panel-body in" id="testsTrendChartDataDiv" >
+                            <div class="col-md-12" ng-controller="TestsTrendStatusChartCtrl">
                                 <div style="border: 1px solid #eee;">
                                     <div id="testsTrendDashboardChart" style="min-height: 350px;"></div>
                                 </div>

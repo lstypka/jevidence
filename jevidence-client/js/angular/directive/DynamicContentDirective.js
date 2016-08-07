@@ -1,15 +1,13 @@
-reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'emptyWidgetConfig', 'calendarWidgetConfig',
-    function ( $compile, $location, emptyWidgetConfig, calendarWidgetConfig ) {
+reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'emptyWidgetConfig',
+                           'calendarWidgetConfig', 'testsTrendChartWidgetConfig',
+    function ( $compile, $location, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig ) {
 
-        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig];
+        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig];
 
         return {
             restrict: 'E',
             transclude: true,
             scope: {
-            },
-            link: function (scope, element, attrs, ctrl, transclude) {
-                window.console.log("Dynamic content");
             },
             controller: function ( $scope, $element ) {
 
