@@ -17,4 +17,12 @@ reportNgApp.directive('calendarWidgetDirective', ['$compile',
             }
         }
     }
-]);
+]).service('calendarWidgetConfig', [function() {
+
+      return {
+          renderHtml: function(options, executionId) {
+              return "<calendar-widget-directive/>";
+          },
+          widgetId: 'calendarWidget'
+      }
+  }]);

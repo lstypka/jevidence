@@ -1,5 +1,7 @@
-reportNgApp.directive('dynamicContentDirective', ['$compile', '$location',
-    function ( $compile, $location ) {
+reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'emptyWidgetConfig', 'calendarWidgetConfig',
+    function ( $compile, $location, emptyWidgetConfig, calendarWidgetConfig ) {
+
+        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig];
 
         return {
             restrict: 'E',
@@ -18,16 +20,17 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location',
                             return pages[i];
                         }
                     }
+                    return {
+                        id : "empty page",
+                        rows : []
+                    };
                 };
 
                 function guid() {
                   function s4() {
-                    return Math.floor((1 + Math.random()) * 0x10000)
-                      .toString(16)
-                      .substring(1);
+                        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
                   }
-                  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-                    s4() + '-' + s4() + s4() + s4();
+                  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
                 }
 
                 var getPanelWidth = function(width) {
@@ -62,12 +65,11 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location',
                     return html;
                 };
 
-                var createDirectiveTags = function(element) {
-                    if(element.widgetId === 'calendarWidget') {
-                        return "<calendar-widget-directive/>";
-                    }
-                    if(element.widgetId === 'emptyWidget') {
-                        return "<empty-widget-directive/>";
+                var createDirectiveTags = function(element, executionId) {
+                    for(var i = 0; i < registeredWidgets.length; i++) {
+                        if(element.widgetId === registeredWidgets[i].widgetId) {
+                            return registeredWidgets[i].renderHtml(element.options, executionId);
+                        }
                     }
                 };
 

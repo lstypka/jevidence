@@ -14,4 +14,12 @@ reportNgApp.directive('emptyWidgetDirective', ['$compile',
             }
         }
     }
-]);
+]).service('emptyWidgetConfig', [function() {
+
+    return {
+        renderHtml: function(options, executionId) {
+            return "<empty-widget-directive/>";
+        },
+        widgetId: 'emptyWidget'
+    }
+}]);

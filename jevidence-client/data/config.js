@@ -20,6 +20,28 @@ var jEvidenceLayoutConfig = {
                                         "icon" : "fa-calendar"
                                     }
                             	],
+                            	"menuExecutions" : [
+                            	    {
+                            	        "pageId" : "executionDashboard",
+                            	        "name" : "Overview",
+                            	        "icon" : "fa-dashboard"
+                            	    },
+                            	    {
+                            	        "pageId" : "executionResult",
+                            	        "name" : "Results",
+                            	        "icon" : "fa-server"
+                            	    },
+                            	    {
+                            	        "pageId" : "executionStatistics",
+                            	        "name" : "Statistics",
+                            	        "icon" : "fa-bar-chart"
+                            	    },
+                            	    {
+                            	        "pageId" : "executionDefects",
+                            	        "name" : "Defects",
+                            	        "icon" : "fa-bug"
+                            	    }
+                            	],
                             	"pages" : [
                             	    {
                             	        "id" : "calendar",
