@@ -64,8 +64,8 @@ var jEvidenceLayoutConfig = {
                             	                        "options" :
                             	                            {
                             	                                "execution" : "last", // first, last, or number
-                            	                                "columns" : ["id", "testName", "duration", "status"], // id, testName, simplyName, fullName, duration, status, startedAt, finishedAt, params
-                            	                                "widths" : [5, 65, 15, 15]
+                            	                                "columns" : ["id", "shortName", "fullName", "duration", "status"], // id, testName, shortName, fullName, duration, status, startedAt, finishedAt, params
+                            	                                "widths" : [5, 20, 45, 15, 15]
                             	                            }
                             	                    }
                             	                ]

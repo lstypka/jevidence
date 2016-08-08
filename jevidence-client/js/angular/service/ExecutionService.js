@@ -54,7 +54,7 @@ reportNgApp.service('ExecutionService', ["$http", "RecordsService", 'SettingsSer
             for (var j = 0; j < execution.testClasses[i].tests.length; j++) {
                  var element = {
                         fullName: execution.testClasses[i].name + "." + execution.testClasses[i].tests[j].name,
-                        simplyName: execution.testClasses[i].name.substring(1 + execution.testClasses[i].name.lastIndexOf('.')) + "." + execution.testClasses[i].tests[j].name,
+                        shortName: execution.testClasses[i].name.substring(1 + execution.testClasses[i].name.lastIndexOf('.')) + "." + execution.testClasses[i].tests[j].name,
                         testName: execution.testClasses[i].tests[j].name,
                         className: execution.testClasses[i].name.substring(1 + execution.testClasses[i].name.lastIndexOf('.')),
                         startedAt: execution.testClasses[i].tests[j].startedAt,
