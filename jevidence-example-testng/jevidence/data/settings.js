@@ -1,0 +1,1 @@
+var jEvidenceSettings = {"settings":[{"key":"deployType","value":"embedded"}]}

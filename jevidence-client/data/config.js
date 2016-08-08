@@ -49,13 +49,24 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                "elements" : [
                             	                    {
-                            	                        "widgetId" : "emptyWidget",
-                            	                        "width" : 1
-                            	                    },
-                            	                    {
                             	                        "widgetId" : "testsTrendChartWidget",
                             	                        "title" : "Tests trend chart",
-                            	                        "width" : 10
+                            	                        "width" : 12
+                            	                    },
+                            	                ]
+                            	            },
+                            	            {
+                            	                "elements" : [
+                            	                    {
+                            	                        "widgetId" : "testsResultListWidget",
+                            	                        "title" : "Tests result - Execution : ${executionId} ",
+                            	                        "width" : 12,
+                            	                        "options" :
+                            	                            {
+                            	                                "execution" : "last", // first, last, or number
+                            	                                "columns" : ["id", "testName", "duration", "status"], // id, testName, simplyName, fullName, duration, status, startedAt, finishedAt, params
+                            	                                "widths" : [5, 65, 15, 15]
+                            	                            }
                             	                    }
                             	                ]
                             	            }

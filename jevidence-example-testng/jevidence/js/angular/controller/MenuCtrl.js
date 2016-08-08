@@ -26,7 +26,7 @@ reportNgApp.controller('MenuCtrl', ["$scope", "$timeout", "$location", "Executio
         };
 
         $scope.isExecutionNodeActive = function (node) {
-            return $location.url().indexOf(node) !== -1;
+            return $location.path().startsWith(node);
         };
 
         $scope.formatDirNameToTime = function(dirName) {

@@ -1,8 +1,8 @@
-reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'emptyWidgetConfig',
-                           'calendarWidgetConfig', 'testsTrendChartWidgetConfig',
-    function ( $compile, $location, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig ) {
+reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
+                           'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig',
+    function ( $compile, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig ) {
 
-        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig];
+        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig];
 
         return {
             restrict: 'E',
@@ -40,22 +40,35 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'empt
                     return 12;
                 }
 
-                var openPanelHtml = function(panelTitle, width, collapsible, isEmptyWidget) {
+                var formatTitle = function(title, options) {
+                    if(options) {
+                        if(options.execution) {
+                           var executionId = ExecutionService.getExecutionId(options.execution, function(executionId){
+                             title = title.replace("${executionId}", executionId);
+                           });
+                        }
+                    }
+                    return title;
+                };
+
+                var openPanelHtml = function(panelTitle, width, collapsible, isEmptyWidget, options) {
                     var panelId = guid();
-                    var html = '<div class="col-md-'+getPanelWidth(width)+'">';
+                    var html = '<div class="container col-md-'+getPanelWidth(width)+'">';
                     if(!isEmptyWidget) {
                         html += '   <section class="panel">';
                         html += '       <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#'+panelId+'" style="cursor: pointer;">';
-                        html += '           <span style="font-weight: bold;">'+panelTitle+'</span>';
+                        html += '           <span style="font-weight: bold;">'+formatTitle(panelTitle, options)+'</span>';
                         html += '           <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>';
                         html += '       </header>';
                         html += '       <div class="panel-body in" id="'+panelId+'">';
+                        html += '           <div class="">';
                     }
                     return html;
                 };
 
                 var closePanel = function(isEmptyWidget) {
-                    var html  = '        </div>';
+                    var html  = '           </div>';
+                        html += '        </div>';
                     if(!isEmptyWidget) {
                         html += '   </section>';
                         html += '</div>';
@@ -66,7 +79,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'empt
                 var createDirectiveTags = function(element, executionId) {
                     for(var i = 0; i < registeredWidgets.length; i++) {
                         if(element.widgetId === registeredWidgets[i].widgetId) {
-                            return registeredWidgets[i].renderHtml(element.options, executionId);
+                            return registeredWidgets[i].renderHtml(JSON.stringify(element.options), executionId);
                         }
                     }
                 };
@@ -80,7 +93,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'empt
                     html += '<div class="row">'; // start row
                     for(var j = 0; j < row.elements.length; j++) {
                         var element = row.elements[j];
-                        html += openPanelHtml(element.title, element.width, element.collapsible, element.widgetId === 'emptyWidget');
+                        html += openPanelHtml(element.title, element.width, element.collapsible, element.widgetId === 'emptyWidget', element.options);
                         html += createDirectiveTags(element);
                         html += closePanel(element.widgetId === 'emptyWidget');
                     }

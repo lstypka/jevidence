@@ -9,17 +9,6 @@ body {
     outline: none !important;
 }
 
-.table {
-	table-layout:fixed;
-}
-
-.table td {
-  word-wrap: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }

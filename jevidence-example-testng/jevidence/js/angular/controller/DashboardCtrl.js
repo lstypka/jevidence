@@ -93,11 +93,8 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
             }
             for (var i = 0; i < execution.testClasses.length; i++) {
                 for (var j = 0; j < execution.testClasses[i].tests.length; j++) {
-                    window.console.log("OBJ ", execution.testClasses[i]);
                     var element = {
                         name: execution.testClasses[i].name + "." + execution.testClasses[i].tests[j].name,
-                        startedAt: execution.testClasses[i].tests[j].startedAt,
-                        finishedAt: execution.testClasses[i].tests[j].finishedAt,
                         status: execution.testClasses[i].tests[j].status,
                         params: execution.testClasses[i].tests[j].params,
                         duration: execution.testClasses[i].tests[j].duration
