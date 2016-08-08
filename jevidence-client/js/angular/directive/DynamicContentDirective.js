@@ -61,14 +61,12 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                         html += '           <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>';
                         html += '       </header>';
                         html += '       <div class="panel-body in" id="'+panelId+'">';
-                        html += '           <div class="">';
                     }
                     return html;
                 };
 
                 var closePanel = function(isEmptyWidget) {
-                    var html  = '           </div>';
-                        html += '        </div>';
+                    var html  = '       </div>';
                     if(!isEmptyWidget) {
                         html += '   </section>';
                         html += '</div>';

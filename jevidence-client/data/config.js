@@ -58,9 +58,13 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                "elements" : [
                             	                    {
+                            	                        "widgetId" : "emptyWidget",
+                            	                        "width" : 2
+                            	                    },
+                            	                    {
                             	                        "widgetId" : "testsResultListWidget",
                             	                        "title" : "Tests result - Execution : ${executionId} ",
-                            	                        "width" : 12,
+                            	                        "width" : 8,
                             	                        "options" :
                             	                            {
                             	                                "execution" : "last", // first, last, or number
