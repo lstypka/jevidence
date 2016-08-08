@@ -71,10 +71,8 @@ reportNgApp.directive('testsResultListWidgetDirective', ['$compile',
     };
 
     $scope.renderColumnValue = function(column, test, index) {
-        window.console.log("ROW ", test);
         if(column === 'testName' || column === 'fullName' || column === 'shortName') {
             var params = encodeURIComponent(JSON.stringify(test['params']));
-            window.console.log("PARAMS ", params);
             return '<a href="#/execution/'+$scope.executionId+'/result?testname='+test['fullName']+'&params='+params+'" title='+test[column]+'>'+test[column]+'</a>';
         }
         if(column === 'duration') {
