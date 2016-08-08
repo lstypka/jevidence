@@ -84,6 +84,15 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                     }
                 };
 
+                var defaultOptionsIfNeeded = function(options) {
+                    if(!options) {
+                        options = {};
+                    }
+                    if(!options.execution) {
+                        options.execution = 'last';
+                    }
+                }
+
 
                 // start generate dynamic page content
                 var html = '';
@@ -93,6 +102,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                     html += '<div class="row">'; // start row
                     for(var j = 0; j < row.elements.length; j++) {
                         var element = row.elements[j];
+                        defaultOptionsIfNeeded(element.options);
                         html += openPanelHtml(element.title, element.width, element.collapsible, element.widgetId === 'emptyWidget', element.options);
                         html += createDirectiveTags(element);
                         html += closePanel(element.widgetId === 'emptyWidget');
