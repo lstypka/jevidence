@@ -38,10 +38,18 @@ reportNgApp.directive('testsResultListWidgetDirective', ['$compile',
     }
 }]).controller('testsResultListWidgetCtrl', ['$scope', '$filter', 'ExecutionService', function($scope, $filter, ExecutionService){
 
-    var availableColumns = ["id", "testName", "duration", "status", "startedAt", "finishedAt", "params"];
+    var availableColumns = ["id", "testName", "shortName", "fullName", "duration", "status", "startedAt", "finishedAt", "params"];
 
     var init = function() {
          $scope.columns = $scope.options.columns;
+         // remove unknown columns
+         for(var i = $scope.columns.length; i >=0 ; i--) {
+            if(availableColumns.indexOf($scope.columns[i])=== -1) {
+                $scope.columns.splice(i, 1);
+            }
+         }
+
+         // create execution set
          ExecutionService.getExecutionId($scope.options.execution, function(executionId){
             $scope.executionId = executionId;
             ExecutionService.getExecutionSet(executionId, function(executionSet) {
@@ -99,7 +107,6 @@ reportNgApp.directive('testsResultListWidgetDirective', ['$compile',
                 var html = '';
                 Object.keys(params).forEach(function(key,index) {
                     html += '<span class="label-test-param" style="background-color: white; margin-left: 5px;" title="'+key+' : '+params[key]+'">'+key+' : '+params[key]+'</span>';
-
                 });
                 return html;
             }
