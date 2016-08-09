@@ -26,20 +26,24 @@ reportNgApp.service('ExecutionService', ["$http", "RecordsService", 'SettingsSer
          }
     };
 
-    this.getExecutionId = function (execution, successFn) {
+    this.getExecutionByConfigId = function (execution, successFn) {
         RecordsService.getRecords(function (records) {
             if(execution === 'first') {
-                successFn(records[records.length-1].id);
+                successFn(records[records.length-1]);
+            } else if(execution === 'second' && records.length > 1){
+                 successFn(records[records.length-2]);
+            } else if(execution === 'penultimate' && records.length > 1){
+                 successFn(records[1]);
             } else if(execution === 'last') {
-                successFn(records[0].id);
+                successFn(records[0]);
             } else {
                 var executionAsInt = parseInt(execution);
                 if(executionAsInt < parseInt(records[records.length-1].id)) {
-                    successFn(records[records.length-1].id);
+                    successFn(records[records.length-1]);
                 } else if(executionAsInt > parseInt(records[0].id)) {
-                    successFn(records[0].id);
+                    successFn(records[0]);
                 } else {
-                    successFn(executionAsInt);
+                    successFn(records[records.length - executionAsInt]);
                 }
             }
         });
@@ -65,15 +69,30 @@ reportNgApp.service('ExecutionService', ["$http", "RecordsService", 'SettingsSer
                      };
                  if (!checkIfElementAlreadyExist(executionSet, element)) {
                         executionSet.push(element);
-                 }
+                  }
             }
         }
+
+        executionSet.sort(function(a, b) {
+            if(a.status === "SKIPPED") {
+                return 2;
+            }
+            if(a.status === "SUCCESS") {
+                return 1;
+            }
+            if(a.status === "FAILED") {
+                return 0;
+            }
+            if(a.status === "ERROR") {
+               return -1;
+            }
+        });
         return executionSet;
     };
 
      var checkIfElementAlreadyExist = function (array, element) {
          for (var i = 0; i < array.length; i++) {
-             if (array[i].name === element.name) {
+             if (array[i].fullName === element.fullName) {
                 if (JSON.stringify(array[i].params) === JSON.stringify(element.params)) {
                     return true;
                 }

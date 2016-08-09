@@ -58,18 +58,33 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                "elements" : [
                             	                    {
-                            	                        "widgetId" : "emptyWidget",
-                            	                        "width" : 2
-                            	                    },
-                            	                    {
                             	                        "widgetId" : "testsResultListWidget",
                             	                        "title" : "Tests result - Execution : ${executionId} ",
-                            	                        "width" : 8,
+                            	                        "width" : 12,
                             	                        "options" :
                             	                            {
                             	                                "execution" : "last", // first, last, or number
-                            	                                "columns" : ["id", "shortName", "fullName", "duration", "status"], // id, testName, shortName, fullName, duration, status, startedAt, finishedAt, params
-                            	                                "widths" : [5, 20, 45, 15, 15]
+                            	                                "columns" : ["id", "className", "testName", "duration", "status"], // id, className, testName, shortName, fullName, duration, status, startedAt, finishedAt, params
+                            	                                "widths" : [5, 30, 35, 15, 15]
+                            	                            }
+                            	                    }
+                            	                ]
+                            	            },
+                            	            {
+                            	                "elements" : [
+                            	                    {
+                            	                        "widgetId" : "testsResultComparatorWidget",
+                            	                        "title" : "Tests trend",
+                            	                        "width" : 12,
+                            	                        "options" :
+                            	                            {
+                            	                                "firstExecution" : "last",
+                            	                                "secondExecution" : "penultimate",
+                            	                                "columns" : ["shortName", "params", "previousStatus", "currentStatus"],
+                            	                                "widths" : [35, 35, 15, 15],
+                            	                                "tiles" : true,
+                            	                                "table" : true,
+                            	                                "comparator" : true
                             	                            }
                             	                    }
                             	                ]

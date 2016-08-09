@@ -1,8 +1,8 @@
 reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
-                           'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig',
-    function ( $compile, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig ) {
+                           'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
+    function ( $compile, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig, testsResultComparatorWidgetConfig ) {
 
-        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig];
+        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig, testsResultComparatorWidgetConfig];
 
         return {
             restrict: 'E',
@@ -43,8 +43,8 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                 var formatTitle = function(title, options) {
                     if(options) {
                         if(options.execution) {
-                           var executionId = ExecutionService.getExecutionId(options.execution, function(executionId){
-                             title = title.replace("${executionId}", executionId);
+                           var executionId = ExecutionService.getExecutionByConfigId(options.execution, function(execution){
+                             title = title.replace("${executionId}", execution.id);
                            });
                         }
                     }
