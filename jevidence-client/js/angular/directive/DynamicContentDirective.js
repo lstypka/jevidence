@@ -27,13 +27,6 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                     };
                 };
 
-                function guid() {
-                  function s4() {
-                        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-                  }
-                  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-                }
-
                 var getPanelWidth = function(width) {
                     if(width) {
                         if(parseInt(width) > 0 && parseInt(width) < 13) {
@@ -63,7 +56,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                 };
 
                 var openPanelHtml = function(panelTitle, width, collapsible, isEmptyWidget, options) {
-                    var panelId = guid();
+                    var panelId = randomId();
                     var html = '<div class="container col-md-'+getPanelWidth(width)+'">';
                     if(!isEmptyWidget) {
                         html += '   <section class="panel">';
@@ -102,6 +95,25 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                     }
                 }
 
+                var extendElement = function(element) {
+                    if(element.extends) {
+                        var pages = jEvidenceLayoutConfig.pages;
+                        for(var i = 0; i < pages.length; i++) {
+                            var page = pages[i];
+                            for(var j = 0; j < page.rows.length; j++) {
+                                var row = page.rows[j];
+                                for(var k = 0; k < row.elements.length; k++) {
+                                    var e = row.elements[k];
+                                    if(e.id === element.extends) {
+                                        return angular.extend(e, element);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return element;
+                };
+
 
                 // start generate dynamic page content
                 var html = '';
@@ -111,6 +123,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                     html += '<div class="row">'; // start row
                     for(var j = 0; j < row.elements.length; j++) {
                         var element = row.elements[j];
+                        element = extendElement(element);
                         defaultOptionsIfNeeded(element.options);
                         html += openPanelHtml(element.title, element.width, element.collapsible, element.widgetId === 'emptyWidget', element.options);
                         html += createDirectiveTags(element);

@@ -117,9 +117,10 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                "elements" : [
                             	                    {
+                            	                        "id" : "firstExecutionsPerformanceChartWidget",
                             	                        "widgetId" : "executionsPerformanceChartWidget",
                             	                        "title" : "Executions performance - Last 25 executions",
-                            	                        "width" : 12,
+                            	                        "width" : 6,
                             	                        "options" :
                             	                            {
                             	                                "range" : "last 25", // all, first 5, last 5
@@ -140,6 +141,12 @@ var jEvidenceLayoutConfig = {
                                                                      }
                                                                 }
                             	                            }
+                            	                    },
+                            	                    {
+                            	                        "extends" : "firstExecutionsPerformanceChartWidget",
+                            	                        "options" : {
+                            	                            "color" : "#A64234"
+                            	                        }
                             	                    }
                             	                ]
                             	            }
