@@ -1,8 +1,11 @@
 reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
-    function ( $compile, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig, testsResultComparatorWidgetConfig ) {
+                           'executionsPerformanceChartWidgetConfig',
+    function ( $compile, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
+                testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig) {
 
-        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig, testsResultComparatorWidgetConfig];
+        var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
+                                testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig];
 
         return {
             restrict: 'E',
@@ -44,11 +47,17 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                     if(options) {
                         if(options.execution) {
                             if(title.indexOf('${executionId}') !== -1) {
-                                 var executionId = ExecutionService.getExecutionByConfigId(options.execution, function(execution){
+                                 ExecutionService.getExecutionByConfigId(options.execution, function(execution){
                                      title = title.replace("${executionId}", execution.id);
                                  });
                             }
                         }
+
+                    }
+                    if(title.indexOf('${numberOfExecutions}') !== -1) {
+                       RecordsService.getRecords(function(records) {
+                           title = title.replace("${numberOfExecutions}", records.length);
+                       });
                     }
                     return title;
                 };

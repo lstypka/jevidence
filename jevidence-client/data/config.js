@@ -110,6 +110,40 @@ var jEvidenceLayoutConfig = {
                             	                ]
                             	            }
                             	        ]
+                            	    },
+                            	    {
+                            	        "id" : "statistics",
+                            	        "rows" : [
+                            	            {
+                            	                "elements" : [
+                            	                    {
+                            	                        "widgetId" : "executionsPerformanceChartWidget",
+                            	                        "title" : "Executions performance - Last 25 executions",
+                            	                        "width" : 12,
+                            	                        "options" :
+                            	                            {
+                            	                                "range" : "last 25", // all, first 5, last 5
+                            	                                "chartTitle" : "Executions time",
+                            	                                "xAxisTitle" : "Execution id",
+                            	                                "yAxisTitle" : "Time [ms]",
+                            	                                "color" : "#B6A2DE",
+                            	                                "toolbox" : {
+                                                                     "show" : true,
+                                                                     "color": ['#555', '#555'],
+                                                                     "feature" : {
+                                                                         "restore" : {
+                                                                            "show" : true,
+                                                                            "title" : "Refresh"},
+                                                                         "saveAsImage" : {
+                                                                             "show" : true,
+                                                                             "title" : "Save image"}
+                                                                     }
+                                                                }
+                            	                            }
+                            	                    }
+                            	                ]
+                            	            }
+                            	        ]
                             	    }
                             	]
 
