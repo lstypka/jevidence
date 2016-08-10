@@ -43,9 +43,21 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                 var formatTitle = function(title, options) {
                     if(options) {
                         if(options.execution) {
-                           var executionId = ExecutionService.getExecutionByConfigId(options.execution, function(execution){
-                             title = title.replace("${executionId}", execution.id);
-                           });
+                            if(title.indexOf('${executionId}') !== -1) {
+                                 var executionId = ExecutionService.getExecutionByConfigId(options.execution, function(execution){
+                                     title = title.replace("${executionId}", execution.id);
+                                 });
+                            }
+                            if(title.indexOf('${firstExecution}') !== -1) {
+                                 var executionId = ExecutionService.getExecutionByConfigId(options.firstExecution, function(firstExecution){
+                                    title = title.replace("${firstExecution}", firstExecution.id);
+                                 });
+                            }
+                            if(title.indexOf('${secondExecution}') !== -1) {
+                                 var executionId = ExecutionService.getExecutionByConfigId(options.secondExecution, function(secondExecution){
+                                     title = title.replace("${secondExecution}", secondExecution.id);
+                                });
+                            }
                         }
                     }
                     return title;

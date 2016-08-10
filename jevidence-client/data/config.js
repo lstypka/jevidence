@@ -74,7 +74,7 @@ var jEvidenceLayoutConfig = {
                             	                "elements" : [
                             	                    {
                             	                        "widgetId" : "testsResultComparatorWidget",
-                            	                        "title" : "Tests trend",
+                            	                        "title" : "Tests trend - Comparing ${firstExecution} with ${secondExecution}",
                             	                        "width" : 12,
                             	                        "options" :
                             	                            {
