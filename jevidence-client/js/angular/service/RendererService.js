@@ -23,7 +23,7 @@ reportNgApp.service('RendererService', ['$filter', 'ExecutionService', function 
                     return '<span class="label label-block label-test-skipped">SKIPPED</span>';
                 }
                 if(test[column] === 'UNKNOWN') {
-                    return '<span class="label label-block label-default">Didn\'t exist</span>';
+                    return '<span class="label label-block label-test-default">Didn\'t exist</span>';
                 }
 
             }
