@@ -99,6 +99,9 @@ reportNgApp.directive('testsResultComparatorWidgetDirective', ['$compile',
                 html += '               <tr ng-repeat="test in differences.skipped">';
                 html += '                   <td ng-repeat="column in columns"><div ng-bind-html="renderColumnValue(column, test);" /></td>';
                 html += '               </tr>';
+                html += '               <tr ng-repeat="test in differences.removed">';
+                html += '                   <td ng-repeat="column in columns"><div ng-bind-html="renderColumnValue(column, test);" /></td>';
+                html += '               </tr>';
                 html += '           </tbody>';
                 html += '       </table>';
                 html += '   </div>';
@@ -213,6 +216,7 @@ reportNgApp.directive('testsResultComparatorWidgetDirective', ['$compile',
             error: [],
             failed: [],
             skipped: [],
+            removed: [],
             successCount: 0,
             errorCount: 0,
             failedCount: 0,
@@ -265,21 +269,31 @@ reportNgApp.directive('testsResultComparatorWidgetDirective', ['$compile',
                differences.added.push(diff);
             }
         }
+
+        // find removed tests
+          window.console.log("PRE ", previousSet, currentSet);
+        for (var i = 0; i < previousSet.length; i++) {
+              // removed tests
+              var diff = {
+                     name: previousSet[i].fullName,
+                     testName: previousSet[i].testName,
+                     shortName: previousSet[i].shortName,
+                     className: previousSet[i].className,
+                     fullName: previousSet[i].fullName,
+                     params: previousSet[i].params,
+                     currentStatus: "UNKNOWN" ,
+                     previousStatus: previousSet[i].status
+              };
+              modifyCounts(differences, diff);
+              differences.removed.push(diff);
+        }
         return differences;
     };
 
     $scope.renderColumnName = function(column) {
-       if(column === 'id') {
-          return "#";
-       }
-       if(column === 'currentStatus') {
-          return "Execution "+ $scope.selectedRevisions.first.id;
-       }
-       if(column === 'previousStatus') {
-          return "Execution "+ $scope.selectedRevisions.second.id;
-       }
-
-       return column;
+       $scope.options.firstExecution = $scope.selectedRevisions.first.id;
+       $scope.options.secondExecution = $scope.selectedRevisions.second.id;
+       return RendererService.renderColumnHeader(column, $scope.options);
     };
 
     $scope.renderColumnWidth = function(column, index) {

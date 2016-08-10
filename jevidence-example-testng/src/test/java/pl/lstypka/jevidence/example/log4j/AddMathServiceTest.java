@@ -46,4 +46,16 @@ public class AddMathServiceTest extends AbstractTest {
         // then
         assertThat(result).isEqualTo(19);
     }
+
+
+    @Test
+    public void shouldAddFourNumbers() {
+        // given
+
+        // when
+        Integer result = mathService.sum(11, mathService.sum(5, 3)) + 2;
+
+        // then
+        assertThat(result).isEqualTo(21);
+    }
 }

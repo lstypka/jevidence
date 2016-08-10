@@ -74,13 +74,14 @@ var jEvidenceLayoutConfig = {
                             	                "elements" : [
                             	                    {
                             	                        "widgetId" : "testsResultComparatorWidget",
-                            	                        "title" : "Tests trend - Comparing ${firstExecution} with ${secondExecution}",
+                            	                        "title" : "Tests trend",
                             	                        "width" : 12,
                             	                        "options" :
                             	                            {
                             	                                "firstExecution" : "last",
                             	                                "secondExecution" : "penultimate",
                             	                                "columns" : ["shortName", "params", "previousStatus", "currentStatus"],
+                            	                                "headers" : ["Test name", "Parameters", "Execution ${secondExecution}", "Execution ${firstExecution}"],
                             	                                "widths" : [35, 35, 15, 15],
                             	                                "tiles" : true,
                             	                                "table" : true,

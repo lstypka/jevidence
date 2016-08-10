@@ -1,4 +1,4 @@
-reportNgApp.service('RendererService', ['$filter', function ($filter) {
+reportNgApp.service('RendererService', ['$filter', 'ExecutionService', function ($filter, ExecutionService) {
 
         this.renderColumnValue = function(column, test, executionId) {
             if(column === 'testName' || column === 'fullName' || column === 'shortName') {
@@ -22,6 +22,10 @@ reportNgApp.service('RendererService', ['$filter', function ($filter) {
                 if(test[column] === 'SKIPPED') {
                     return '<span class="label label-block label-test-skipped">SKIPPED</span>';
                 }
+                if(test[column] === 'UNKNOWN') {
+                    return '<span class="label label-block label-default">Didn\'t exist</span>';
+                }
+
             }
             if(column === 'params') {
                 var params = test.params;
@@ -35,5 +39,37 @@ reportNgApp.service('RendererService', ['$filter', function ($filter) {
             }
             return test[column];
         };
+
+
+    this.renderColumnHeader = function(column, options) {
+       if(options && options.columns && options.headers) {
+            if(options.columns.indexOf(column) !== -1) {
+
+                var value = options.headers[options.columns.indexOf(column)];
+                if(options.execution && value.indexOf('${execution}') !== -1) {
+                    ExecutionService.getExecutionByConfigId(options.execution, function(execution){
+                        value = value.replace("${executionId}", execution.id);
+                    });
+                }
+                if(options.firstExecution && value.indexOf('${firstExecution}') !== -1) {
+                   ExecutionService.getExecutionByConfigId(options.firstExecution, function(execution){
+                       value = value.replace("${firstExecution}", execution.id);
+                   });
+                }
+                if(options.secondExecution && value.indexOf('${secondExecution}') !== -1) {
+                   ExecutionService.getExecutionByConfigId(options.secondExecution, function(execution){
+                       value = value.replace("${secondExecution}", execution.id);
+                   });
+                }
+                return value;
+            }
+       }
+
+       if(column === 'id') {
+          return "#";
+       }
+
+       return column;
+    };
 
 }]);
