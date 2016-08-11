@@ -64,7 +64,27 @@ var jEvidenceLayoutConfig = {
                             	                        "id" : "testsTrendChart",
                             	                        "widgetId" : "testsTrendChartWidget",
                             	                        "title" : "Tests trend chart",
-                            	                        "width" : 12
+                            	                        "width" : 12,
+                                                        "options" :
+                            	                            {
+                            	                                "range" : "last 3", // all, first 5, last 5
+                            	                                /*"chartTitle" : ["Skipped", "Error", "Failed", "Success"],
+                            	                                "xAxisTitle" : "Execution id",
+                            	                                "yAxisTitle" : "Number of tests",
+                            	                                "color" : ["#B6A2DE", "#634ABC", "#312431", "#742DEE"],
+                            	                                "toolbox" : {
+                                                                     "show" : true,
+                                                                     "color": ['#555', '#555'],
+                                                                     "feature" : {
+                                                                         "restore" : {
+                                                                            "show" : true,
+                                                                            "title" : "Refresh"},
+                                                                         "saveAsImage" : {
+                                                                             "show" : true,
+                                                                             "title" : "Save image"}
+                                                                     }
+                                                                }*/
+                            	                            }
                             	                    },
                             	                ]
                             	            },
