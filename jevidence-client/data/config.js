@@ -44,11 +44,24 @@ var jEvidenceLayoutConfig = {
                             	],
                             	"pages" : [
                             	    {
+                            	        "id" : "index",
+                            	        "rows" : [
+                            	            {
+                            	                "elements" : [
+                            	                    {
+                            	                        "extends" : "testsTrendChart"
+                            	                    }
+                            	                ]
+                            	            }
+                            	        ]
+                            	    },
+                            	    {
                             	        "id" : "dashboard",
                             	        "rows" : [
                             	            {
                             	                "elements" : [
                             	                    {
+                            	                        "id" : "testsTrendChart",
                             	                        "widgetId" : "testsTrendChartWidget",
                             	                        "title" : "Tests trend chart",
                             	                        "width" : 12

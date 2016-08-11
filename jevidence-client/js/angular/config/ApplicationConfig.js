@@ -31,6 +31,6 @@ reportNgApp.config(['$routeProvider',
                 templateUrl: 'view/dynamic-content.html'
             })
             .otherwise({
-                redirectTo: '/dashboard'
+                redirectTo: '/dynamiccontent'
             });
     }]);

@@ -15,6 +15,9 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
             controller: function ( $scope, $element ) {
 
                 var findPage = function(pageId) {
+                    if(!pageId) {
+                        pageId = 'index';
+                    }
                     var pages = jEvidenceLayoutConfig.pages;
                     for(var i = 0; i < pages.length; i++) {
                         if(pageId === pages[i].id) {
