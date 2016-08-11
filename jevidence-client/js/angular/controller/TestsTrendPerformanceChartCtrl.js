@@ -55,7 +55,7 @@ reportNgApp.controller('TestsTrendPerformanceChartCtrl', ["$scope", "$timeout", 
             applyCustomOptions(testsTrendPerformanceChartOption);
             var testsTrendPerformanceChart = echarts.init(document.getElementById($scope.uniqueChartId));
             testsTrendPerformanceChart.setOption(testsTrendPerformanceChartOption );
-        }, 100);
+        }, 50);
     };
 
     var applyCustomOptions = function(defaultOptions) {
@@ -82,8 +82,6 @@ reportNgApp.controller('TestsTrendPerformanceChartCtrl', ["$scope", "$timeout", 
 
     var init = function () {
         RecordsService.getRecords(function (records) {
-            window.console.log("LAST " + getLastExecution(records));
-            window.console.log("FIRST " + getFirstExecution(records));
             for(var i = getFirstExecution(records); i <= getLastExecution(records) ; i++) {
                 if(records.length === 1) {
                     executions.push("#0");

@@ -136,7 +136,7 @@ var jEvidenceLayoutConfig = {
                             	                        "width" : 6,
                             	                        "options" :
                             	                            {
-                            	                                "range" : "last 25", // all, first 5, last 5
+                            	                                "range" : "last 2", // all, first 5, last 5
                             	                                "chartTitle" : "Executions time",
                             	                                "xAxisTitle" : "Execution id",
                             	                                "yAxisTitle" : "Time [ms]",
@@ -158,6 +158,7 @@ var jEvidenceLayoutConfig = {
                             	                    {
                             	                        "extends" : "firstExecutionsPerformanceChartWidget",
                             	                        "options" : {
+                            	                            "range" : "first 3",
                             	                            "color" : "#A64234"
                             	                        }
                             	                    }

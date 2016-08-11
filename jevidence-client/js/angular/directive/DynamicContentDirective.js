@@ -108,7 +108,9 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                                 for(var k = 0; k < row.elements.length; k++) {
                                     var e = row.elements[k];
                                     if(e.id === element.extends) {
-                                        return angular.extend(e, element);
+                                        var extendedElement = {};
+                                        $.extend( extendedElement , e, element);
+                                        return  extendedElement ;
                                     }
                                 }
                             }
