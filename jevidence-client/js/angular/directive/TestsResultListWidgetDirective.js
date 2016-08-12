@@ -8,7 +8,7 @@ reportNgApp.directive('testsResultListWidgetDirective', ['$compile', 'RendererSe
                 options : "="
             },
             controller: function ( $scope, $element ) {
-                var html  = '<div ng-controller="testsResultListWidgetCtrl">';
+                var html  = '<div ng-controller="testsResultListWidgetCtrl" class="panel-content">';
                     html += '       <table class="table table-hover">';
                     html += '           <thead>';
                     html += '               <tr>';
@@ -66,10 +66,7 @@ reportNgApp.directive('testsResultListWidgetDirective', ['$compile', 'RendererSe
     };
 
     $scope.renderColumnName = function(column) {
-        if(column === 'id') {
-            return "#";
-        }
-        return column;
+       return RendererService.renderColumnHeader(column, $scope.options);
     };
 
     $scope.renderColumnWidth = function(column, index) {

@@ -1,73 +1,73 @@
 var jEvidenceLayoutConfig = {
-                            	"menu": [
-                                    {   "pageId" : "dashboard",
-                                        "name" : "Dashboard",
-                                        "icon" : "fa-dashboard"
+                            	menu: [
+                                    {   pageId : "dashboard",
+                                        name : "Dashboard",
+                                        icon : "fa-dashboard"
                                     },
                                     {
-                                        "pageId" : "statistics",
-                                        "name" : "Statistics",
-                                        "icon" : "fa-bar-chart"
+                                        pageId : "statistics",
+                                        name : "Statistics",
+                                        icon : "fa-bar-chart"
                                     },
                                     {
-                                        "pageId" : "performance",
-                                        "name" : "Performance",
-                                        "icon" : "fa-line-chart"
+                                        pageId : "performance",
+                                        name : "Performance",
+                                        icon : "fa-line-chart"
                                     },
                                     {
-                                        "pageId" : "calendar",
-                                        "name" : "Calendar",
-                                        "icon" : "fa-calendar"
+                                        pageId : "calendar",
+                                        name : "Calendar",
+                                        icon : "fa-calendar"
                                     }
                             	],
-                            	"menuExecutions" : [
+                            	menuExecutions : [
                             	    {
-                            	        "pageId" : "executionDashboard",
-                            	        "name" : "Overview",
-                            	        "icon" : "fa-dashboard"
+                            	        pageId : "executionDashboard",
+                            	        name : "Overview",
+                            	        icon : "fa-dashboard"
                             	    },
                             	    {
-                            	        "pageId" : "executionResult",
-                            	        "name" : "Results",
-                            	        "icon" : "fa-server"
+                            	        pageId : "executionResult",
+                            	        name : "Results",
+                            	        icon : "fa-server"
                             	    },
                             	    {
-                            	        "pageId" : "executionStatistics",
-                            	        "name" : "Statistics",
-                            	        "icon" : "fa-bar-chart"
+                            	        pageId : "executionStatistics",
+                            	        name : "Statistics",
+                            	        icon : "fa-bar-chart"
                             	    },
                             	    {
-                            	        "pageId" : "executionDefects",
-                            	        "name" : "Defects",
-                            	        "icon" : "fa-bug"
+                            	        pageId : "executionDefects",
+                            	        name : "Defects",
+                            	        icon : "fa-bug"
                             	    }
                             	],
-                            	"pages" : [
+                            	pages : [
                             	    {
-                            	        "id" : "index",
-                            	        "rows" : [
+                            	        id : "index",
+                            	        rows : [
                             	            {
-                            	                "elements" : [
+                            	                elements : [
                             	                    {
-                            	                        "extends" : "testsTrendChart"
+                            	                        extends : "testsTrendChart"
                             	                    }
                             	                ]
                             	            }
                             	        ]
                             	    },
                             	    {
-                            	        "id" : "dashboard",
-                            	        "rows" : [
+                            	        id : "dashboard",
+                            	        rows : [
                             	            {
-                            	                "elements" : [
+                            	                elements : [
                             	                    {
-                            	                        "id" : "testsTrendChart",
-                            	                        "widgetId" : "testsTrendChartWidget",
-                            	                        "title" : "Tests trend chart",
-                            	                        "width" : 12,
-                                                        "options" :
+                            	                        id : "testsTrendChart",
+                            	                        widgetId : "testsTrendChartWidget",
+                            	                        title : "Tests trend chart",
+                            	                        width : 12,
+                                                        options :
                             	                            {
-                            	                                "range" : "last 3", // all, first 5, last 5
+                            	                                range : "last 3", // all, first 5, last 5
                             	                                /*"chartTitle" : ["Skipped", "Error", "Failed", "Success"],
                             	                                "xAxisTitle" : "Execution id",
                             	                                "yAxisTitle" : "Number of tests",
@@ -89,36 +89,37 @@ var jEvidenceLayoutConfig = {
                             	                ]
                             	            },
                             	            {
-                            	                "elements" : [
+                            	                elements : [
                             	                    {
-                            	                        "widgetId" : "testsResultListWidget",
-                            	                        "title" : "Tests result - Execution : ${executionId} ",
-                            	                        "width" : 12,
-                            	                        "options" :
+                            	                        widgetId : "testsResultListWidget",
+                            	                        title : "Tests result - Execution : ${executionId} ",
+                            	                        width : 12,
+                            	                        options :
                             	                            {
-                            	                                "execution" : "last", // first, last, or number
-                            	                                "columns" : ["id", "className", "testName", "duration", "status"], // id, className, testName, shortName, fullName, duration, status, startedAt, finishedAt, params
-                            	                                "widths" : [5, 30, 35, 15, 15]
+                            	                                execution : "last", // first, last, or number
+                            	                                columns : ["id", "className", "testName", "duration", "status"], // id, className, testName, shortName, fullName, duration, status, startedAt, finishedAt, params
+                            	                                headers : ["#", "Test class", "Test name", "Duration", "Status"],
+                            	                                widths : [5, 30, 35, 15, 15]
                             	                            }
                             	                    }
                             	                ]
                             	            },
                             	            {
-                            	                "elements" : [
+                            	                elements : [
                             	                    {
-                            	                        "widgetId" : "testsResultComparatorWidget",
-                            	                        "title" : "Tests trend",
-                            	                        "width" : 12,
-                            	                        "options" :
+                            	                        widgetId : "testsResultComparatorWidget",
+                            	                        title : "Tests trend",
+                            	                        width : 12,
+                            	                        options :
                             	                            {
-                            	                                "firstExecution" : "last",
-                            	                                "secondExecution" : "penultimate",
-                            	                                "columns" : ["shortName", "params", "previousStatus", "currentStatus"],
-                            	                                "headers" : ["Test name", "Parameters", "Execution ${secondExecution}", "Execution ${firstExecution}"],
-                            	                                "widths" : [35, 35, 15, 15],
-                            	                                "tiles" : true,
-                            	                                "table" : true,
-                            	                                "comparator" : true
+                            	                                firstExecution : "last",
+                            	                                secondExecution : "penultimate",
+                            	                                columns : ["shortName", "params", "previousStatus", "currentStatus"],
+                            	                                headers : ["Test name", "Parameters", "Execution ${secondExecution}", "Execution ${firstExecution}"],
+                            	                                widths : [35, 35, 15, 15],
+                            	                                tiles : true,
+                            	                                table : true,
+                            	                                comparator : true
                             	                            }
                             	                    }
                             	                ]
@@ -126,71 +127,87 @@ var jEvidenceLayoutConfig = {
                             	        ]
                             	    },
                             	    {
-                            	        "id" : "calendar",
-                            	        "rows" : [
+                            	        id : "calendar",
+                            	        rows : [
                             	            {
-                            	                "elements" : [
+                            	                elements : [
                             	                    {
-                            	                       "widgetId" : "emptyWidget",
-                            	                       "width" : 1
+                            	                       widgetId : "emptyWidget",
+                            	                       width : 1
                             	                    },
                             	                    {
-                            	                        "widgetId" : "calendarWidget",
-                            	                        "title" : "Calendar of executions",
-                            	                        "width" : 10,
-                            	                        "collapsible" : true
+                            	                        widgetId : "calendarWidget",
+                            	                        title : "Calendar of executions",
+                            	                        width : 10,
+                            	                        collapsible : true
                             	                    }
                             	                ]
                             	            }
                             	        ]
                             	    },
                             	    {
-                            	        "id" : "statistics",
-                            	        "rows" : [
+                            	        id : "statistics",
+                            	        rows : [
                             	            {
-                            	                "elements" : [
+                            	                elements : [
                             	                    {
-                            	                        "id" : "firstExecutionsPerformanceChartWidget",
-                            	                        "widgetId" : "executionsPerformanceChartWidget",
-                            	                        "title" : "Executions performance - Last 25 executions",
-                            	                        "width" : 6,
-                            	                        "options" :
+                            	                        id : "firstExecutionsPerformanceChartWidget",
+                            	                        widgetId : "executionsPerformanceChartWidget",
+                            	                        title : "Executions performance - Last 25 executions",
+                            	                        width : 12,
+                            	                        options :
                             	                            {
-                            	                                "height" : "300px",
-                            	                                "range" : "last 2", // all, first 5, last 5
-                            	                                "chartTitle" : "Executions time",
-                            	                                "xAxisTitle" : "Execution id",
-                            	                                "yAxisTitle" : "Time [ms]",
-                            	                                "color" : "#B6A2DE",
-                            	                                "toolbox" : {
-                                                                     "show" : true,
-                                                                     "color": ['#555', '#555'],
-                                                                     "feature" : {
-                                                                         "restore" : {
-                                                                            "show" : true,
-                                                                            "title" : "Refresh"},
-                                                                         "saveAsImage" : {
-                                                                             "show" : true,
-                                                                             "title" : "Save image"}
+                            	                                height : "300px",
+                            	                                range : "all", // all, first 5, last 5
+                            	                                chartTitle : "Executions time",
+                            	                                xAxisTitle : "Execution id",
+                            	                                yAxisTitle : "Time [ms]",
+                            	                                color : "#B6A2DE",
+                            	                                legend: {
+                            	                                    show: false
+                            	                                },
+                            	                                toolbox : {
+                                                                     show : true,
+                                                                     color : ['#555', '#555'],
+                                                                     feature : {
+                                                                         restore : {
+                                                                            show : true,
+                                                                            title : "Refresh"},
+                                                                         saveAsImage : {
+                                                                             show : true,
+                                                                             title : "Save image"}
                                                                      }
                                                                 }
                             	                            }
-                            	                    },
-                            	                    {
-                            	                        "extends" : "firstExecutionsPerformanceChartWidget",
-                            	                        "options" : {
-                            	                            "range" : "first 3",
-                            	                            "color" : "#A64234"
-                            	                        }
                             	                    }
                             	                ]
                             	            },
+                                             {
+                                                elements : [
+                                                    {
+                                                        widgetId : "testsAvgDurationChartWidget",
+                                                        title : "Average tests duration (Execution duration / number of tests) - Last ${numberOfExecutions} executions",
+                                                        width : 12,
+                                                        options : {
+                                                            range: "all",
+                                                            height: "250px",
+                                                            color: ["#008ACD"],
+                                                            toolbox: {
+                                                                show: false
+                                                            },
+                                                            legend: {
+                                                                show: true
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                             },
                             	             {
-                            	                "elements" : [
+                            	                elements : [
                             	                    {
-                                                        "extends" : "testsTrendChart",
-                                                        "options" : {
-                                                            "height" : "250px"
+                                                        extends : "testsTrendChart",
+                                                        options : {
+                                                            height : "250px"
                                                         }
                             	                    }
                             	                ]

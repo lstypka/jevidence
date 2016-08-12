@@ -9,7 +9,7 @@ reportNgApp.directive('executionsPerformanceChartWidgetDirective', ['$compile',
             },
             controller: function ( $scope, $element ) {
                 var html  = '<div ng-controller="ExecutionsPerformanceChartWidgetCtrl">';
-                    html += '   <div class="col-md-12">';
+                    html += '   <div class="col-md-12 panel-content">';
                     html += '       <div style="border: 1px solid #eee;">';
                     html += '            <div id="{{uniqueChartId}}" style="min-height: {{getChartHeight()}}"></div>';
                     html += '       </div>';
@@ -114,6 +114,9 @@ reportNgApp.directive('executionsPerformanceChartWidgetDirective', ['$compile',
                }
                if($scope.options.toolbox) {
                    defaultOptions.toolbox = $scope.options.toolbox;
+               }
+               if($scope.options.legend && $scope.options.legend.show != undefined) {
+                    defaultOptions.legend.show = $scope.options.legend.show;
                }
            }
        };

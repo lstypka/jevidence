@@ -4,7 +4,7 @@ body {
     font-family: 'Source Sans Pro', Arial, sans-serif;
     min-height: 100%;
     background: #f1f2f7;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: normal;
     outline: none !important;
 }
@@ -575,7 +575,26 @@ ul.task-list {
 .panel-heading {
     border-bottom: 1px solid #eee;
     background-color: #FAFAFA;
+    font-size: 12px;
+    height: 30px;
 }
+.panel-heading .header-title {
+    font-weight: bold;
+}
+
+.panel-heading .minimalize {
+    margin-top: -5px;
+}
+
+.panel-body {
+    padding: 5px;
+}
+
+.panel-body .panel-content {
+    padding: 0px;
+}
+
+
 .divider {
     height: 1px;
     width: 100%;

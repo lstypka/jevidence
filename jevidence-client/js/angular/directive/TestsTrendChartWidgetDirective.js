@@ -8,9 +8,9 @@ reportNgApp.directive('testsTrendChartWidgetDirective', ['$compile',
                 options : '='
             },
             controller: function ( $scope, $element ) {
-                var html  = '<div class="col-md-12" ng-controller="testsTrendChartWidgetCtrl">';
+                var html  = '<div class="col-md-12 panel-content" ng-controller="testsTrendChartWidgetCtrl">';
                     html += '   <div style="border: 1px solid #eee;">';
-                    html += '       <div id="testsTrendDashboardChart" style="min-height: {{getChartHeight()}};"></div>';
+                    html += '       <div id="{{uniqueChartId}}" style="min-height: {{getChartHeight()}};"></div>';
                     html += '   </div>';
                     html += '</div>';
 
@@ -36,6 +36,7 @@ reportNgApp.directive('testsTrendChartWidgetDirective', ['$compile',
        var categories = ['Success', 'Failed', 'Error', 'Skipped'];
        var executions = [];
 
+       $scope.uniqueChartId = randomId();
        $scope.getChartHeight = function() {
             if($scope.options && $scope.options.height) {
                 return $scope.options.height;
@@ -112,7 +113,7 @@ reportNgApp.directive('testsTrendChartWidgetDirective', ['$compile',
 
            $timeout(function(){
                applyCustomOptions(testAvgTimeChartOption);
-               var testAvgTimeChartChart = echarts.init(document.getElementById('testsTrendDashboardChart'));
+               var testAvgTimeChartChart = echarts.init(document.getElementById($scope.uniqueChartId));
                testAvgTimeChartChart.setOption(testAvgTimeChartOption );
            }, 100);
        };
@@ -137,6 +138,9 @@ reportNgApp.directive('testsTrendChartWidgetDirective', ['$compile',
                }
                if($scope.options.toolbox) {
                    defaultOptions.toolbox = $scope.options.toolbox;
+               }
+               if($scope.options.legend && $scope.options.legend.show != undefined) {
+                    defaultOptions.legend.show = $scope.options.legend.show;
                }
            }
        };

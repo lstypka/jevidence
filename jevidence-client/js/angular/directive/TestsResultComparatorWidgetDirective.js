@@ -11,7 +11,7 @@ reportNgApp.directive('testsResultComparatorWidgetDirective', ['$compile',
                 var html  = '';
 
                 // render tiles
-                html += '<div ng-controller="testsResultComparatorWidgetCtrl">';
+                html += '<div ng-controller="testsResultComparatorWidgetCtrl" class="panel-content">';
                 html += '   <div class="row" ng-show="options.tiles">';
                 html += '       <div class="col-md-2">';
                 html += '           <div class="sm-st clearfix">';

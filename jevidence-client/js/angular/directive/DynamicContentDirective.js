@@ -1,11 +1,11 @@
 reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
-                           'executionsPerformanceChartWidgetConfig',
+                           'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig',
     function ( $compile, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
-                testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig) {
+                testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
-                                testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig];
+                                testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig];
 
         return {
             restrict: 'E',
@@ -50,6 +50,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                         }
 
                     }
+                    title = title || "";
                     if(title.indexOf('${numberOfExecutions}') !== -1) {
                        RecordsService.getRecords(function(records) {
                            title = title.replace("${numberOfExecutions}", records.length);
@@ -64,8 +65,8 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                     if(!isEmptyWidget) {
                         html += '   <section class="panel">';
                         html += '       <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#'+panelId+'" style="cursor: pointer;">';
-                        html += '           <span style="font-weight: bold;">'+formatTitle(panelTitle, options)+'</span>';
-                        html += '           <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>';
+                        html += '           <span class="header-title">'+formatTitle(panelTitle, options)+'</span>';
+                        html += '           <div class="pull-right minimalize" title="Minimalize"><i class="fa container-collapse"></i></div>';
                         html += '       </header>';
                         html += '       <div class="panel-body in" id="'+panelId+'">';
                     }

@@ -8,7 +8,7 @@ reportNgApp.directive('calendarWidgetDirective', ['$compile',
             },
             controller: function ( $scope, $element ) {
 
-                var html  = '<div data-ng-controller="CalendarCtrl">';
+                var html  = '<div class="panel-content" data-ng-controller="CalendarCtrl">';
                     html += '   <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>';
                     html += '</div>';
 
