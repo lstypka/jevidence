@@ -10,7 +10,7 @@ reportNgApp.directive('testsTrendChartWidgetDirective', ['$compile',
             controller: function ( $scope, $element ) {
                 var html  = '<div class="col-md-12" ng-controller="testsTrendChartWidgetCtrl">';
                     html += '   <div style="border: 1px solid #eee;">';
-                    html += '       <div id="testsTrendDashboardChart" style="min-height: 350px;"></div>';
+                    html += '       <div id="testsTrendDashboardChart" style="min-height: {{getChartHeight()}};"></div>';
                     html += '   </div>';
                     html += '</div>';
 
@@ -35,6 +35,13 @@ reportNgApp.directive('testsTrendChartWidgetDirective', ['$compile',
        var dataSkipped = [];
        var categories = ['Success', 'Failed', 'Error', 'Skipped'];
        var executions = [];
+
+       $scope.getChartHeight = function() {
+            if($scope.options && $scope.options.height) {
+                return $scope.options.height;
+            }
+            return "350px;";
+       };
 
        var initChart = function() {
            var testAvgTimeChartOption = {

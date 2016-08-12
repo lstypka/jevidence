@@ -156,6 +156,7 @@ var jEvidenceLayoutConfig = {
                             	                        "width" : 6,
                             	                        "options" :
                             	                            {
+                            	                                "height" : "300px",
                             	                                "range" : "last 2", // all, first 5, last 5
                             	                                "chartTitle" : "Executions time",
                             	                                "xAxisTitle" : "Execution id",
@@ -183,7 +184,17 @@ var jEvidenceLayoutConfig = {
                             	                        }
                             	                    }
                             	                ]
-                            	            }
+                            	            },
+                            	             {
+                            	                "elements" : [
+                            	                    {
+                                                        "extends" : "testsTrendChart",
+                                                        "options" : {
+                                                            "height" : "250px"
+                                                        }
+                            	                    }
+                            	                ]
+                                             }
                             	        ]
                             	    }
                             	]

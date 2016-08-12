@@ -11,7 +11,7 @@ reportNgApp.directive('executionsPerformanceChartWidgetDirective', ['$compile',
                 var html  = '<div ng-controller="ExecutionsPerformanceChartWidgetCtrl">';
                     html += '   <div class="col-md-12">';
                     html += '       <div style="border: 1px solid #eee;">';
-                    html += '            <div id="{{uniqueChartId}}" style="min-height: 350px;"></div>';
+                    html += '            <div id="{{uniqueChartId}}" style="min-height: {{getChartHeight()}}"></div>';
                     html += '       </div>';
                     html += '   </div>';
                     html += '</div>';
@@ -35,6 +35,13 @@ reportNgApp.directive('executionsPerformanceChartWidgetDirective', ['$compile',
        var executionTime = [];
 
        $scope.uniqueChartId = randomId();
+
+       $scope.getChartHeight = function() {
+        if($scope.options && $scope.options.height) {
+            return $scope.options.height;
+        }
+        return "350px;";
+       };
 
        var initChart = function() {
 
