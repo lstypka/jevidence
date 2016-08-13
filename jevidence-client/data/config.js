@@ -93,7 +93,7 @@ var jEvidenceLayoutConfig = {
                             	                    {
                             	                        widgetId : "executionAvgNumberOfStepsChartWidget",
                             	                        width: 5,
-                            	                        title : "executionAvgNumberOfStepsChartWidget : ${executionId}",
+                            	                        title : "Avg number of steps : Execution ${executionId}",
                             	                        options : {
                             	                            execution : "last"
                             	                        }
@@ -105,7 +105,7 @@ var jEvidenceLayoutConfig = {
                             	                    {
                             	                        widgetId : "executionResultInPercentageChartWidget",
                             	                        width: 5,
-                            	                        title : "executionResultInPercentageChartWidget: ${executionId}",
+                            	                        title : "Result in percentage : Execution ${executionId}",
                             	                        options : {
                             	                            execution : "last"
                             	                        }
@@ -307,6 +307,22 @@ var jEvidenceLayoutConfig = {
                                                                 show : true
                                                             }
                                                         }
+                                                    },
+                                                    {
+                                                        widgetId : "executionAvgTimeChartWidget",
+                                                        title : "Execution ${executionId} - Average execution time ",
+                                                        width: 4,
+                                                        options : {
+                                                            color : ["#FFA500"],
+                                                            height: "250px",
+                                                            toolbox : {
+                                                                show : false
+                                                            },
+                                                            legend : {
+                                                                show: true
+                                                            }
+                                                        }
+
                                                     }
                             	                ]
                             	            }

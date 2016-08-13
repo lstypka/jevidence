@@ -1,14 +1,15 @@
 reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
-                           'executionAvgNumberOfStepsChartWidgetConfig',
+                           'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
-                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig) {
+                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
-                                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig];
+                                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig,
+                                executionAvgTimeChartWidgetConfig];
 
         return {
             restrict: 'E',
@@ -45,15 +46,14 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                 var formatTitle = function(title, options) {
                     title = title || "";
                     if(title.indexOf('${executionId}') !== -1) {
-                        if(options) {
+                        if($routeParams.executionId) {
+                            title = title.replace("${executionId}", $routeParams.executionId);
+                        } else if(options) {
                             if(options.execution) {
                                  ExecutionService.getExecutionByConfigId(options.execution, function(execution){
                                      title = title.replace("${executionId}", execution.id);
                                  });
                             }
-                        }
-                        if($routeParams.executionId) {
-                            title = title.replace("${executionId}", $routeParams.executionId);
                         }
                     }
                     if(title.indexOf('${numberOfExecutions}') !== -1) {
