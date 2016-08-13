@@ -253,6 +253,27 @@ var jEvidenceLayoutConfig = {
                                                                 show : true
                                                             }
                                                          }
+                                                    },
+                                                    {
+                                                        widgetId : "executionAvgNumberOfStepsChartWidget",
+                                                        title : "Execution ${executionId} - Average number of steps",
+                                                        width: 4,
+                                                        options : {
+                                                            color : ["#00CF0C", "#0C74CF", "#CFAD0E", "#930FCF", "#CF2A00", "#FFA500", "#FF9567"],
+                                                            height: "250px",
+                                                            legend : {
+                                                                //show : true,
+                                                                //orient : 'horizontal',
+                                                                //y : 'top',
+                                                                //x : 'center',
+                                                            },
+                                                            label : {
+                                                                show : true
+                                                            },
+                                                            toolbox : {
+                                                                show : true
+                                                            }
+                                                        }
                                                     }
                             	                ]
                             	            }

@@ -1,13 +1,14 @@
 reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
+                           'executionAvgNumberOfStepsChartWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
-                executionResultInPercentageChartWidgetConfig) {
+                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
-                                executionResultInPercentageChartWidgetConfig];
+                                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig];
 
         return {
             restrict: 'E',

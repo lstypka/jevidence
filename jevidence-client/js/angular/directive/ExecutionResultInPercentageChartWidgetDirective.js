@@ -97,7 +97,7 @@ reportNgApp.directive('executionResultInPercentageChartWidgetDirective', ['$comp
     var applyCustomOptions = function(defaultOptions) {
         if($scope.options) {
             if($scope.options.legend) {
-                $.extend(defaultOptions.toolbox , $scope.options.legend);
+                $.extend(defaultOptions.legend , $scope.options.legend);
             }
             if($scope.options.label && $scope.options.label.show !== undefined) {
                 defaultOptions.series[0].itemStyle.normal.label.show = $scope.options.label.show;
