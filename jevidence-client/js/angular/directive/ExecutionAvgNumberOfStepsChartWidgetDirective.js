@@ -27,8 +27,8 @@ reportNgApp.directive('executionAvgNumberOfStepsChartWidgetDirective', ['$compil
         },
         widgetId: 'executionAvgNumberOfStepsChartWidget'
     }
-}]).controller('executionAvgNumberOfStepsChartWidgetCtrl',  ['$scope', '$timeout', '$routeParams', 'StatisticsService',
-                function ($scope, $timeout, $routeParams, StatisticsService) {
+}]).controller('executionAvgNumberOfStepsChartWidgetCtrl',  ['$scope', '$timeout', '$routeParams', 'ExecutionService', 'StatisticsService',
+                function ($scope, $timeout, $routeParams, ExecutionService, StatisticsService) {
 
     $scope.uniqueChartId = randomId();
 
@@ -37,6 +37,21 @@ reportNgApp.directive('executionAvgNumberOfStepsChartWidgetDirective', ['$compil
             return $scope.options.height;
        }
        return "350px;";
+    };
+
+    var getExecutionFromOptions = function() {
+        if($scope.options && $scope.options.executionId) {
+            return $scope.options.executionId;
+        }
+        return "last";
+    };
+
+    $scope.getExecutionId = function(successFn) {
+        if($routeParams.executionId) {
+             successFn({id : $routeParams.executionId});
+        } else {
+            ExecutionService.getExecutionByConfigId(getExecutionFromOptions(), successFn);
+        }
     };
 
     var legendData = [];
@@ -109,25 +124,27 @@ reportNgApp.directive('executionAvgNumberOfStepsChartWidgetDirective', ['$compil
     };
 
 
-       var init = function () {
-           StatisticsService.getStatistics($routeParams.executionId, function (response) {
-               var numberOfSteps = response.numberOfSteps;
+    var init = function () {
+        $scope.getExecutionId(function(execution) {
+            StatisticsService.getStatistics(execution.id, function (response) {
+                var numberOfSteps = response.numberOfSteps;
 
-               var sum = 0;
-               for(var i = 0; i < numberOfSteps.ranges.length; i++) {
-                   sum += numberOfSteps.ranges[i].value;
-               }
+                var sum = 0;
+                for(var i = 0; i < numberOfSteps.ranges.length; i++) {
+                    sum += numberOfSteps.ranges[i].value;
+                }
 
-               for(var i = 0; i < numberOfSteps.ranges.length; i++) {
-                   var range = numberOfSteps.ranges[i];
-                   range.value = (range.value / sum) * 100;
-                   legendData.push(range.leftRange + "-" + range.rightRange);
-                   pieData.push({value: Math.round(range.value), name : range.leftRange + "-" + range.rightRange});
-               }
+                for(var i = 0; i < numberOfSteps.ranges.length; i++) {
+                    var range = numberOfSteps.ranges[i];
+                    range.value = (range.value / sum) * 100;
+                    legendData.push(range.leftRange + "-" + range.rightRange);
+                    pieData.push({value: Math.round(range.value), name : range.leftRange + "-" + range.rightRange});
+                }
 
-               initChart();
-           });
-       };
+                initChart();
+            });
+        })
+    };
 
        init();
 

@@ -27,8 +27,8 @@ reportNgApp.directive('executionResultInPercentageChartWidgetDirective', ['$comp
         },
         widgetId: 'executionResultInPercentageChartWidget'
     }
-}]).controller('executionResultInPercentageChartWidgetCtrl',  ['$scope', '$timeout', '$routeParams', 'StatisticsService',
-                function ($scope, $timeout, $routeParams, StatisticsService) {
+}]).controller('executionResultInPercentageChartWidgetCtrl',  ['$scope', '$timeout', '$routeParams', 'ExecutionService', 'StatisticsService',
+                function ($scope, $timeout, $routeParams, ExecutionService, StatisticsService) {
 
     $scope.uniqueChartId = randomId();
 
@@ -37,6 +37,21 @@ reportNgApp.directive('executionResultInPercentageChartWidgetDirective', ['$comp
             return $scope.options.height;
        }
        return "350px;";
+    };
+
+    var getExecutionFromOptions = function() {
+        if($scope.options && $scope.options.executionId) {
+            return $scope.options.executionId;
+        }
+        return "last";
+    };
+
+    $scope.getExecutionId = function(successFn) {
+        if($routeParams.executionId) {
+             successFn({id : $routeParams.executionId});
+        } else {
+            ExecutionService.getExecutionByConfigId(getExecutionFromOptions(), successFn);
+        }
     };
 
     var resultsInPercentageLegendData = [];
@@ -129,30 +144,33 @@ reportNgApp.directive('executionResultInPercentageChartWidgetDirective', ['$comp
 
     var init = function () {
         applyCustomColors();
-        StatisticsService.getStatistics($routeParams.executionId, function (response) {
-            var testsResultsInPercentage = response.testsResultsInPercentage;
-            if(testsResultsInPercentage.success > 0) {
-                resultsInPercentagePieData.push({value: testsResultsInPercentage.success, name: "Passed"});
-                resultsInPercentageLegendData.push("Passed");
-                colors.push(defaultColors[0]);
-            }
-            if(testsResultsInPercentage.error > 0) {
-                resultsInPercentagePieData.push({value: testsResultsInPercentage.error, name: "Error"});
-                resultsInPercentageLegendData.push("Error");
-                colors.push(defaultColors[1]);
-            }
-            if(testsResultsInPercentage.failed > 0) {
-                resultsInPercentagePieData.push({value: testsResultsInPercentage.failed, name: "Failed"});
-                resultsInPercentageLegendData.push("Failed");
-                colors.push(defaultColors[2]);
-            }
-            if(testsResultsInPercentage.skipped > 0) {
-                resultsInPercentagePieData.push({value: testsResultsInPercentage.skipped, name: "Skipped"});
-                resultsInPercentageLegendData.push("Skipped");
-                colors.push(defaultColors[3]);
-            }
+        $scope.getExecutionId(function(execution) {
+            StatisticsService.getStatistics(execution.id, function (response) {
+                var testsResultsInPercentage = response.testsResultsInPercentage;
+                if(testsResultsInPercentage.success > 0) {
+                    resultsInPercentagePieData.push({value: testsResultsInPercentage.success, name: "Passed"});
+                    resultsInPercentageLegendData.push("Passed");
+                    colors.push(defaultColors[0]);
+                }
+                if(testsResultsInPercentage.error > 0) {
+                    resultsInPercentagePieData.push({value: testsResultsInPercentage.error, name: "Error"});
+                    resultsInPercentageLegendData.push("Error");
+                    colors.push(defaultColors[1]);
+                }
+                if(testsResultsInPercentage.failed > 0) {
+                    resultsInPercentagePieData.push({value: testsResultsInPercentage.failed, name: "Failed"});
+                    resultsInPercentageLegendData.push("Failed");
+                    colors.push(defaultColors[2]);
+                }
+                if(testsResultsInPercentage.skipped > 0) {
+                    resultsInPercentagePieData.push({value: testsResultsInPercentage.skipped, name: "Skipped"});
+                    resultsInPercentageLegendData.push("Skipped");
+                    colors.push(defaultColors[3]);
+                }
 
-            initChart();
+                initChart();
+            });
+
         });
     };
     init();

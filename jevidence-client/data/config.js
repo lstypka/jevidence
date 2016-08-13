@@ -91,7 +91,32 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                elements : [
                             	                    {
+                            	                        widgetId : "executionAvgNumberOfStepsChartWidget",
+                            	                        width: 5,
+                            	                        title : "executionAvgNumberOfStepsChartWidget : ${executionId}",
+                            	                        options : {
+                            	                            execution : "last"
+                            	                        }
+                            	                    },
+                            	                    {
+                            	                        widgetId : "emptyWidget",
+                            	                        width: 2
+                            	                    },
+                            	                    {
+                            	                        widgetId : "executionResultInPercentageChartWidget",
+                            	                        width: 5,
+                            	                        title : "executionResultInPercentageChartWidget: ${executionId}",
+                            	                        options : {
+                            	                            execution : "last"
+                            	                        }
+                             	                    }
+                            	                ]
+                            	            },
+                            	            {
+                            	                elements : [
+                            	                    {
                             	                        widgetId : "testsResultListWidget",
+                            	                        id : "testsResultListWidget",
                             	                        title : "Tests result - Execution : ${executionId} ",
                             	                        width : 12,
                             	                        options :
@@ -226,6 +251,14 @@ var jEvidenceLayoutConfig = {
                             	    {
                             	        id : "executionStatistics",
                             	        rows : [
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                           extends : "testsResultListWidget",
+                                                           title : "Tests result - Execution : ${executionId} "
+                            	                    }
+                            	                ]
+                            	            },
                             	            {
                             	                elements : [
                                                     {

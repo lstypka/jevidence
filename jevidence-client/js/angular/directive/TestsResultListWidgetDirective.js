@@ -36,12 +36,19 @@ reportNgApp.directive('testsResultListWidgetDirective', ['$compile', 'RendererSe
         },
         widgetId: 'testsResultListWidget'
     }
-}]).controller('testsResultListWidgetCtrl', ['$scope', '$filter', 'ExecutionService', 'RendererService', function($scope, $filter, ExecutionService, RendererService){
+}]).controller('testsResultListWidgetCtrl', ['$scope', '$filter', '$routeParams', 'ExecutionService', 'RendererService', function($scope, $filter, $routeParams, ExecutionService, RendererService){
 
     var availableColumns = ["id", "className", "testName", "shortName", "fullName", "duration", "status", "startedAt", "finishedAt", "params"];
+    var defaultColumns = ["id", "shortName", "params", "duration", "status"];
 
     var init = function() {
+         if(!$scope.options) {
+            $scope.options = {};
+         }
          $scope.columns = $scope.options.columns;
+         if(!$scope.columns) {
+            $scope.columns = defaultColumns;
+         }
          // remove unknown columns
          for(var i = $scope.columns.length; i >=0 ; i--) {
             if(availableColumns.indexOf($scope.columns[i])=== -1) {
@@ -50,7 +57,11 @@ reportNgApp.directive('testsResultListWidgetDirective', ['$compile', 'RendererSe
          }
 
          // create execution set
-         ExecutionService.getExecutionByConfigId($scope.options.execution, function(execution){
+         var executionId = $scope.options.execution;
+         if($routeParams.executionId) {
+            executionId = $routeParams.executionId;
+         }
+         ExecutionService.getExecutionByConfigId(executionId, function(execution){
             $scope.executionId = execution.id;
             ExecutionService.getExecutionSet($scope.executionId, function(executionSet) {
                 $scope.executionSet = executionSet;
