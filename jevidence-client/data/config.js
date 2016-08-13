@@ -164,7 +164,10 @@ var jEvidenceLayoutConfig = {
                             	                                yAxisTitle : "Time [ms]",
                             	                                color : "#B6A2DE",
                             	                                legend: {
-                            	                                    show: false
+                                                                    show : true,
+                                                                    orient : 'horizontal',
+                                                                    x : 'center',
+                                                                    y : 'bottom'
                             	                                },
                             	                                toolbox : {
                                                                      show : true,
@@ -192,11 +195,11 @@ var jEvidenceLayoutConfig = {
                                                             range: "all",
                                                             height: "250px",
                                                             color: ["#008ACD"],
-                                                            toolbox: {
-                                                                show: false
-                                                            },
-                                                            legend: {
-                                                                show: true
+                                                            legend : {
+                                                                show : true,
+                                                                orient : 'horizontal',
+                                                                x : 'center',
+                                                                y : 'bottom'
                                                             }
                                                         }
                                                     }
@@ -207,11 +210,52 @@ var jEvidenceLayoutConfig = {
                             	                    {
                                                         extends : "testsTrendChart",
                                                         options : {
-                                                            height : "250px"
+                                                            height : "250px",
+                                                            legend : {
+                                                                show : true,
+                                                                orient : 'horizontal',
+                                                                x : 'center',
+                                                                y : 'bottom'
+                                                            }
                                                         }
                             	                    }
                             	                ]
                                              }
+                            	        ]
+                            	    },
+                            	    {
+                            	        id : "executionStatistics",
+                            	        rows : [
+                            	            {
+                            	                elements : [
+                                                    {
+                                                         widgetId : "executionResultInPercentageChartWidget",
+                                                         title : "Execution ${executionId} result in percentage",
+                                                         width: 4,
+                                                         options : {
+                                                            height: "250px",
+                                                            color: {
+                                                                passed : "",
+                                                                failed : "",
+                                                                error : "",
+                                                                skipped : ""
+                                                            },
+                                                            legend : {
+                                                                // show: true, // true, false
+                                                                //orient : 'vertical', // vertical, horizontal
+                                                                //x : 'right', // right, left, center
+                                                                //y : 'center' // top, bottom, center
+                                                            },
+                                                            label : {
+                                                                show : true
+                                                            },
+                                                            toolbox : {
+                                                                show : true
+                                                            }
+                                                         }
+                                                    }
+                            	                ]
+                            	            }
                             	        ]
                             	    }
                             	]

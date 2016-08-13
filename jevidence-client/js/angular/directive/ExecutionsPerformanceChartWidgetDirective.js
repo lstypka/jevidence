@@ -113,10 +113,10 @@ reportNgApp.directive('executionsPerformanceChartWidgetDirective', ['$compile',
                    defaultOptions.color = [$scope.options.color];
                }
                if($scope.options.toolbox) {
-                   defaultOptions.toolbox = $scope.options.toolbox;
+                   $.extend(defaultOptions.toolbox , $scope.options.toolbox);
                }
-               if($scope.options.legend && $scope.options.legend.show != undefined) {
-                    defaultOptions.legend.show = $scope.options.legend.show;
+               if($scope.options.legend) {
+                   $.extend(defaultOptions.legend , $scope.options.legend);
                }
            }
        };

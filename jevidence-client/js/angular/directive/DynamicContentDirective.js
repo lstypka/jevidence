@@ -1,11 +1,13 @@
-reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
+reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
-                           'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig',
-    function ( $compile, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
-                testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig) {
+                           'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
+    function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
+                testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
+                executionResultInPercentageChartWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
-                                testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig];
+                                testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
+                                executionResultInPercentageChartWidgetConfig];
 
         return {
             restrict: 'E',
@@ -40,17 +42,19 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$location', 'Reco
                 }
 
                 var formatTitle = function(title, options) {
-                    if(options) {
-                        if(options.execution) {
-                            if(title.indexOf('${executionId}') !== -1) {
+                    title = title || "";
+                    if(title.indexOf('${executionId}') !== -1) {
+                        if(options) {
+                            if(options.execution) {
                                  ExecutionService.getExecutionByConfigId(options.execution, function(execution){
                                      title = title.replace("${executionId}", execution.id);
                                  });
                             }
                         }
-
+                        if($routeParams.executionId) {
+                            title = title.replace("${executionId}", $routeParams.executionId);
+                        }
                     }
-                    title = title || "";
                     if(title.indexOf('${numberOfExecutions}') !== -1) {
                        RecordsService.getRecords(function(records) {
                            title = title.replace("${numberOfExecutions}", records.length);

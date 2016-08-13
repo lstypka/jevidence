@@ -32,7 +32,7 @@ reportNgApp.service('RendererService', ['$filter', 'ExecutionService', function 
                 if(params) {
                     var html = '';
                     Object.keys(params).forEach(function(key,index) {
-                        html += '<span class="label-test-param" style="background-color: white; margin-left: 5px;" title="'+key+' : '+params[key]+'">'+key+' : '+params[key]+'</span>';
+                        html += '<span class="label-test-param" style="background-color: white; margin-left: 8px;" title="'+key+' : '+params[key]+'">'+key+' : '+params[key]+'</span>';
                     });
                     return html;
                 }

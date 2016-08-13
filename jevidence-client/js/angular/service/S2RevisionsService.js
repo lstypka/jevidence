@@ -59,7 +59,7 @@ reportNgApp.service('S2RevisionsService', ["RecordsService", function (RecordsSe
            },
            formatSelection: function (item) {
                 //  return '<b>#'+item.text+'</b>';
-                    return item ? '<span class="label ' + getStatusCss(item.id) + '" style="height: 26px; width: 100%; margin: 0px; padding: 0px;"><b>#' + item.id + '</b></span>': '';
+                    return item ? '<span class="label ' + getStatusCss(item.id) + '" style="height: 26px; width: 100%; margin: 0px; padding: 2px;"><b>#' + item.id + '</b></span>': '';
            },
            setInitSelection: function (val) {
                   _initalValue = val;

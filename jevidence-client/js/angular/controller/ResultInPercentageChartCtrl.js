@@ -64,13 +64,7 @@ reportNgApp.controller('ResultInPercentageChartCtrl', ['$scope', '$timeout', '$r
                 resultsInPercentageLegendData.push("Skipped");
                 colors.push("#23b7e5");
             }
-  /*          resultsInPercentageLegendData = ["Passed", "Error", "Failed", "Skipped"];
-            resultsInPercentagePieData = [
-                        {value: testsResultsInPercentage.success, name: resultsInPercentageLegendData[0]},
-                        {value: testsResultsInPercentage.error, name: resultsInPercentageLegendData[1]},
-                        {value: testsResultsInPercentage.failed, name: resultsInPercentageLegendData[2]},
-                        {value: testsResultsInPercentage.skipped, name: resultsInPercentageLegendData[3]},
-                       ];*/
+
               initChart();
         });
 
