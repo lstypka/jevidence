@@ -83,6 +83,13 @@ var jEvidenceLayoutConfig = {
                             	                            headers : ["Test", "Status"],
                             	                            widths : [80, 20]
                             	                        }
+                            	                    },
+                            	                    {
+                            	                        extends : 'executionDefectsTableWidget',
+                            	                        width : 8,
+                            	                        options : {
+                            	                            execution : "last"
+                            	                        }
                             	                    }
                             	                ]
                             	            }
@@ -397,6 +404,21 @@ var jEvidenceLayoutConfig = {
                                                             height: "250px"
                                                         }
                                                     }
+                            	                ]
+                            	            }
+                            	        ]
+                            	    },
+                            	    {
+                            	        id : 'executionDefects',
+                            	        rows : [
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                        id : 'executionDefectsTableWidget',
+                            	                        widgetId : 'executionDefectsTableWidget',
+                            	                        width : 12,
+                            	                        title : 'Defects of execution ${executionId}'
+                            	                    }
                             	                ]
                             	            }
                             	        ]

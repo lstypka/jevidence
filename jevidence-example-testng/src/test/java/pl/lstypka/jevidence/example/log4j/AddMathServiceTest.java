@@ -44,7 +44,7 @@ public class AddMathServiceTest extends AbstractTest {
         Integer result = mathService.sum(11, mathService.sum(5, 3));
 
         // then
-        assertThat(result).isEqualTo(19);
+        assertThat(result).isEqualTo(13);
     }
 
 
@@ -57,5 +57,6 @@ public class AddMathServiceTest extends AbstractTest {
 
         // then
         assertThat(result).isEqualTo(21);
+        throw new NullPointerException();
     }
 }

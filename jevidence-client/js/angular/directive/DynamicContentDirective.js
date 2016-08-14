@@ -2,17 +2,18 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
                            'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig', 'executionStatisticsTableWidgetConfig',
-                           'executionEnvironmentVariablesTableWidgetConfig', 'executionParamsTableWidgetConfig',
+                           'executionEnvironmentVariablesTableWidgetConfig', 'executionParamsTableWidgetConfig', 'executionDefectsTableWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig,
-                executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig, executionParamsTableWidgetConfig) {
+                executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig, executionParamsTableWidgetConfig,
+                executionDefectsTableWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig,
                                 executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig,
-                                executionParamsTableWidgetConfig];
+                                executionParamsTableWidgetConfig, executionDefectsTableWidgetConfig];
 
         return {
             restrict: 'E',

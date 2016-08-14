@@ -22,6 +22,7 @@ public class SubtractMathServiceTest extends AbstractTest {
 
         // then
         assertThat(result).isEqualTo(sum);
+        throw new NullPointerException();
     }
 
     @Test
@@ -33,6 +34,7 @@ public class SubtractMathServiceTest extends AbstractTest {
 
         // then
         assertThat(result).isEqualTo(2);
+        throw new NullPointerException();
     }
 
 
