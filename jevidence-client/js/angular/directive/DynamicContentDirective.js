@@ -2,16 +2,17 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
                            'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig', 'executionStatisticsTableWidgetConfig',
-                           'executionEnvironmentVariablesTableWidgetConfig',
+                           'executionEnvironmentVariablesTableWidgetConfig', 'executionParamsTableWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig,
-                executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig) {
+                executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig, executionParamsTableWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig,
-                                executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig];
+                                executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig,
+                                executionParamsTableWidgetConfig];
 
         return {
             restrict: 'E',

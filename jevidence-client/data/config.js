@@ -187,7 +187,14 @@ var jEvidenceLayoutConfig = {
                             	                    {
                             	                        extends: "executionEnvironmentVariablesTableWidget",
                             	                        options : {
-                            	                            execution : "2"
+                            	                            execution : "last"
+                            	                        }
+                            	                    },
+                            	                    {
+                            	                        extends : "executionParamsTableWidget",
+                            	                        width : 8,
+                            	                        options : {
+                            	                            execution : "last"
                             	                        }
                             	                    }
                             	                ]
@@ -299,7 +306,7 @@ var jEvidenceLayoutConfig = {
                             	                    {
                             	                        id : 'executionStatisticsTableWidget',
                             	                        widgetId : 'executionStatisticsTableWidget',
-                            	                        width: 3,
+                            	                        width: 4,
                             	                        title : "Statistics [${executionId}]",
                             	                        options : {
                             	                          //  whiteList : ['Number of tests', 'Number of steps'],
@@ -311,6 +318,14 @@ var jEvidenceLayoutConfig = {
                             	                        widgetId : 'executionEnvironmentVariablesTableWidget',
                             	                        width: 4,
                             	                        title : 'Environment properties [${executionId}]'
+                            	                    },
+                            	                    {
+                            	                        id : 'executionParamsTableWidget',
+                            	                        widgetId : 'executionParamsTableWidget',
+                            	                        width : 4,
+                            	                        title : 'Test params : [${executionId}]',
+                            	                        options : {
+                            	                        }
                             	                    }
                             	                ]
                             	            }
