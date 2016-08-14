@@ -2,15 +2,16 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
                            'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig', 'executionStatisticsTableWidgetConfig',
+                           'executionEnvironmentVariablesTableWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig,
-                executionStatisticsTableWidgetConfig) {
+                executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig,
-                                executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig];
+                                executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig];
 
         return {
             restrict: 'E',

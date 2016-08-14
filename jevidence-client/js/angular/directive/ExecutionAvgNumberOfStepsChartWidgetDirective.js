@@ -40,8 +40,8 @@ reportNgApp.directive('executionAvgNumberOfStepsChartWidgetDirective', ['$compil
     };
 
     var getExecutionFromOptions = function() {
-        if($scope.options && $scope.options.executionId) {
-            return $scope.options.executionId;
+        if($scope.options && $scope.options.execution) {
+            return $scope.options.execution;
         }
         return "last";
     };

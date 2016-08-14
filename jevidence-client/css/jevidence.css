@@ -475,7 +475,7 @@ body > .header .logo .icon {
 
 
 .task-content {
-    margin-bottom: 30px;
+
 }
 
 .tasks-widget .task-content:after {
@@ -532,7 +532,6 @@ ul.task-list {
 
 .tasks-widget .task-list li > .task-title {
     overflow: hidden;
-    margin-right: 10px;
 }
 
 .tasks-widget .task-list li > .task-config {

@@ -181,6 +181,16 @@ var jEvidenceLayoutConfig = {
                             	                            }
                             	                    }
                             	                ]
+                            	            },
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                        extends: "executionEnvironmentVariablesTableWidget",
+                            	                        options : {
+                            	                            execution : "2"
+                            	                        }
+                            	                    }
+                            	                ]
                             	            }
                             	        ]
                             	    },
@@ -295,6 +305,12 @@ var jEvidenceLayoutConfig = {
                             	                          //  whiteList : ['Number of tests', 'Number of steps'],
                             	                           // blackList : ['Number of tests']
                             	                        }
+                            	                    },
+                            	                    {
+                            	                        id : 'executionEnvironmentVariablesTableWidget',
+                            	                        widgetId : 'executionEnvironmentVariablesTableWidget',
+                            	                        width: 4,
+                            	                        title : 'Environment properties [${executionId}]'
                             	                    }
                             	                ]
                             	            }
@@ -305,19 +321,11 @@ var jEvidenceLayoutConfig = {
                             	        rows : [
                             	            {
                             	                elements : [
-                            	                    {
-                            	                           extends : "testsResultListWidget",
-                                                           title : "Tests result - Execution : ${executionId} "
-                            	                    }
-                            	                ]
-                            	            },
-                            	            {
-                            	                elements : [
                                                     {
                                                          id : "executionResultInPercentageChartWidget",
                                                          widgetId : "executionResultInPercentageChartWidget",
                                                          title : "Execution ${executionId} result in percentage",
-                                                         width: 4,
+                                                         width: 6,
                                                          options : {
                                                             height: "250px",
                                                             color: {
@@ -343,7 +351,7 @@ var jEvidenceLayoutConfig = {
                                                     {
                                                         widgetId : "executionAvgNumberOfStepsChartWidget",
                                                         title : "Execution ${executionId} - Average number of steps",
-                                                        width: 4,
+                                                        width: 6,
                                                         options : {
                                                             color : ["#00CF0C", "#0C74CF", "#CFAD0E", "#930FCF", "#CF2A00", "#FFA500", "#FF9567"],
                                                             height: "250px",
@@ -361,15 +369,18 @@ var jEvidenceLayoutConfig = {
                                                             }
                                                         }
                                                     },
+                            	                ]
+                            	            },
+                            	            {
+                            	                elements : [
                                                     {
                                                         widgetId : "executionAvgTimeChartWidget",
                                                         title : "Execution ${executionId} - Average execution time ",
-                                                        width: 4,
+                                                        width: 12,
                                                         options : {
                                                             color : ["#FFA500"],
                                                             height: "250px"
                                                         }
-
                                                     }
                             	                ]
                             	            }
