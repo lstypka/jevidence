@@ -8,6 +8,15 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
         $scope.closeFooter = function() {
             $scope.showFooter = false;
         };
+
+        $scope.hideMenu = function() {
+            return jEvidenceLayoutConfig.mode === "dashboard";
+        };
+
+        $scope.getMenuWidth = function() {
+            return jEvidenceLayoutConfig.mode === "dashboard" ? "margin-left: 0px;" : "margin-left: 165px;";
+        };
+
         var init = function () {
             RecordsService.getRecords(function (records) {
                // think about getting records only once, in the rootCtrl

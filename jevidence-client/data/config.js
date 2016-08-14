@@ -1,4 +1,5 @@
 var jEvidenceLayoutConfig = {
+                                mode : "normal",
                             	menu: [
                                     {   pageId : "dashboard",
                                         name : "Dashboard",
@@ -49,7 +50,39 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                elements : [
                             	                    {
-                            	                        extends : "testsTrendChart"
+                            	                        extends : "testsTrendChart",
+                            	                        width: 8,
+                            	                        options : {
+                            	                            height : "200px",
+                            	                            toolbox : {
+                            	                                show : false
+                            	                            },
+                            	                            legend : {
+                            	                                y : "bottom"
+                            	                            }
+                            	                        }
+                            	                    },
+                            	                    {
+                            	                        extends : "executionResultInPercentageChartWidget",
+                            	                        width: 4,
+                            	                        options : {
+                            	                            execution : "last",
+                            	                            height : "150px"
+                            	                        }
+                            	                    }
+                            	                ]
+                            	            },
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                        extends : "testsResultListWidget",
+                            	                        width: 4,
+                            	                        options : {
+                            	                            execution : "last",
+                            	                            columns : ["testName", "status"],
+                            	                            headers : ["Test", "Status"],
+                            	                            widths : [80, 20]
+                            	                        }
                             	                    }
                             	                ]
                             	            }
@@ -249,6 +282,25 @@ var jEvidenceLayoutConfig = {
                             	        ]
                             	    },
                             	    {
+                            	        id : "executionDashboard",
+                            	        rows : [
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                        id : 'executionStatisticsTableWidget',
+                            	                        widgetId : 'executionStatisticsTableWidget',
+                            	                        width: 3,
+                            	                        title : "Statistics [${executionId}]",
+                            	                        options : {
+                            	                          //  whiteList : ['Number of tests', 'Number of steps'],
+                            	                           // blackList : ['Number of tests']
+                            	                        }
+                            	                    }
+                            	                ]
+                            	            }
+                            	        ]
+                            	    },
+                            	    {
                             	        id : "executionStatistics",
                             	        rows : [
                             	            {
@@ -262,6 +314,7 @@ var jEvidenceLayoutConfig = {
                             	            {
                             	                elements : [
                                                     {
+                                                         id : "executionResultInPercentageChartWidget",
                                                          widgetId : "executionResultInPercentageChartWidget",
                                                          title : "Execution ${executionId} result in percentage",
                                                          width: 4,
@@ -314,13 +367,7 @@ var jEvidenceLayoutConfig = {
                                                         width: 4,
                                                         options : {
                                                             color : ["#FFA500"],
-                                                            height: "250px",
-                                                            toolbox : {
-                                                                show : false
-                                                            },
-                                                            legend : {
-                                                                show: true
-                                                            }
+                                                            height: "250px"
                                                         }
 
                                                     }

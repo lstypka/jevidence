@@ -506,9 +506,14 @@ ul.task-list {
     list-style: none;
 }
 
+.row {
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
 .tasks-widget .task-list > li {
     position: relative;
-    padding: 10px 5px;
+    padding: 10px 15px;
     border-bottom: 1px dashed #eaeaea;
 }
 

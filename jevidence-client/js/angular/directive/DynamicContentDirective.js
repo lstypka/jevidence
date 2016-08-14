@@ -1,15 +1,16 @@
 reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
                            'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
-                           'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig',
+                           'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig', 'executionStatisticsTableWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
-                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig) {
+                executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig,
+                executionStatisticsTableWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig,
-                                executionAvgTimeChartWidgetConfig];
+                                executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig];
 
         return {
             restrict: 'E',
@@ -68,7 +69,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                     var panelId = randomId();
                     var html = '<div class="container col-md-'+getPanelWidth(width)+'">';
                     if(!isEmptyWidget) {
-                        html += '   <section class="panel">';
+                        html += '   <section class="panel tasks-widget">';
                         html += '       <header class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#'+panelId+'" style="cursor: pointer;">';
                         html += '           <span class="header-title">'+formatTitle(panelTitle, options)+'</span>';
                         html += '           <div class="pull-right minimalize" title="Minimalize"><i class="fa container-collapse"></i></div>';

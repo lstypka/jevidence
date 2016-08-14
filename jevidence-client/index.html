@@ -60,7 +60,7 @@
     <div class="wrapper row-offcanvas row-offcanvas-left">
         <aside class="left-side sidebar-offcanvas"
                style="position: absolute; margin-top: 50px; width: 160px; background-color: #f9fafc; bottom: 0px; height: 100%;"
-               data-ng-controller="MenuCtrl">
+               data-ng-controller="MenuCtrl" ng-if="!hideMenu()">
 
 
             <section class="sidebar">
@@ -127,13 +127,15 @@
             </section>
         </aside>
 
-        <aside class="right-side">
-
+        <aside class="right-side" ng-if="hideMenu()" style="margin-left: 0px;" >
             <section class="content" ng-cloak="">
-                <div ng-view>
-                </div>
+                <div ng-view></div>
             </section>
-
+        </aside>
+        <aside class="right-side" ng-if="!hideMenu()" >
+            <section class="content" ng-cloak="">
+                <div ng-view></div>
+            </section>
         </aside>
 
     </div>
@@ -242,6 +244,7 @@
 <script src="js/angular/directive/ExecutionResultInPercentageChartWidgetDirective.js" type="text/javascript"></script>
 <script src="js/angular/directive/ExecutionAvgNumberOfStepsChartWidgetDirective.js" type="text/javascript"></script>
 <script src="js/angular/directive/ExecutionAvgTimeChartWidgetDirective.js" type="text/javascript"></script>
+<script src="js/angular/directive/ExecutionStatisticsTableWidgetDirective.js" type="text/javascript"></script>
 
 <!-- Dynamic content -->
 <script type="text/ng-template" id="view/dynamic-content.html">
@@ -443,7 +446,7 @@
 
                         <div class="pull-right" title="Minimalize"><i class="fa container-collapse"></i></div>
                     </header>
-                    <div class="panel-body in" id="statisticsContainer">
+                    <div class="panel-body in" >
                         <div class="row">
                             <div class="task-content">
 
