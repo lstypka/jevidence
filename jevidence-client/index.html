@@ -248,6 +248,7 @@
 <script src="js/angular/directive/ExecutionEnvironmentVariablesTableWidgetDirective.js" type="text/javascript"></script>
 <script src="js/angular/directive/ExecutionParamsTableWidgetDirective.js" type="text/javascript"></script>
 <script src="js/angular/directive/ExecutionDefectsTableWidgetDirective.js" type="text/javascript"></script>
+<script src="js/angular/directive/ExecutionOverviewWidgetDirective.js" type="text/javascript"></script>
 
 <!-- Dynamic content -->
 <script type="text/ng-template" id="view/dynamic-content.html">
@@ -348,8 +349,7 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <div class="progress xs progress-striped"
-                                                 style="width: 95%; height: 20px;">
+                                            <div class="progress xs progress-striped" style="width: 95%; height: 20px;">
                                                 <div ng-if="executionStatus(execution) === 'error'">
                                                     <div class="progress-bar progress-bar-danger errors-gradient" style="width: 100%">
                                                         <b>ERROR</b>
@@ -430,14 +430,16 @@
                                 </div>
                             </div>
                             <div class="col-md-1"></div>
-
                         </div>
-
-
                     </div>
                 </section>
             </div>
         </div>
+
+
+
+
+
 
         <div class="row">
             <div class="col-md-3">
@@ -558,6 +560,7 @@
         <div class="col-md-12">
             <section class="panel">
                 <header  class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#resultContainer" style="cursor: pointer;" >
+                    <span ng-if="!showSearchPanel"><a onClick="window.history.back();">Back</a></span>
                     <span style="font-weight: bold;">Result / Execution #{{execution.id}}</span>
                     <span style="float: right; font-weight: bold;">{{execution.startedAt}}</span>
                 </header>

@@ -68,7 +68,6 @@ reportNgApp.directive('executionEnvironmentVariablesTableWidgetDirective', ['$co
     };
 
     var init = function () {
-       window.console.log("Responsessss");
         $scope.getExecutionId(function(execution) {
             ExecutionService.getExecution(execution.id, function (response) {
                 $scope.environmentVariables = {};

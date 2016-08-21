@@ -24,7 +24,7 @@ var jEvidenceLayoutConfig = {
                             	menuExecutions : [
                             	    {
                             	        pageId : "executionDashboard",
-                            	        name : "Overview",
+                            	        name : "Dashboard",
                             	        icon : "fa-dashboard"
                             	    },
                             	    {
@@ -98,6 +98,16 @@ var jEvidenceLayoutConfig = {
                             	    {
                             	        id : "dashboard",
                             	        rows : [
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                        extends : "executionOverviewWidget",
+                            	                        options : {
+                            	                            execution : "last"
+                            	                        }
+                            	                    }
+                            	                ]
+                            	            },
                             	            {
                             	                elements : [
                             	                    {
@@ -308,6 +318,16 @@ var jEvidenceLayoutConfig = {
                             	    {
                             	        id : "executionDashboard",
                             	        rows : [
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                        id : "executionOverviewWidget",
+                            	                        widgetId : "executionOverviewWidget",
+                            	                        title : "Overview of execution ${executionId}",
+                            	                        width : 12
+                            	                    }
+                            	                ]
+                            	            },
                             	            {
                             	                elements : [
                             	                    {

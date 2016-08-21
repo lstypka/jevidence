@@ -3,17 +3,18 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
                            'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig', 'executionStatisticsTableWidgetConfig',
                            'executionEnvironmentVariablesTableWidgetConfig', 'executionParamsTableWidgetConfig', 'executionDefectsTableWidgetConfig',
+                           'executionOverviewWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig,
                 executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig, executionParamsTableWidgetConfig,
-                executionDefectsTableWidgetConfig) {
+                executionDefectsTableWidgetConfig, executionOverviewWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig,
                                 executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig,
-                                executionParamsTableWidgetConfig, executionDefectsTableWidgetConfig];
+                                executionParamsTableWidgetConfig, executionDefectsTableWidgetConfig, executionOverviewWidgetConfig];
 
         return {
             restrict: 'E',
