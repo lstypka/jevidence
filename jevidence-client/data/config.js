@@ -359,6 +359,20 @@ var jEvidenceLayoutConfig = {
                             	        ]
                             	    },
                             	    {
+                            	        id : "executionResult",
+                            	        rows : [
+                            	            {
+                            	                elements : [
+                            	                    {
+                            	                        widgetId : "executionResultsTableWidget",
+                            	                        width : 12,
+                            	                        title : "Result of execution ${executionId}"
+                            	                    }
+                            	                ]
+                            	            }
+                            	        ]
+                            	    },
+                            	    {
                             	        id : "executionStatistics",
                             	        rows : [
                             	            {

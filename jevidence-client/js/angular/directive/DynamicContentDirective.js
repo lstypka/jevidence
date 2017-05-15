@@ -3,18 +3,19 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
                            'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig', 'executionStatisticsTableWidgetConfig',
                            'executionEnvironmentVariablesTableWidgetConfig', 'executionParamsTableWidgetConfig', 'executionDefectsTableWidgetConfig',
-                           'executionOverviewWidgetConfig',
+                           'executionOverviewWidgetConfig', 'executionResultsTableWidgetConfig',
     function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig,
                 executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig, executionParamsTableWidgetConfig,
-                executionDefectsTableWidgetConfig, executionOverviewWidgetConfig) {
+                executionDefectsTableWidgetConfig, executionOverviewWidgetConfig, executionResultsTableWidgetConfig) {
 
         var registeredWidgets = [emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig, testsResultListWidgetConfig,
                                 testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig,
                                 executionAvgTimeChartWidgetConfig, executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig,
-                                executionParamsTableWidgetConfig, executionDefectsTableWidgetConfig, executionOverviewWidgetConfig];
+                                executionParamsTableWidgetConfig, executionDefectsTableWidgetConfig, executionOverviewWidgetConfig,
+                                executionResultsTableWidgetConfig];
 
         return {
             restrict: 'E',
