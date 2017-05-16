@@ -271,7 +271,6 @@ reportNgApp.directive('testsResultComparatorWidgetDirective', ['$compile',
         }
 
         // find removed tests
-          window.console.log("PRE ", previousSet, currentSet);
         for (var i = 0; i < previousSet.length; i++) {
               // removed tests
               var diff = {

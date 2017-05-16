@@ -42,9 +42,6 @@ public class JUnitExecutionListener extends RunListener {
 
     @Override
     public void testRunFinished(Result result) throws Exception {
-        JEvidence jEvidence = new JEvidence();
-        ExecutionMapper executionMapper = new ExecutionMapper(results);
-        jEvidence.generate(executionMapper.mapToExecution());
     }
 
     @Override
@@ -68,6 +65,7 @@ public class JUnitExecutionListener extends RunListener {
         TestResult testResult = prepareTestResult(description, traces, Status.SUCCESS, null);
         results.add(testResult);
         EvidenceReporter.finishTest();
+        commitFinishedTest();
     }
 
     public void testFailure(Failure failure) throws Exception {
@@ -87,7 +85,8 @@ public class JUnitExecutionListener extends RunListener {
                 listener.onTestFailure(new TestLifecycle(traces.getStartedAt(), -1, Status.ERROR, new Object[0], failure.getException()));
             }
         }
-        pl.lstypka.jevidence.core.bo.TestResult finishedTestResult = EvidenceReporter.finishTest();
+        EvidenceReporter.finishTest();
+        commitFinishedTest();
     }
 
     public void testAssumptionFailure(Failure failure) {
@@ -107,6 +106,14 @@ public class JUnitExecutionListener extends RunListener {
             }
         }
         EvidenceReporter.finishTest();
+        commitFinishedTest();
+    }
+
+    private void commitFinishedTest()
+    {
+        JEvidence jEvidence = new JEvidence();
+        ExecutionMapper executionMapper = new ExecutionMapper(results);
+        jEvidence.generate(executionMapper.mapToExecution());
     }
 
     private pl.lstypka.jevidence.core.bo.Failure prepareFailure(Failure junitFailure) {

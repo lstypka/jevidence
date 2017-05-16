@@ -7,7 +7,6 @@ reportNgApp.directive('menuDirective', ['$compile',
             scope: {
             },
             link: function (scope, element, attrs, ctrl, transclude) {
-                window.console.log("Rendering menu");
             },
             controller: function ( $scope, $element ) {
 

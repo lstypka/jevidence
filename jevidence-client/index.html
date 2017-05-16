@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-3"  style="margin-top: 30px; float:right;">
-                <span class="jevidence-version" style="float: right;">version 1.2</span>
+                <span class="jevidence-version" style="float: right;">version 2.0</span>
                 <span class="jevidence-deploy-time"  style="float: right; margin-right: 20px;">JEVIDENCE_TIMESTAMP</span>
             </div>
         </row>
@@ -58,75 +58,27 @@
 
 <div ng-if="errorStatus === 0">
     <div class="wrapper row-offcanvas row-offcanvas-left">
+        <aside class="left-side" style="width: 15px; cursor: pointer;" ng-if="hideMenu()" ng-click="toggleForceMenu()">
+        </aside>
+
         <aside class="left-side sidebar-offcanvas"
                style="position: absolute; margin-top: 50px; width: 160px; background-color: #f9fafc; bottom: 0px; height: 100%;"
                data-ng-controller="MenuCtrl" ng-if="!hideMenu()">
 
-
             <section class="sidebar">
-                <menu-directive></menu-directive>
+
                 <ul class="sidebar-menu">
-                    <li ng-class="{'active' : isNodeActive('/statistics')}">
-                        <a href="#/statistics">
-                            <i class="fa fa-bar-chart"></i> <span>Statistics</span>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
                     <li ng-class="{'active' : isNodeActive('/performance')}">
                         <a href="#/performance">
                             <i class="fa fa-line-chart"></i> <span>Performance</span>
                         </a>
                     </li>
-                    <li class="divider"></li>
-                    <li class="treeview executions active" ng-if="!noRecords">
-                        <a href="#">
-                            <span><i class="fa fa-cogs"></i><span> Executions</span></span>
-                            <i class="fa pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="treeview execution-menu" data-ng-repeat="execution in executions"
-                                ng-class="{'active' : isExecutionNodeActive('/execution/{{execution.id}}/')}">
-                                <a href="#">
-                                    <i class="fa fa-hashtag" style="font-weight: normal; font-size: 12px;"
-                                       data-toggle="tooltip" data-placement="bottom"
-                                       title="Execution started at: {{formatDirNameToTime(execution.dirName);}}">
-                                        <span style="font-size: 14px; margin-left: 3px;" data-toggle="tooltip" data-placement="bottom"  title="Execution started at: {{formatDirNameToTime(execution.dirName);}}">{{execution.id}}</span></i>
-                                    <span class="badge" data-toggle="tooltip" data-placement="bottom"  title="Percentage:{{execution.percentage}}% Passed:{{execution.success}} Failed:{{execution.failed}} Errors:{{execution.error}} Skipped:{{execution.skipped}}"
-                                          ng-class="[execution.percentageClass]" style="float: right;">{{execution.percentage}}%</span>
-
-                                    <ul class="treeview-menu"
-                                        ng-style="{'overflow: hidden; display: none;' : isExecutionNodeActive('/execution/{{execution.id}}/')}">
-                                        <li class="divider" style="margin: 0px;"></li>
-                                        <li class="execution-menu-item"
-                                            ng-class="{'inner-li-active' : isExecutionNodeActive('/execution/{{execution.id}}/overview')}">
-                                            <a ng-href="#/execution/{{execution.id}}/overview"><i
-                                                    class="fa fa-dashboard"><span
-                                                    style="margin-left: 4px;">Overview</span></i></a>
-                                        </li>
-                                        <li class="execution-menu-item"
-                                            ng-class="{'inner-li-active' : isExecutionNodeActive('/execution/{{execution.id}}/result')}">
-                                            <a ng-href="#/execution/{{execution.id}}/result"><i
-                                                    class="fa fa-server"><span
-                                                    style="margin-left: 4px;">Result</span></i></a></li>
-                                        <li class="execution-menu-item"
-                                            ng-class="{'inner-li-active' : isExecutionNodeActive('/execution/{{execution.id}}/statistics')}">
-                                            <a ng-href="#/execution/{{execution.id}}/statistics"><i
-                                                    class="fa fa-bar-chart"><span
-                                                    style="margin-left: 2px;">Statistics</span></i></a></li>
-                                        <li class="execution-menu-item"
-                                            ng-class="{'inner-li-active' : isExecutionNodeActive('/execution/{{execution.id}}/defects')}">
-                                            <a ng-href="#/execution/{{execution.id}}/defects"><i class="fa fa-bug"><span
-                                                    style="margin-left: 6px;">Defects</span></i></a></li>
-                                        <li class="divider" style="margin: 0px;"></li>
-                                    </ul>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
+                <menu-directive></menu-directive>
             </section>
         </aside>
 
+        <!-- Main content-->
         <aside class="right-side" ng-if="hideMenu()" style="margin-left: 0px;" >
             <section class="content" ng-cloak="">
                 <div ng-view></div>
@@ -222,8 +174,6 @@
 <script src="js/angular/controller/ExecutionResultCtrl.js" type="text/javascript"></script>
 <script src="js/angular/controller/ExecutionDefectsCtrl.js" type="text/javascript"></script>
 <script src="js/angular/controller/ExecutionOverviewCtrl.js" type="text/javascript"></script>
-<script src="js/angular/controller/CalendarCtrl.js" type="text/javascript"></script>
-<script src="js/angular/controller/StatisticsCtrl.js" type="text/javascript"></script>
 <script src="js/angular/controller/PerformanceCtrl.js" type="text/javascript"></script>
 <script src="js/angular/controller/MenuCtrl.js" type="text/javascript"></script>
 <script src="js/angular/controller/ResultInPercentageChartCtrl.js" type="text/javascript"></script>

@@ -4,14 +4,20 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
         var CANNOT_READ_RECORD_FILE = 1;
         $scope.errorStatus = 0;
         $scope.showFooter = true;
+        $scope.forceMenu = false;
 
         $scope.closeFooter = function() {
             $scope.showFooter = false;
         };
 
         $scope.hideMenu = function() {
-            return jEvidenceLayoutConfig.mode === "dashboard";
+            return jEvidenceLayoutConfig.mode === "dashboard" && !$scope.forceMenu;
         };
+
+        $scope.toggleForceMenu = function()
+        {
+            $scope.forceMenu = !$scope.forceMenu;
+        }
 
         $scope.getMenuWidth = function() {
             return jEvidenceLayoutConfig.mode === "dashboard" ? "margin-left: 0px;" : "margin-left: 165px;";
@@ -22,7 +28,6 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
                // think about getting records only once, in the rootCtrl
 
             }, function(data, status, headers, config) {
-                window.console.log("ERROR!!! ", data, status, headers, config);
                 $scope.errorStatus = CANNOT_READ_RECORD_FILE;
             });
         };
@@ -42,7 +47,6 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
                         treeView.css('display', 'block');
                     }
                  }
-                 window.console.log("REFRESH");
              }, 50);
          });
 

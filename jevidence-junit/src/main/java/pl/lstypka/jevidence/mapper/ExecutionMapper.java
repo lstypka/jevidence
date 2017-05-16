@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2016 Lukasz Stypka (lukasz.stypka@gmail.com)
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,7 +25,10 @@ import pl.lstypka.jevidence.model.execution.Execution;
 import pl.lstypka.jevidence.model.execution.Test;
 import pl.lstypka.jevidence.model.execution.TestClass;
 
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 public class ExecutionMapper {
 
@@ -134,6 +137,11 @@ public class ExecutionMapper {
         environmentVariables.add(0, new Entry("Java version", System.getProperty("java.version")));
         environmentVariables.add(0, new Entry("User", System.getProperty("user.name")));
         environmentVariables.add(0, new Entry("Operation system", System.getProperty("os.name")));
+        for (Map.Entry<Object, Object> entry : System.getProperties().entrySet()) {
+            if (entry.getKey() != null && entry.getValue() != null && entry.getKey().toString().startsWith("jevidence")) {
+                environmentVariables.add(0, new Entry(entry.getKey().toString(), entry.getValue().toString()));
+            }
+        }
 
         execution.setEnvironmentVariables(environmentVariables);
     }
