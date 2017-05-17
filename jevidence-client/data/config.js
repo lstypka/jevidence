@@ -1,5 +1,5 @@
 var jEvidenceLayoutConfig = {
-                                mode : "normal",
+                                mode : "dashboard",
                             	menu: [
                                     {   pageId : "dashboard",
                                         name : "Dashboard",

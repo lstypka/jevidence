@@ -685,10 +685,17 @@ ul.task-list {
 }
 
 .jevidence-version,
-.jevidence-deploy-time {
+.jevidence-deploy-time
+.jevidence-setting {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     font-weight: normal;
+}
+
+.jevidence-setting {
+    font-size: 16px;
+    float: right;
+    cursor: pointer;
 }
 
 .tooltip-inner {

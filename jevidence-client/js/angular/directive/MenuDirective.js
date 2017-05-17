@@ -1,5 +1,5 @@
-reportNgApp.directive('menuDirective', ['$compile',
-    function ( $compile ) {
+reportNgApp.directive('menuDirective', ['$compile', 'SettingsService',
+    function ( $compile, SettingsService ) {
 
         return {
             restrict: 'E',
@@ -39,8 +39,8 @@ reportNgApp.directive('menuDirective', ['$compile',
 
                             html += '               <ul class="treeview-menu" ng-style="{\'overflow: hidden; display: none;\' : isExecutionNodeActive(\'dynamiccontent?executionId={{execution.id}}\')}">';
                             html += '               <li class="divider" style="margin: 0px;"></li>';
-                            for(var i = 0; i < jEvidenceLayoutConfig.menuExecutions.length; i++) {
-                                var element = jEvidenceLayoutConfig.menuExecutions[i];
+                            for(var i = 0; i < SettingsService.loadConfiguration().menuExecutions.length; i++) {
+                                var element = SettingsService.loadConfiguration().menuExecutions[i];
 
                                 html += '               <li class="execution-menu-item" ng-class="{\'inner-li-active\' : isExecutionNodeActive(\'dynamiccontent?executionId={{execution.id}}&page='+ element.pageId +'\')}">';
                                 html += '                   <a ng-href="#/dynamiccontent?executionId={{execution.id}}&page='+ element.pageId +'">';
@@ -61,8 +61,8 @@ reportNgApp.directive('menuDirective', ['$compile',
 
                     var html = '<ul class="sidebar-menu" data-ng-controller="MenuCtrl">';
 
-                    for(var i = 0; i < jEvidenceLayoutConfig.menu.length; i++) {
-                        html += createMenuLiElement(jEvidenceLayoutConfig.menu[i]);
+                    for(var i = 0; i < SettingsService.loadConfiguration().menu.length; i++) {
+                        html += createMenuLiElement(SettingsService.loadConfiguration().menu[i]);
                     }
                     html += createExecutionsMenu();
                     html += '</ul>';

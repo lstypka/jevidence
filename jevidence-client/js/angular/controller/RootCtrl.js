@@ -1,5 +1,5 @@
-reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "ExecutionService", "RecordsService",
-    function ($scope, $timeout, $location, ExecutionService, RecordsService) {
+reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "ExecutionService", "RecordsService", "SettingsService",
+    function ($scope, $timeout, $location, ExecutionService, RecordsService, SettingsService) {
 
         var CANNOT_READ_RECORD_FILE = 1;
         $scope.errorStatus = 0;
@@ -11,7 +11,7 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
         };
 
         $scope.hideMenu = function() {
-            return jEvidenceLayoutConfig.mode === "dashboard" && !$scope.forceMenu;
+            return SettingsService.loadConfiguration().mode === "dashboard" && !$scope.forceMenu;
         };
 
         $scope.toggleForceMenu = function()
@@ -20,7 +20,7 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
         }
 
         $scope.getMenuWidth = function() {
-            return jEvidenceLayoutConfig.mode === "dashboard" ? "margin-left: 0px;" : "margin-left: 165px;";
+            return SettingsService.loadConfiguration().mode === "dashboard" ? "margin-left: 0px;" : "margin-left: 165px;";
         };
 
         var init = function () {

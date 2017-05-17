@@ -1,10 +1,10 @@
-reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$location', 'RecordsService', 'ExecutionService', 'emptyWidgetConfig',
-                           'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
+reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$location', 'RecordsService', 'ExecutionService', 'SettingsService',
+                           'emptyWidgetConfig', 'calendarWidgetConfig', 'testsTrendChartWidgetConfig', 'testsResultListWidgetConfig', 'testsResultComparatorWidgetConfig',
                            'executionsPerformanceChartWidgetConfig', 'testsAvgDurationChartWidgetConfig', 'executionResultInPercentageChartWidgetConfig',
                            'executionAvgNumberOfStepsChartWidgetConfig', 'executionAvgTimeChartWidgetConfig', 'executionStatisticsTableWidgetConfig',
                            'executionEnvironmentVariablesTableWidgetConfig', 'executionParamsTableWidgetConfig', 'executionDefectsTableWidgetConfig',
                            'executionOverviewWidgetConfig', 'executionResultsTableWidgetConfig',
-    function ( $compile, $routeParams, $location, RecordsService, ExecutionService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
+    function ( $compile, $routeParams, $location, RecordsService, ExecutionService, SettingsService, emptyWidgetConfig, calendarWidgetConfig, testsTrendChartWidgetConfig,
                 testsResultListWidgetConfig, testsResultComparatorWidgetConfig, executionsPerformanceChartWidgetConfig, testsAvgDurationChartWidgetConfig,
                 executionResultInPercentageChartWidgetConfig, executionAvgNumberOfStepsChartWidgetConfig, executionAvgTimeChartWidgetConfig,
                 executionStatisticsTableWidgetConfig, executionEnvironmentVariablesTableWidgetConfig, executionParamsTableWidgetConfig,
@@ -28,7 +28,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
                     if(!pageId) {
                         pageId = 'index';
                     }
-                    var pages = jEvidenceLayoutConfig.pages;
+                    var pages = SettingsService.loadConfiguration().pages;
                     for(var i = 0; i < pages.length; i++) {
                         if(pageId === pages[i].id) {
                             return pages[i];
@@ -112,7 +112,7 @@ reportNgApp.directive('dynamicContentDirective', ['$compile', '$routeParams', '$
 
                 var extendElement = function(element) {
                     if(element.extends) {
-                        var pages = jEvidenceLayoutConfig.pages;
+                        var pages = SettingsService.loadConfiguration().pages;
                         for(var i = 0; i < pages.length; i++) {
                             var page = pages[i];
                             for(var j = 0; j < page.rows.length; j++) {

@@ -19,4 +19,25 @@ reportNgApp.service('SettingsService', [function () {
         return this.getDeploymentType() === 'server';
       };
 
+      this.saveConfiguration = function(config) {
+        if(localStorage) {
+            localStorage.setItem('jEvidenceConfig', config);
+        }
+      };
+
+      this.loadConfiguration = function(){
+         if(localStorage) {
+            var loadedConfig = localStorage.getItem('jEvidenceConfig');
+            if(loadedConfig){
+                return JSON.parse(loadedConfig);
+            }
+         }
+
+            return jEvidenceLayoutConfig;
+      };
+
+      this.loadDefaultConfiguration = function(){
+            return jEvidenceLayoutConfig;
+      };
+
 }]);
